@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcyug118867xu"]
+
+[ext_resource type="Script" uid="uid://jebt8et0og6a" path="res://scripts/stack.gd" id="1_4am7k"]
+
+[node name="SpriteStack" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_4am7k")

@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://5oxtlf4po6kq"]
+
+[ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dvme3l5h34ek8" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/splatter.tscn" id="4_lbhrr"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_lnu2h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -7
+offset_left = -169.0
+offset_top = -107.0
+offset_right = 207.0
+offset_bottom = 106.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-19, -39)
+zoom = Vector2(3.865, 3.865)
+
+[node name="Splatter" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(67, -8)
+
+[node name="Splatter2" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(-15, -19)
+rotation = 1.34489
+
+[node name="Splatter3" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(16, -29)
+rotation = 2.38173
+
+[node name="Splatter4" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(-18, -6)
+rotation = 3.37426
+
+[node name="Splatter5" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(-31, -6)
+rotation = 4.53897
+
+[node name="Splatter6" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(-22, 10)
+rotation = 4.53897
+
+[node name="Splatter7" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(-30, 7)
+rotation = 4.53897
+
+[node name="Splatter8" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(-44, 9)
+rotation = 4.53897
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
