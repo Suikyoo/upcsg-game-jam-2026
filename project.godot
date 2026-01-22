@@ -15,6 +15,10 @@ run/main_scene="uid://5oxtlf4po6kq"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalFuncts="*res://global_functs.gd"
+
 [input]
 
 change_perspective={

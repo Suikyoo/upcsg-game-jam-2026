@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=4 uid="uid://5oxtlf4po6kq"]
+
+[ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dvme3l5h34ek8" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/ground.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://botoqwwk6tii7" path="res://assets/sprite_stacks/splatter.png" id="4_lbhrr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
+texture = ExtResource("4_lbhrr")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p57ef"]
+sources/0 = SubResource("TileSetAtlasSource_iywne")
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_lnu2h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -7
+offset_left = -169.0
+offset_top = -107.0
+offset_right = 207.0
+offset_bottom = 106.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-19, -39)
+zoom = Vector2(3.865, 3.865)
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+
+[node name="Ground" parent="." instance=ExtResource("3_lnu2h")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
+position = Vector2(53, -40)
+polygon = PackedVector2Array(-68, 9, -25, 8, -20, 24, 12, 29, -21, 56, -23, 70, -84, 70, -84, 24, -69, 23)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Ground"]
+tile_map_data = PackedByteArray("AAD+////AAABAAEAAAD+/wAAAAABAAEAAAD+/wEAAAABAAEAAAD//wEAAAABAAEAAAAAAAEAAAABAAEAAAABAAEAAAABAAEAAAABAAAAAAABAAEAAAABAP//AAABAAEAAAABAP7/AAABAAEAAAACAP//AAABAAEAAAACAAAAAAABAAEAAAADAP//AAABAAEAAAAAAP//AAABAAEAAAAAAAAAAAABAAEAAAD//wAAAAABAAEAAAD/////AAABAAEAAAAAAP7/AAABAAEAAAD///7/AAABAAEAAAA=")
+tile_set = SubResource("TileSet_p57ef")

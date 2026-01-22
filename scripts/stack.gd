@@ -7,8 +7,6 @@ extends Node2D
 @export_tool_button("Stack Sprite") var _button_func: Callable = func():
 	_stack_sprites()
 
-# local
-var rot_angle: float = 0
 func _stack_sprites() -> void:
 	if texture == null:
 		push_warning("no texture set")
@@ -38,19 +36,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var world_node: Node2D = get_node_or_null("/root/World")	
-
-	if world_node:
-		var target_angle: float = world_node.get("world_angle")
-		rot_angle = lerp(rot_angle, target_angle, .3)
+	var world_node: Node2D = get_node_or_null("/root/World")
+	if !world_node:
+		return
 		
-		var player_node: CharacterBody2D = get_node_or_null("/root/World/Player")
-		if player_node:
-			var player_position: Vector2 = player_node.global_position
-			
-			global_position = Vector2(get_parent().global_position - player_position).rotated(rot_angle)
-			
-			for child in get_children():
-				if child is Sprite2D:
-					child.rotation = rot_angle
-			#position = Vector2(origin_position - player_position).rotated(rot_angle)
+	var angle: float = world_node.get("world_angle")
+	if !angle:
+		return
+		
+	global_position = GlobalFuncts.world_transform(get_parent().global_position, angle)
+	for child in get_children():
+		if child is Sprite2D:
+			child.rotation = angle
+	#position = Vector2(origin_position - player_position).rotated(rot_angle)

@@ -1,5 +1,4 @@
-extends Area2D
-
+extends Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,14 +7,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if body is Entity:
-		body.falling = false
 	
-func _on_body_exited(body: Node2D) -> void:
-	if body is Entity:
-		body.falling = true
+	var player: Player = get_node("../Player")
+	if !player:
+		push_error("Player not detected as parent.")
+	
+	global_position = player._get_draw_pos()
+	#rotation = 0
 	
