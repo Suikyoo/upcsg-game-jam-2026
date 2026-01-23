@@ -17,9 +17,13 @@ func _physics_process(delta: float) -> void:
 	var angle: float = world_node.get("world_angle")
 	if !angle:
 		return
+	
+	var map: TileMapLayer = get_node_or_null("TileMapLayer")
+	if !map:
+		return
 		
-	global_position = GlobalFuncts.world_transform(get_parent().global_position, angle)
-	rotation = angle
+	map.global_position = GlobalFuncts.world_transform(get_parent().global_position, angle)
+	map.rotation = angle
 	
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
