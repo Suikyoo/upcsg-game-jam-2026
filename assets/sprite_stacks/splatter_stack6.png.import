@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmbbcfak7emj7"
-path="res://.godot/imported/GreenBigCar.png-105e4efa16586a3da54142056e19e0da.ctex"
+uid="uid://brlqte6q8vit4"
+path="res://.godot/imported/splatter_stack6.png-42907f55a56821df8a02e76ab09b18fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprite_stacks/GreenBigCar.png"
-dest_files=["res://.godot/imported/GreenBigCar.png-105e4efa16586a3da54142056e19e0da.ctex"]
+source_file="res://assets/sprite_stacks/splatter_stack6.png"
+dest_files=["res://.godot/imported/splatter_stack6.png-42907f55a56821df8a02e76ab09b18fb.ctex"]
 
 [params]
 
