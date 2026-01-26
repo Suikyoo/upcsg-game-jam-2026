@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3ne1nx2n1as6"]
+
+[ext_resource type="Script" uid="uid://bnuu2070jxrcs" path="res://scripts/drip.gd" id="1_2hjge"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_2hjge")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, -8, 0, 0, 8, -8, 8, 0, 0, 8, -8, 0)
