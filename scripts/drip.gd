@@ -1,26 +1,24 @@
 extends Node2D
 
-#drip is essentially a collision shape generator for its parent
+var world_gravity: Vector2 = Vector2.ZERO
 
-var origin := position
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
-	var poly: CollisionPolygon2D = get_node_or_null("CollisionPolygon2D")
-	if !poly:
-		push_warning("drip: no associated collision polygon")
+	position += world_gravity * delta * 0.05
 	
-	var group_name := "drip_%d_path" % get_index()
-	if get_tree().has_group(group_name):
-		var polygon: CollisionPolygon2D = get_tree().get_first_node_in_group(group_name)
-		var new_poly_points := Geometry2D.merge_polygons(polygon.polygon, poly.polygon)
-		polygon.set_polygon(new_poly_points)
-	
-	else:
-		poly.add_to_group(group_name)
+	var map: TileMapLayer = get_parent()
+	var ground: Area2D = get_parent().get_parent()
+	if !map or !ground:
+		push_error("drip object must be a child of tilemaplayer and a grandchild of ground.")
+		
+	var cell := map.local_to_map(map.to_local(global_position))
+	print(world_gravity)
+	ground.add_collision(cell)
+	map.set_cell(cell, 1, Vector2i(0, 0))
+
 	
 func _on_world_world_flip(angle: float, gravity: Vector2) -> void:
-	pass
+	world_gravity = gravity

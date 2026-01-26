@@ -23,6 +23,7 @@ func _stack_sprites() -> void:
 		var sprite: Sprite2D = Sprite2D.new()
 		sprite.texture = texture
 		sprite.hframes = hframes
+		sprite.rotation = rotation_angle
 		sprite.frame = i
 		sprite.position.y = -i * vertical_spacing
 		add_child(sprite)

@@ -20,17 +20,20 @@ func _generate_collision():
 	
 	var cells := tile_map.get_used_cells()
 	for c in cells:
-		var src_id := tile_map.get_cell_source_id(c)
-		if src_id != -1:
-			var points := Array(tile_map.get_cell_tile_data(c).get_collision_polygon_points(0, 0))
-			print(points)
-			points = points.map(func(e): return tile_map.map_to_local(c) + e)
-			print(points)
-			var polygon := CollisionPolygon2D.new()
-			polygon.set_polygon(points)
-			polygon.set_visible(true)
-			add_child(polygon)
+		
+			add_collision(c)
+
+func add_collision(c: Vector2) -> void:
+	var src_id: int = $TileMapLayer.get_cell_source_id(c)
+	if src_id == -1:
+		return
 			
+	var points := Array($TileMapLayer.get_cell_tile_data(c).get_collision_polygon_points(0, 0))
+	points = points.map(func(e): return $TileMapLayer.map_to_local(c) + e)
+	var polygon := CollisionPolygon2D.new()
+	polygon.set_polygon(points)
+	polygon.set_visible(true)
+	add_child(polygon)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_generate_collision()
@@ -38,6 +41,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass #area_entered
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	var world_node: Node2D = get_node_or_null("/root/World")

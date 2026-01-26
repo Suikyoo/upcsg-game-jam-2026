@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://5oxtlf4po6kq"]
+[gd_scene load_steps=16 format=4 uid="uid://5oxtlf4po6kq"]
 
 [ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dvme3l5h34ek8" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://8cd08u1a4fob" path="res://assets/splatter.png" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/ground.tscn" id="3_lnu2h"]
-[ext_resource type="Texture2D" uid="uid://c6cugtw0jnv7d" path="res://assets/drip.png" id="3_trtic"]
 [ext_resource type="Script" uid="uid://cp4he6iltnikf" path="res://scripts/camera_2d.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://dcyug118867xu" path="res://scenes/sprite_stack.tscn" id="6_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://bny0a15if1586" path="res://assets/prism.png" id="7_gee14"]
@@ -14,24 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://3pt8qkwb50g7" path="res://assets/box.png" id="11_kvuet"]
 [ext_resource type="Texture2D" uid="uid://c0l702jt3g4dw" path="res://assets/box_idk.png" id="12_trtic"]
 [ext_resource type="PackedScene" uid="uid://b3ne1nx2n1as6" path="res://scenes/drip.tscn" id="13_kvuet"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trtic"]
-texture = ExtResource("3_trtic")
-0:0/animation_columns = 13
-0:0/animation_frame_0/duration = 0.08
-0:0/animation_frame_1/duration = 0.08
-0:0/animation_frame_2/duration = 0.08
-0:0/animation_frame_3/duration = 0.08
-0:0/animation_frame_4/duration = 0.08
-0:0/animation_frame_5/duration = 0.08
-0:0/animation_frame_6/duration = 0.08
-0:0/animation_frame_7/duration = 0.08
-0:0/animation_frame_8/duration = 0.08
-0:0/animation_frame_9/duration = 0.08
-0:0/animation_frame_10/duration = 0.08
-0:0/animation_frame_11/duration = 0.08
-0:0/animation_frame_12/duration = 1.0
-0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
 texture = ExtResource("3_iywne")
@@ -55,7 +36,6 @@ texture = ExtResource("3_iywne")
 [sub_resource type="TileSet" id="TileSet_u5sy4"]
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_iywne")
-sources/1 = SubResource("TileSetAtlasSource_trtic")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_lnu2h")
@@ -63,11 +43,8 @@ script = ExtResource("1_lnu2h")
 [node name="Ground" parent="." instance=ExtResource("3_lnu2h")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Ground"]
-tile_map_data = PackedByteArray("AAD/////AgABAAIAAAD//wAAAgABAAIAAAAAAAAAAgABAAIAAAAAAAEAAgABAAIAAAD//wEAAgABAAIAAAABAAAAAgABAAIAAAABAAEAAgABAAIAAAACAAAAAgABAAIAAAACAAEAAgABAAIAAAADAAAAAgABAAIAAAADAAEAAgABAAIAAAADAAIAAgABAAIAAAAEAAEAAgABAAIAAAAEAAIAAgABAAIAAAAEAAAAAgABAAIAAAD+/wEAAgABAAIAAAD+/wAAAgABAAIAAAD+////AgABAAIAAAD+//7/AgABAAIAAAD///7/AgABAAIAAAAAAP//AgABAAIAAAACAAIAAgABAAIAAAADAAMAAgABAAIAAAAEAAMAAgABAAIAAAAFAAIAAgADAAIAAAAFAAEAAgADAAIAAAAFAAAAAgABAAIAAAAEAP//AgABAAIAAAADAP//AgABAAIAAAACAP//AgABAAIAAAABAP//AgABAAIAAAABAAIAAgABAAIAAAAAAAIAAgABAAIAAAD//wIAAgABAAIAAAD+/wIAAgABAAIAAAD9/wEAAgABAAIAAAD9/wAAAgABAAIAAAD9////AgABAAIAAAAEAAQAAgABAAMAAAACAAMAAgAAAAIAAAAAAP7/AgABAAAAAAABAP7/AgABAAAAAAACAP7/AgABAAAAAAADAP7/AgABAAAAAAAEAP7/AgABAAAAAAAFAP//AgACAAEAAAAGAAAAAgADAAIAAAD9/wIAAgAAAAIAAAD8/wEAAgAAAAIAAAD8/wAAAgAAAAIAAAD8////AgAAAAIAAAD9//7/AgAAAAEAAAD+//3/AgABAAAAAAD///3/AgABAAAAAAD+/wMAAgABAAMAAAD9/wQAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD/////AgABAAIAAAD//wAAAgABAAIAAAAAAAAAAgABAAIAAAAAAAEAAgABAAIAAAD//wEAAgABAAIAAAABAAAAAgABAAIAAAABAAEAAgABAAIAAAACAAAAAgABAAIAAAACAAEAAgABAAIAAAADAAAAAgABAAIAAAADAAEAAgABAAIAAAADAAIAAgABAAIAAAAEAAEAAgABAAIAAAAEAAIAAgABAAIAAAAEAAAAAgABAAIAAAD+/wEAAgABAAIAAAD+/wAAAgABAAIAAAD+////AgABAAIAAAD+//7/AgABAAIAAAD///7/AgABAAIAAAAAAP//AgABAAIAAAACAAIAAgABAAIAAAADAAMAAgABAAIAAAAEAAMAAgABAAIAAAAFAAIAAgADAAIAAAAFAAEAAgADAAIAAAAFAAAAAgABAAIAAAAEAP//AgABAAIAAAADAP//AgABAAIAAAACAP//AgABAAIAAAABAP//AgABAAIAAAABAAIAAgABAAIAAAAAAAIAAgABAAIAAAD//wIAAgABAAIAAAD+/wIAAgABAAIAAAD9/wEAAgABAAIAAAD9/wAAAgABAAIAAAD9////AgABAAIAAAAEAAQAAgABAAMAAAACAAMAAgAAAAIAAAAAAP7/AgABAAAAAAABAP7/AgABAAAAAAACAP7/AgABAAAAAAADAP7/AgABAAAAAAAEAP7/AgABAAAAAAAFAP//AgACAAEAAAAGAAAAAgADAAIAAAD9/wIAAgAAAAIAAAD8/wEAAgAAAAIAAAD8/wAAAgAAAAIAAAD8////AgAAAAIAAAD9//7/AgAAAAEAAAD+//3/AgABAAAAAAD///3/AgABAAAAAAD+/wMAAgABAAMAAAA=")
 tile_set = SubResource("TileSet_u5sy4")
-
-[node name="Drip" parent="Ground/TileMapLayer" instance=ExtResource("13_kvuet")]
-position = Vector2(-24, 48)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 z_index = 2
@@ -116,5 +93,11 @@ position = Vector2(104, 8)
 texture = ExtResource("12_trtic")
 hframes = 17
 
+[node name="CharacterBody2D" parent="." instance=ExtResource("13_kvuet")]
+position = Vector2(-24, 56)
+
+[node name="Drip" parent="." instance=ExtResource("13_kvuet")]
+position = Vector2(-24, 56)
+
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
-[connection signal="world_flip" from="." to="Ground/TileMapLayer/Drip" method="_on_world_world_flip"]
+[connection signal="world_flip" from="." to="Drip" method="_on_world_world_flip"]

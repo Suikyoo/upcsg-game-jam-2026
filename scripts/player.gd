@@ -29,7 +29,8 @@ func _move(delta: float) -> void:
 	if movement != velocity:
 		var stack: SpriteStack = get_node("SpriteStack")
 		if movement != Vector2.ZERO:
-			stack.rotation_angle = rotate_toward(stack.rotation_angle, movement.angle(), 0.2)
+			
+			stack.rotation_angle = rotate_toward(stack.rotation_angle, movement.angle() + PI, 0.4)
 	velocity += movement
 	
 func _add_velocity(delta: float) -> void:
