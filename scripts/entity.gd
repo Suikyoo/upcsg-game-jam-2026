@@ -1,10 +1,15 @@
 extends CharacterBody2D
 
+#Entity is the base class for all objects that use SpriteStack
+#You can consider this a wrapper for the SpriteStack object
+
+#objects like Player, Prism, etc. inherit from this
+
 class_name Entity
 
-const SPEED = 5000.0
-const JUMP_VELOCITY = -400.0
-
+#all entities are affected by gravity 
+#this is done primarily through the falling state
+#if falling state is true, gravity takes effect in the direction it intends
 var falling = false
 var fall_velocity: Vector2 = Vector2.ZERO
 
@@ -16,9 +21,6 @@ func _on_world_world_flip(angle: float, gravity: Vector2) -> void:
 	world_angle = angle
 	world_gravity = gravity
 	
-func _ready() -> void:
-	connect("body_entered", Callable(self, "_on_body_entered"))
-
 func fall(delta: float) -> void:
 	# Add the gravity.
 	if falling:
@@ -35,9 +37,10 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	
 	add_velocity(delta)
-	
-	#position += velocity * delta
 	move_and_slide()
 
+#this function is used by inheriting objects. 
+#the body in the argument is primarily the Player object.
+#this function triggers when the player collides with the entity.
 func on_collide(body: CharacterBody2D):
 	pass

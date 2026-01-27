@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://pbuf7nkg6nwq"]
+[gd_scene load_steps=5 format=3 uid="uid://bmw6hxcb71v0c"]
 
 [ext_resource type="Texture2D" uid="uid://3um48paoafwu" path="res://assets/sprite_stacks/splatter_stack1.png" id="1_gldc4"]
-[ext_resource type="Script" uid="uid://ct3x5qd5w3oya" path="res://scripts/map.gd" id="1_paxxb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0cso3"]
 texture = ExtResource("1_gldc4")
@@ -34,8 +33,39 @@ texture = ExtResource("1_gldc4")
 [sub_resource type="TileSet" id="TileSet_0cso3"]
 sources/1 = SubResource("TileSetAtlasSource_0cso3")
 
+[sub_resource type="GDScript" id="GDScript_4xfga"]
+script/source = "extends TileMapLayer
+
+@export var tileset_sources: Array[TileSetAtlasSource] = []
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	var world = get_node_or_null(\"/root/World\")
+	if !world:
+		return
+	
+	var world_angle = world.world_angle
+	for i in get_children():
+		i.rotation = world_angle
+		
+
+
+func _on_changed() -> void:
+	for i in get_children():
+		if i is TileMapLayer:
+			var cells := get_used_cells()
+			for cell in cells:
+				var src_id = get_cell_source_id(cell)
+				i.set_cell(cell, src_id)
+			
+"
+
 [node name="Map" type="TileMapLayer"]
 tile_set = SubResource("TileSet_0cso3")
-script = ExtResource("1_paxxb")
+script = SubResource("GDScript_4xfga")
 
 [connection signal="changed" from="." to="." method="_on_changed"]

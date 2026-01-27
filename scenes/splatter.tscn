@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4drujkyqu5e5"]
+
+[ext_resource type="Shader" uid="uid://clnrt0pq7h8pv" path="res://shaders/splatter.gdshader" id="1_bauxg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4gf8v"]
+shader = ExtResource("1_bauxg")
+
+[node name="Splatter" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_4gf8v")
+emitting = false
+one_shot = true

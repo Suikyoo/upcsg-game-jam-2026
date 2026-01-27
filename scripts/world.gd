@@ -1,22 +1,27 @@
 extends Node2D
 
-
-@export var world_angle: float = 0
-
-signal world_flip(angle: float, gravity: Vector2)
+#The root of the game, can be thought of as an entire level of the game
 
 const gravity_value = 800
+
+#these variable trickle down into the child node for their own specific uses
+#these are the global variables that change in the world during the game
 var world_gravity: Vector2 = Vector2(0, 1) * gravity_value
+@export var world_angle: float = 0
+
+#used for smooth interpolation
 var target_angle: float = 0
-# Called when the node enters the scene tree for the first time.
+
+#emits after whenever the perspective is changed
+signal world_flip(angle: float, gravity: Vector2)
+
 func _ready() -> void:
 	world_flip.emit(target_angle, world_gravity)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	
 func _process(delta: float) -> void:
 	const rot_scalar: float = PI/2
 	
-	
-	if Input.is_action_just_pressed("perspective_clockwise"):
+	if Input.is_action_just_pressed("change_perspective"):
 		target_angle += rot_scalar
 		world_gravity = Vector2.from_angle(target_angle - PI/2) * Vector2(1, -1) * gravity_value
 		world_flip.emit(target_angle, world_gravity)
