@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://5oxtlf4po6kq"]
+[gd_scene load_steps=12 format=4 uid="uid://5oxtlf4po6kq"]
 
 [ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dvme3l5h34ek8" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -6,13 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/ground.tscn" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://c6cugtw0jnv7d" path="res://assets/drip.png" id="3_trtic"]
 [ext_resource type="Script" uid="uid://cp4he6iltnikf" path="res://scripts/camera_2d.gd" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://dcyug118867xu" path="res://scenes/sprite_stack.tscn" id="6_u5sy4"]
-[ext_resource type="Texture2D" uid="uid://bny0a15if1586" path="res://assets/prism.png" id="7_gee14"]
-[ext_resource type="Texture2D" uid="uid://b0otrcpm8qq0q" path="res://assets/spike.png" id="8_gee14"]
-[ext_resource type="Texture2D" uid="uid://cilahditmavhy" path="res://assets/portal.png" id="9_0tnpc"]
-[ext_resource type="Texture2D" uid="uid://ctr0urwk64k2c" path="res://assets/box_death.png" id="10_dinhu"]
-[ext_resource type="Texture2D" uid="uid://3pt8qkwb50g7" path="res://assets/box.png" id="11_kvuet"]
-[ext_resource type="Texture2D" uid="uid://c0l702jt3g4dw" path="res://assets/box_idk.png" id="12_trtic"]
+[ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://b3ne1nx2n1as6" path="res://scenes/drip.tscn" id="13_kvuet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trtic"]
@@ -76,45 +70,8 @@ z_index = 2
 zoom = Vector2(2.385, 2.385)
 script = ExtResource("5_iywne")
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(56, 8)
+[node name="Prism" parent="." instance=ExtResource("8_gee14")]
+position = Vector2(58, 25)
 
-[node name="SpriteStack" parent="Node2D" instance=ExtResource("6_u5sy4")]
-texture = ExtResource("7_gee14")
-hframes = 13
-
-[node name="Node2D2" type="Node2D" parent="."]
-position = Vector2(-24, 24)
-
-[node name="SpriteStack" parent="Node2D2" instance=ExtResource("6_u5sy4")]
-texture = ExtResource("8_gee14")
-
-[node name="Node2D3" type="Node2D" parent="."]
-position = Vector2(8, 48)
-
-[node name="SpriteStack" parent="Node2D3" instance=ExtResource("6_u5sy4")]
-texture = ExtResource("9_0tnpc")
-
-[node name="Node2D4" type="Node2D" parent="."]
-position = Vector2(40, 40)
-
-[node name="SpriteStack" parent="Node2D4" instance=ExtResource("6_u5sy4")]
-texture = ExtResource("10_dinhu")
-hframes = 4
-
-[node name="Node2D5" type="Node2D" parent="."]
-position = Vector2(72, 56)
-
-[node name="SpriteStack" parent="Node2D5" instance=ExtResource("6_u5sy4")]
-texture = ExtResource("11_kvuet")
-hframes = 13
-
-[node name="Node2D6" type="Node2D" parent="."]
-position = Vector2(104, 8)
-
-[node name="SpriteStack" parent="Node2D6" instance=ExtResource("6_u5sy4")]
-texture = ExtResource("12_trtic")
-hframes = 17
-
-[connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
 [connection signal="world_flip" from="." to="Ground/TileMapLayer/Drip" method="_on_world_world_flip"]
+[connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]

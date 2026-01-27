@@ -4,8 +4,11 @@ class_name Player
 
 var movement: Vector2 = Vector2.ZERO
 
+signal body_entered
+signal body_exited
+
 func _ready() -> void:
-	pass
+	$Area2D.add_child($CollisionShape2D)
 
 func _get_draw_pos() -> Vector2:
 	var stack: SpriteStack = get_node_or_null("SpriteStack")
@@ -38,3 +41,10 @@ func _add_velocity(delta: float) -> void:
 	super._add_velocity(delta)
 	
 	
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	body_entered.emit()
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	body_exited.emit()

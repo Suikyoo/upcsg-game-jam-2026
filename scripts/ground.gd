@@ -20,8 +20,7 @@ func _generate_collision():
 	
 	var cells := tile_map.get_used_cells()
 	for c in cells:
-		
-			add_collision(c)
+		add_collision(c)
 
 func add_collision(c: Vector2) -> void:
 	var src_id: int = $TileMapLayer.get_cell_source_id(c)
@@ -73,11 +72,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Entity:
 		body.velocity = Vector2.ZERO
 		body.falling = false
-		print("catched")
-	
+		
 func _on_body_exited(body: Node2D) -> void:
 	print(body)
 	if body is Entity:
-		body.falling = true
-		print("fell")
-	
+		body.falling = true	
