@@ -19,7 +19,7 @@ func _on_world_world_flip(angle: float, gravity: Vector2) -> void:
 func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
-func _fall(delta: float) -> void:
+func fall(delta: float) -> void:
 	# Add the gravity.
 	if falling:
 		fall_velocity += world_gravity * delta
@@ -28,17 +28,16 @@ func _fall(delta: float) -> void:
 		
 	velocity += fall_velocity
 	
-func _add_velocity(delta: float) -> void:
-	_fall(delta)
+func add_velocity(delta: float) -> void:
+	fall(delta)
 	
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	
-	_add_velocity(delta)
+	add_velocity(delta)
 	
-	position += velocity * delta
-	#move_and_slide()
+	#position += velocity * delta
+	move_and_slide()
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		pass
+func on_collide(body: CharacterBody2D):
+	pass

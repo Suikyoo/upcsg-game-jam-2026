@@ -8,7 +8,7 @@ signal body_entered
 signal body_exited
 
 func _ready() -> void:
-	$Area2D.add_child($CollisionShape2D)
+	pass
 
 func _get_draw_pos() -> Vector2:
 	var stack: SpriteStack = get_node_or_null("SpriteStack")
@@ -17,17 +17,18 @@ func _get_draw_pos() -> Vector2:
 	return stack.global_position
 	
 func _physics_process(delta: float) -> void:
-	# Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	#	velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	#rotation = lerp_angle(rotation, -world_angle, 0.1)
-	super._physics_process(delta)
+	#super._physics_process(delta)
+	velocity = Vector2.ZERO
+	
+	add_velocity(delta)
+	var collision := move_and_collide(velocity * delta)
+	if collision:
+		var collider := collision.get_collider()
+		if collider is Entity:
+			collider.on_collide(self)
 	
 func _move(delta: float) -> void:
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = Input.get_vector("input_left", "input_right", "input_up", "input_down")
 	movement = lerp(movement, direction.rotated(-world_angle) * SPEED * delta, 0.2)	
 	if movement != velocity:
 		var stack: SpriteStack = get_node("SpriteStack")
@@ -36,15 +37,6 @@ func _move(delta: float) -> void:
 			stack.rotation_angle = rotate_toward(stack.rotation_angle, movement.angle() + PI, 0.4)
 	velocity += movement
 	
-func _add_velocity(delta: float) -> void:
+func add_velocity(delta: float) -> void:
 	_move(delta)
-	super._add_velocity(delta)
-	
-	
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	body_entered.emit()
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	body_exited.emit()
+	super.add_velocity(delta)

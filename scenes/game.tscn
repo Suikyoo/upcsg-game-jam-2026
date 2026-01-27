@@ -47,7 +47,8 @@ texture = ExtResource("3_iywne")
 0:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_u5sy4"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 4
 sources/2 = SubResource("TileSetAtlasSource_iywne")
 sources/1 = SubResource("TileSetAtlasSource_trtic")
 
@@ -57,7 +58,7 @@ script = ExtResource("1_lnu2h")
 [node name="Ground" parent="." instance=ExtResource("3_lnu2h")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Ground"]
-tile_map_data = PackedByteArray("AAD/////AgABAAIAAAD//wAAAgABAAIAAAAAAAAAAgABAAIAAAAAAAEAAgABAAIAAAD//wEAAgABAAIAAAABAAAAAgABAAIAAAABAAEAAgABAAIAAAACAAAAAgABAAIAAAACAAEAAgABAAIAAAADAAAAAgABAAIAAAADAAEAAgABAAIAAAADAAIAAgABAAIAAAAEAAEAAgABAAIAAAAEAAIAAgABAAIAAAAEAAAAAgABAAIAAAD+/wEAAgABAAIAAAD+/wAAAgABAAIAAAD+////AgABAAIAAAD+//7/AgABAAIAAAD///7/AgABAAIAAAAAAP//AgABAAIAAAACAAIAAgABAAIAAAADAAMAAgABAAIAAAAEAAMAAgABAAIAAAAFAAIAAgADAAIAAAAFAAEAAgADAAIAAAAFAAAAAgABAAIAAAAEAP//AgABAAIAAAADAP//AgABAAIAAAACAP//AgABAAIAAAABAP//AgABAAIAAAABAAIAAgABAAIAAAAAAAIAAgABAAIAAAD//wIAAgABAAIAAAD+/wIAAgABAAIAAAD9/wEAAgABAAIAAAD9/wAAAgABAAIAAAD9////AgABAAIAAAAEAAQAAgABAAMAAAACAAMAAgAAAAIAAAAAAP7/AgABAAAAAAABAP7/AgABAAAAAAACAP7/AgABAAAAAAADAP7/AgABAAAAAAAEAP7/AgABAAAAAAAFAP//AgACAAEAAAAGAAAAAgADAAIAAAD9/wIAAgAAAAIAAAD8/wEAAgAAAAIAAAD8/wAAAgAAAAIAAAD8////AgAAAAIAAAD9//7/AgAAAAEAAAD+//3/AgABAAAAAAD///3/AgABAAAAAAD+/wMAAgABAAMAAAD9/wQAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD/////AgABAAIAAAD//wAAAgABAAIAAAAAAAAAAgABAAIAAAAAAAEAAgABAAIAAAD//wEAAgABAAIAAAD+/wEAAgABAAIAAAD+/wAAAgABAAIAAAD+////AgABAAIAAAD+//7/AgABAAIAAAD///7/AgABAAIAAAAAAP//AgABAAIAAAAFAAIAAgACAAIAAAAFAAEAAgACAAIAAAAAAAIAAgABAAIAAAD//wIAAgABAAIAAAD+/wIAAgABAAIAAAD9/wEAAgABAAIAAAD9/wAAAgABAAIAAAD9////AgABAAIAAAAAAP7/AgABAAAAAAAGAAAAAgACAAIAAAD9/wIAAgAAAAIAAAD8/wEAAgAAAAIAAAD8/wAAAgAAAAIAAAD8////AgAAAAIAAAD9//7/AgAAAAEAAAD+//3/AgABAAAAAAD///3/AgABAAAAAAD+/wMAAgABAAMAAAD9/wQAAQAAAAAAAAAHAP//AgACAAIAAAAFAAAAAgAAAAIAAAAGAAIAAgACAAIAAAAHAAIAAgACAAIAAAAHAAEAAgACAAIAAAAGAAEAAgACAAIAAAAIAAEAAgACAAIAAAAIAAAAAgACAAIAAAAHAAAAAgACAAIAAAAGAP//AgACAAIAAAAGAP7/AgABAAAAAAAHAP7/AgABAAAAAAAJAAEAAgADAAMAAAAJAAAAAgADAAMAAAAEAAEAAgAAAAIAAAAEAAIAAgAAAAIAAAABAAIAAgADAAIAAAABAAEAAgADAAIAAAABAAAAAgADAAIAAAABAP//AgADAAIAAAA=")
 tile_set = SubResource("TileSet_u5sy4")
 
 [node name="Drip" parent="Ground/TileMapLayer" instance=ExtResource("13_kvuet")]
@@ -65,13 +66,25 @@ position = Vector2(-24, 48)
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 z_index = 2
+motion_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.385, 2.385)
 script = ExtResource("5_iywne")
 
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+z_index = -7
+offset_left = -136.0
+offset_top = -104.0
+offset_right = 152.0
+offset_bottom = 104.0
+color = Color(0, 0, 0, 1)
+
 [node name="Prism" parent="." instance=ExtResource("8_gee14")]
-position = Vector2(58, 25)
+position = Vector2(112, 24)
+motion_mode = 0
 
 [connection signal="world_flip" from="." to="Ground/TileMapLayer/Drip" method="_on_world_world_flip"]
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
+[connection signal="body_entered" from="Ground" to="Prism" method="_on_ground_body_entered"]
+[connection signal="body_exited" from="Ground" to="Prism" method="_on_ground_body_exited"]

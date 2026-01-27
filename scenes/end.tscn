@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://do2b3xdvt7bg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xdx16"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[node name="End" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 205.0
+offset_right = 442.0
+offset_bottom = 293.0
+text = "You Win"
+label_settings = SubResource("LabelSettings_xdx16")

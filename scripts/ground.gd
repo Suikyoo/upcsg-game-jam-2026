@@ -68,12 +68,10 @@ func _get_configuration_warnings() -> PackedStringArray:
 	return warnings
 	
 func _on_body_entered(body: Node2D) -> void:
-	print(body)
 	if body is Entity:
 		body.velocity = Vector2.ZERO
 		body.falling = false
 		
 func _on_body_exited(body: Node2D) -> void:
-	print(body)
 	if body is Entity:
 		body.falling = true	
