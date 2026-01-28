@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://clll8x3u5566o"]
+
+[ext_resource type="PackedScene" uid="uid://bgr4jjasceuqx" path="res://scenes/entity.tscn" id="1_ljd5v"]
+[ext_resource type="Script" uid="uid://bilqw6wflmabg" path="res://scripts/spike.gd" id="2_7a7y0"]
+[ext_resource type="Texture2D" uid="uid://b0otrcpm8qq0q" path="res://assets/spike.png" id="3_d2mqm"]
+
+[node name="Spike" instance=ExtResource("1_ljd5v")]
+script = ExtResource("2_7a7y0")
+
+[node name="SpriteStack" parent="." index="1"]
+texture = ExtResource("3_d2mqm")
+hframes = 9
