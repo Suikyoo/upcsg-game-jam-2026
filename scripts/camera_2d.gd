@@ -1,7 +1,8 @@
 extends Camera2D
 
-const zoom_factor: float = 0.1
-const zoom_vec: Vector2 = Vector2(zoom_factor, zoom_factor)
+const zoom_factor: float = 0.5
+const zoom_min: float = 0.35
+const zoom_max: float = 2.25
 
 func _process(delta: float) -> void:
 	
@@ -20,8 +21,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Zooming is ugly but it works
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-			self.zoom = lerp(self.zoom, self.zoom +self.zoom_vec, lerp_weight)
-			
+			var prev: float = self.zoom.x
+			var next: float = lerp(prev, min(zoom_max, prev +zoom_factor), lerp_weight)
+			print(next)
+			self.zoom = Vector2(next, next)
 			
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			self.zoom = lerp(self.zoom, self.zoom -self.zoom_vec, lerp_weight)
+			var prev: float = self.zoom.x
+			var next: float = lerp(prev, max(zoom_min, prev -zoom_factor), lerp_weight)
+			print(next)
+			self.zoom = Vector2(next, next)

@@ -69,7 +69,7 @@ z_index = 2
 motion_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1576023485]
-zoom = Vector2(2, 2)
+zoom = Vector2(2.25, 2.25)
 script = ExtResource("5_iywne")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1919936680]
