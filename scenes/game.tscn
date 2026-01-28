@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c6cugtw0jnv7d" path="res://assets/drip.png" id="3_trtic"]
 [ext_resource type="Script" uid="uid://cp4he6iltnikf" path="res://scripts/camera_2d.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://ce20buacdi0b2" path="res://scenes/bomb_bucket.tscn" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://clll8x3u5566o" path="res://scenes/spike.tscn" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dcuwdh4sjhmrg" path="res://scenes/boundary.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://b3ne1nx2n1as6" path="res://scenes/drip.tscn" id="13_kvuet"]
@@ -78,6 +79,8 @@ script = ExtResource("5_iywne")
 position = Vector2(112, 24)
 motion_mode = 0
 
+[node name="BombBucket" parent="." unique_id=1473251351 instance=ExtResource("9_0tnpc")]
+position = Vector2(-9, -64)
 [node name="Spike" parent="." instance=ExtResource("9_0tnpc")]
 position = Vector2(-40, 24)
 

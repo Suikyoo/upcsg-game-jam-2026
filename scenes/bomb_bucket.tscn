@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ce20buacdi0b2"]
+
+[ext_resource type="Script" uid="uid://bve43uhvq6dxv" path="res://scripts/bomb_bucket.gd" id="1_v8bou"]
+[ext_resource type="Script" uid="uid://jebt8et0og6a" path="res://scripts/stack.gd" id="2_t3ypt"]
+[ext_resource type="Texture2D" uid="uid://cm8f0jodv6mfa" path="res://assets/idk.png" id="3_g7p2c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4pmx"]
+radius = 8.0
+
+[node name="BombBucket" type="CharacterBody2D" unique_id=1473251351]
+script = ExtResource("1_v8bou")
+
+[node name="SpriteStack" type="Node2D" parent="." unique_id=612830074]
+script = ExtResource("2_t3ypt")
+texture = ExtResource("3_g7p2c")
+hframes = 1
+metadata/_custom_type_script = "uid://jebt8et0og6a"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1901592563]
+shape = SubResource("CircleShape2D_n4pmx")
