@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjfsnqcdhe8n6"]
+
+[ext_resource type="PackedScene" uid="uid://do2b3xdvt7bg" path="res://scenes/win.tscn" id="1_vjdtf"]
+
+[node name="Lose" instance=ExtResource("1_vjdtf")]
+
+[node name="Label" parent="ColorRect" index="0"]
+text = "You Lose"

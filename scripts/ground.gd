@@ -7,6 +7,7 @@ extends Area2D
 #this way, we don't end up colliding with the tilemap. 
 #Rather, we are able to detect when any entity enters or leaves the Area2D's jurisdiction of multiple collision tiles.
 
+const TILE_SIZE: Vector2i = Vector2i(16, 16)
 var world_angle: float = 0
 
 @export_tool_button("generate collision") var button_func: Callable = func():

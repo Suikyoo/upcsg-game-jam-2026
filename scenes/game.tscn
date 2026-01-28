@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://5oxtlf4po6kq"]
+[gd_scene load_steps=14 format=4 uid="uid://5oxtlf4po6kq"]
 
 [ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dvme3l5h34ek8" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://cp4he6iltnikf" path="res://scripts/camera_2d.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://ce20buacdi0b2" path="res://scenes/bomb_bucket.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://clll8x3u5566o" path="res://scenes/spike.tscn" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://dcuwdh4sjhmrg" path="res://scenes/boundary.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://b3ne1nx2n1as6" path="res://scenes/drip.tscn" id="13_kvuet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trtic"]
@@ -53,40 +55,36 @@ physics_layer_0/collision_mask = 4
 sources/2 = SubResource("TileSetAtlasSource_iywne")
 sources/1 = SubResource("TileSetAtlasSource_trtic")
 
-[node name="World" type="Node2D" unique_id=1893881700]
+[node name="World" type="Node2D"]
 script = ExtResource("1_lnu2h")
 
-[node name="Ground" parent="." unique_id=486839820 instance=ExtResource("3_lnu2h")]
+[node name="Ground" parent="." instance=ExtResource("3_lnu2h")]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Ground" unique_id=1709924507]
-tile_map_data = PackedByteArray("AAD/////AgABAAIAAAD//wAAAgABAAIAAAAAAAAAAgABAAIAAAAAAAEAAgABAAIAAAD//wEAAgABAAIAAAD+/wEAAgABAAIAAAD+/wAAAgABAAIAAAD+////AgABAAIAAAD+//7/AgABAAIAAAD///7/AgABAAIAAAAAAP//AgABAAIAAAAFAAIAAgACAAIAAAAFAAEAAgACAAIAAAAAAAIAAgABAAIAAAD//wIAAgABAAIAAAD+/wIAAgABAAIAAAD9/wEAAgABAAIAAAD9/wAAAgABAAIAAAD9////AgABAAIAAAAAAP7/AgABAAAAAAAGAAAAAgACAAIAAAD9/wIAAgAAAAIAAAD8/wEAAgAAAAIAAAD8/wAAAgAAAAIAAAD8////AgAAAAIAAAD9//7/AgAAAAEAAAD+//3/AgABAAAAAAD///3/AgABAAAAAAD+/wMAAgABAAMAAAD9/wQAAQAAAAAAAAAHAP//AgACAAIAAAAFAAAAAgAAAAIAAAAGAAIAAgACAAIAAAAHAAIAAgACAAIAAAAHAAEAAgACAAIAAAAGAAEAAgACAAIAAAAIAAEAAgACAAIAAAAIAAAAAgACAAIAAAAHAAAAAgACAAIAAAAGAP//AgACAAIAAAAGAP7/AgABAAAAAAAHAP7/AgABAAAAAAAJAAEAAgADAAMAAAAJAAAAAgADAAMAAAAEAAEAAgAAAAIAAAAEAAIAAgAAAAIAAAABAAIAAgADAAIAAAABAAEAAgADAAIAAAABAAAAAgADAAIAAAABAP//AgADAAIAAAA=")
+[node name="TileMapLayer" type="TileMapLayer" parent="Ground"]
+tile_map_data = PackedByteArray("AAD/////AgABAAIAAAD//wAAAgABAAIAAAAAAAAAAgABAAIAAAAAAAEAAgABAAIAAAD//wEAAgABAAIAAAD+/wEAAgABAAIAAAD+/wAAAgABAAIAAAD+////AgABAAIAAAD+//7/AgABAAIAAAD///7/AgABAAIAAAAAAP//AgABAAIAAAAFAAIAAgACAAIAAAAFAAEAAgACAAIAAAAAAAIAAgABAAIAAAD//wIAAgABAAIAAAD+/wIAAgABAAIAAAD9/wEAAgABAAIAAAD9/wAAAgABAAIAAAD9////AgABAAIAAAAAAP7/AgABAAAAAAAGAAAAAgACAAIAAAD9/wIAAgAAAAIAAAD8/wEAAgAAAAIAAAD8/wAAAgAAAAIAAAD8////AgAAAAIAAAD9//7/AgAAAAEAAAD+//3/AgABAAAAAAD///3/AgABAAAAAAD+/wMAAgABAAMAAAAHAP//AgACAAIAAAAFAAAAAgAAAAIAAAAGAAIAAgACAAIAAAAHAAIAAgACAAIAAAAHAAEAAgACAAIAAAAGAAEAAgACAAIAAAAIAAEAAgABAAIAAAAIAAAAAgABAAIAAAAHAAAAAgACAAIAAAAGAP//AgACAAIAAAAGAP7/AgABAAAAAAAHAP7/AgABAAIAAAAJAAEAAgADAAMAAAAJAAAAAgADAAMAAAAEAAEAAgAAAAIAAAAEAAIAAgAAAAIAAAABAAIAAgADAAIAAAABAAEAAgADAAIAAAABAAAAAgADAAIAAAABAP//AgADAAIAAAD3//n/AgABAAIAAAD3//r/AgABAAIAAAD3//v/AgABAAIAAAD3//z/AgABAAIAAAD3//3/AgABAAIAAAD3//7/AgABAAIAAAD3////AgABAAIAAAD3/wAAAgABAAIAAAD3/wEAAgABAAIAAAD3/wIAAgABAAIAAAD3/wMAAgABAAIAAAD3/wQAAgABAAIAAAD3/wUAAgABAAIAAAD3/wYAAgABAAIAAAD4/wYAAgABAAIAAAD5/wYAAgABAAIAAAD6/wYAAgABAAIAAAD7/wYAAgABAAIAAAD8/wYAAgABAAIAAAD9/wYAAgABAAIAAAD+/wYAAgABAAIAAAD//wYAAgABAAIAAAAAAAYAAgABAAIAAAABAAYAAgABAAIAAAACAAYAAgABAAIAAAADAAYAAgABAAIAAAAEAAYAAgABAAIAAAAFAAYAAgABAAIAAAAGAAYAAgABAAIAAAAHAAYAAgABAAIAAAAIAAYAAgABAAIAAAAIAAUAAgABAAIAAAAIAAQAAgABAAIAAAAIAAMAAgABAAIAAAAIAAIAAgABAAIAAAAIAP//AgABAAIAAAAIAP7/AgABAAIAAAAHAP3/AgABAAIAAAAIAP3/AgABAAIAAAAIAPz/AgABAAIAAAAIAPv/AgABAAIAAAAIAPr/AgABAAIAAAAIAPn/AgABAAIAAAAHAPn/AgABAAIAAAAGAPn/AgABAAIAAAAFAPn/AgABAAIAAAAEAPn/AgABAAIAAAADAPn/AgABAAIAAAACAPn/AgABAAIAAAABAPn/AgABAAIAAAAAAPn/AgABAAIAAAD///n/AgABAAIAAAD+//n/AgABAAIAAAD9//n/AgABAAIAAAD8//n/AgABAAIAAAD7//n/AgABAAIAAAD6//n/AgABAAIAAAD5//n/AgABAAIAAAD4//n/AgABAAIAAAA=")
 tile_set = SubResource("TileSet_u5sy4")
 
-[node name="Drip" parent="Ground/TileMapLayer" unique_id=2137755203 instance=ExtResource("13_kvuet")]
+[node name="Drip" parent="Ground/TileMapLayer" instance=ExtResource("13_kvuet")]
 position = Vector2(-24, 48)
 
-[node name="Player" parent="." unique_id=1555789881 instance=ExtResource("1_uwrxv")]
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 z_index = 2
 motion_mode = 0
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1576023485]
+[node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.25, 2.25)
 script = ExtResource("5_iywne")
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1919936680]
-z_index = -7
-offset_left = -136.0
-offset_top = -104.0
-offset_right = 152.0
-offset_bottom = 104.0
-color = Color(0, 0, 0, 1)
-
-[node name="Prism" parent="." unique_id=724886606 instance=ExtResource("8_gee14")]
+[node name="Prism" parent="." instance=ExtResource("8_gee14")]
 position = Vector2(112, 24)
 motion_mode = 0
 
 [node name="BombBucket" parent="." unique_id=1473251351 instance=ExtResource("9_0tnpc")]
 position = Vector2(-9, -64)
+[node name="Spike" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(-40, 24)
+
+[node name="Boundary" parent="." instance=ExtResource("10_vtaks")]
 
 [connection signal="world_flip" from="." to="Ground/TileMapLayer/Drip" method="_on_world_world_flip"]
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
