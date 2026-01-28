@@ -44,3 +44,6 @@ func _physics_process(delta: float) -> void:
 #this function triggers when the player collides with the entity.
 func on_collide(body: CharacterBody2D):
 	pass
+
+func on_death():
+	pass

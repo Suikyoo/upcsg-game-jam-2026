@@ -39,3 +39,7 @@ func _move(delta: float) -> void:
 func add_velocity(delta: float) -> void:
 	_move(delta)
 	super.add_velocity(delta)
+
+func on_death() -> void:
+	$"/root/World".on_lose()
+	queue_free()

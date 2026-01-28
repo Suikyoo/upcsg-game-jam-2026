@@ -35,4 +35,7 @@ func _process(delta: float) -> void:
 	
 
 func on_win():
-	get_tree().change_scene_to_file("res://scenes/end.tscn")
+	get_tree().change_scene_to_file("res://scenes/win.tscn")
+
+func on_lose():
+	get_tree().change_scene_to_file("res://scenes/lose.tscn")
