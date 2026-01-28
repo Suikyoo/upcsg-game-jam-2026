@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjfvp2c4p6lqs"]
+
+[ext_resource type="PackedScene" uid="uid://bgr4jjasceuqx" path="res://scenes/entity.tscn" id="1_1ffj6"]
+[ext_resource type="Texture2D" uid="uid://c0l702jt3g4dw" path="res://assets/box_idk.png" id="2_1ffj6"]
+[ext_resource type="Script" uid="uid://bg2yk2hltuxf8" path="res://scripts/portal.gd" id="2_jr6l0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jr6l0"]
+size = Vector2(20, 13)
+
+[node name="Portal" instance=ExtResource("1_1ffj6")]
+collision_mask = 0
+script = ExtResource("2_jr6l0")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-3.059797e-07, -3.5)
+rotation = 3.1415925
+shape = SubResource("RectangleShape2D_jr6l0")
+one_way_collision = true
+
+[node name="SpriteStack" parent="." index="1"]
+texture = ExtResource("2_1ffj6")
+hframes = 17

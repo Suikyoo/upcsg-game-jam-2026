@@ -1,25 +1,25 @@
-extends Node2D
+extends Entity
 
 # drip is an invisible object that moves during the game. 
 # Wherever it moves, it sets the TileMapLayer's cell to a certain tile
 # Specifically, it sets the current tile as a "dripping tile" and its previous paths as "filled tile"
-
-var world_gravity: Vector2 = Vector2.ZERO
 var prev_cell: Vector2i
 
+func fall(delta: float) -> void:
+	fall_velocity = world_gravity * 0.2
+	
 func _process(delta: float) -> void:
 	#move the object
 	position += world_gravity * delta * 0.012
 	
 	#fetching external objects
-	var map: TileMapLayer = get_parent()
-	var ground: Area2D = get_parent().get_parent()
-	if !map or !ground:
-		push_error("drip object must be a child of tilemaplayer and a grandchild of ground.")
-		
+	var map: TileMapLayer = get_node_or_null("/root/World/Ground/TileMapLayer")
+	var ground: Area2D = map.get_parent()
+	
 	#from the object's position, find where on the TileMapLayer's coordinates it belongs.
 	#The TileMapLayer's coordinate is known as a Cell. Note that TileMapLayer is Godot-native
-	var cell := map.local_to_map(map.to_local(global_position))
+	#draw_position = GlobalFuncts.world_transform(get_parent().global_position, world_angle)
+	var cell := map.local_to_map(map.to_local($SpriteStack.global_position))
 		
 	#if the object's position has moved to another cell coordinate, 
 	#we set the previous one to a filled tile. The current one stays to become a "dripping tile"
@@ -54,6 +54,4 @@ func _process(delta: float) -> void:
 	#to render the dripping tile in a certain way(rotated)
 	map.set_cell(cell, 1, Vector2i(0, 0), alt_flag)
 	#ground.add_collision(cell)
-
-func _on_world_world_flip(angle: float, gravity: Vector2) -> void:
-	world_gravity = gravity
+	#var node: Node2D = $"../Canvas".get_child(0)

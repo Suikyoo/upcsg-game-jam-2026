@@ -7,6 +7,9 @@
 [node name="Spike" instance=ExtResource("1_ljd5v")]
 script = ExtResource("2_7a7y0")
 
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(1, 2)
+
 [node name="SpriteStack" parent="." index="1"]
 position = Vector2(1, 1)
 texture = ExtResource("3_d2mqm")

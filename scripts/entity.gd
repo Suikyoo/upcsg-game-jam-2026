@@ -12,6 +12,7 @@ class_name Entity
 #if falling state is true, gravity takes effect in the direction it intends
 var falling = false
 var fall_velocity: Vector2 = Vector2.ZERO
+var external_velocity: Vector2 = Vector2.ZERO
 
 #these are local variables to store global variables fetched in world
 var world_angle: float = 0
@@ -29,16 +30,24 @@ func fall(delta: float) -> void:
 		fall_velocity = Vector2.ZERO
 		
 	velocity += fall_velocity
+
+func external_push(delta: float) -> void:
+	velocity += external_velocity
+	external_velocity = external_velocity.lerp(Vector2(0, 0), 0.8)
+
 	
 func add_velocity(delta: float) -> void:
 	fall(delta)
+	external_push(delta)
 	
 func _physics_process(delta: float) -> void:
-	velocity = Vector2.ZERO
+	#velocity = Vector2.ZERO
 	
 	add_velocity(delta)
 	move_and_slide()
 
+func _process(delta: float) -> void:
+	z_index = 999 + global_position[1]
 #this function is used by inheriting objects. 
 #the body in the argument is primarily the Player object.
 #this function triggers when the player collides with the entity.

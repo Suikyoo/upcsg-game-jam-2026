@@ -10,7 +10,7 @@ func _process(delta: float) -> void:
 	if !player:
 		push_error("Player not detected as parent.")
 	
-	global_position = player.get_draw_pos()
+	global_position = global_position.lerp(player.get_draw_pos(), 0.2)
 	
 	#rotation = 0
 	

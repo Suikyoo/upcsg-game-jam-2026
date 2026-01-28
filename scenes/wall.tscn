@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://7ao67lu2c3mg"]
+
+[ext_resource type="PackedScene" uid="uid://bgr4jjasceuqx" path="res://scenes/entity.tscn" id="1_2ktk7"]
+[ext_resource type="Texture2D" uid="uid://3pt8qkwb50g7" path="res://assets/box.png" id="2_e00m8"]
+
+[node name="Wall" instance=ExtResource("1_2ktk7")]
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 4)
+
+[node name="SpriteStack" parent="." index="1"]
+texture = ExtResource("2_e00m8")
+hframes = 13

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://5oxtlf4po6kq"]
+[gd_scene load_steps=17 format=4 uid="uid://5oxtlf4po6kq"]
 
 [ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dvme3l5h34ek8" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -7,10 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://c6cugtw0jnv7d" path="res://assets/drip.png" id="3_trtic"]
 [ext_resource type="Script" uid="uid://cp4he6iltnikf" path="res://scripts/camera_2d.gd" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="8_gee14"]
-[ext_resource type="PackedScene" uid="uid://ce20buacdi0b2" path="res://scenes/bomb_bucket.tscn" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://clll8x3u5566o" path="res://scenes/spike.tscn" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dcuwdh4sjhmrg" path="res://scenes/boundary.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://ce20buacdi0b2" path="res://scenes/bomb.tscn" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://bjfvp2c4p6lqs" path="res://scenes/portal.tscn" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://b3ne1nx2n1as6" path="res://scenes/drip.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://7ao67lu2c3mg" path="res://scenes/wall.tscn" id="13_trtic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trtic"]
 texture = ExtResource("3_trtic")
@@ -64,29 +66,58 @@ script = ExtResource("1_lnu2h")
 tile_map_data = PackedByteArray("AAD/////AgABAAIAAAD//wAAAgABAAIAAAAAAAAAAgABAAIAAAAAAAEAAgABAAIAAAD//wEAAgABAAIAAAD+/wEAAgABAAIAAAD+/wAAAgABAAIAAAD+////AgABAAIAAAD+//7/AgABAAIAAAD///7/AgABAAIAAAAAAP//AgABAAIAAAAFAAIAAgACAAIAAAAFAAEAAgACAAIAAAAAAAIAAgABAAIAAAD//wIAAgABAAIAAAD+/wIAAgABAAIAAAD9/wEAAgABAAIAAAD9/wAAAgABAAIAAAD9////AgABAAIAAAAAAP7/AgABAAAAAAAGAAAAAgACAAIAAAD9/wIAAgAAAAIAAAD8/wEAAgAAAAIAAAD8/wAAAgAAAAIAAAD8////AgAAAAIAAAD9//7/AgAAAAEAAAD+//3/AgABAAAAAAD///3/AgABAAAAAAD+/wMAAgABAAMAAAAHAP//AgACAAIAAAAFAAAAAgAAAAIAAAAGAAIAAgACAAIAAAAHAAIAAgACAAIAAAAHAAEAAgACAAIAAAAGAAEAAgACAAIAAAAIAAEAAgABAAIAAAAIAAAAAgABAAIAAAAHAAAAAgACAAIAAAAGAP//AgACAAIAAAAGAP7/AgABAAAAAAAHAP7/AgABAAIAAAAJAAEAAgADAAMAAAAJAAAAAgADAAMAAAAEAAEAAgAAAAIAAAAEAAIAAgAAAAIAAAABAAIAAgADAAIAAAABAAEAAgADAAIAAAABAAAAAgADAAIAAAABAP//AgADAAIAAAD3//n/AgABAAIAAAD3//r/AgABAAIAAAD3//v/AgABAAIAAAD3//z/AgABAAIAAAD3//3/AgABAAIAAAD3//7/AgABAAIAAAD3////AgABAAIAAAD3/wAAAgABAAIAAAD3/wEAAgABAAIAAAD3/wIAAgABAAIAAAD3/wMAAgABAAIAAAD3/wQAAgABAAIAAAD3/wUAAgABAAIAAAD3/wYAAgABAAIAAAD4/wYAAgABAAIAAAD5/wYAAgABAAIAAAD6/wYAAgABAAIAAAD7/wYAAgABAAIAAAD8/wYAAgABAAIAAAD9/wYAAgABAAIAAAD+/wYAAgABAAIAAAD//wYAAgABAAIAAAAAAAYAAgABAAIAAAABAAYAAgABAAIAAAACAAYAAgABAAIAAAADAAYAAgABAAIAAAAEAAYAAgABAAIAAAAFAAYAAgABAAIAAAAGAAYAAgABAAIAAAAHAAYAAgABAAIAAAAIAAYAAgABAAIAAAAIAAUAAgABAAIAAAAIAAQAAgABAAIAAAAIAAMAAgABAAIAAAAIAAIAAgABAAIAAAAIAP//AgABAAIAAAAIAP7/AgABAAIAAAAHAP3/AgABAAIAAAAIAP3/AgABAAIAAAAIAPz/AgABAAIAAAAIAPv/AgABAAIAAAAIAPr/AgABAAIAAAAIAPn/AgABAAIAAAAHAPn/AgABAAIAAAAGAPn/AgABAAIAAAAFAPn/AgABAAIAAAAEAPn/AgABAAIAAAADAPn/AgABAAIAAAACAPn/AgABAAIAAAABAPn/AgABAAIAAAAAAPn/AgABAAIAAAD///n/AgABAAIAAAD+//n/AgABAAIAAAD9//n/AgABAAIAAAD8//n/AgABAAIAAAD7//n/AgABAAIAAAD6//n/AgABAAIAAAD5//n/AgABAAIAAAD4//n/AgABAAIAAAA=")
 tile_set = SubResource("TileSet_u5sy4")
 
-[node name="Drip" parent="Ground/TileMapLayer" instance=ExtResource("13_kvuet")]
-position = Vector2(-24, 48)
-
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 z_index = 2
+collision_mask = 3
 motion_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.25, 2.25)
+limit_enabled = false
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
 script = ExtResource("5_iywne")
 
 [node name="Prism" parent="." instance=ExtResource("8_gee14")]
 position = Vector2(112, 24)
 motion_mode = 0
 
-[node name="BombBucket" parent="." unique_id=1473251351 instance=ExtResource("9_0tnpc")]
+[node name="BombBucket" parent="." instance=ExtResource("9_0tnpc")]
 position = Vector2(-9, -64)
+
 [node name="Spike" parent="." instance=ExtResource("9_0tnpc")]
 position = Vector2(-40, 24)
 
 [node name="Boundary" parent="." instance=ExtResource("10_vtaks")]
 
-[connection signal="world_flip" from="." to="Ground/TileMapLayer/Drip" method="_on_world_world_flip"]
+[node name="Drip" parent="." instance=ExtResource("13_kvuet")]
+position = Vector2(-24, 48)
+collision_mask = 0
+
+[node name="Bomb" parent="." instance=ExtResource("11_kvpfn")]
+position = Vector2(-6, 77)
+collision_layer = 4
+collision_mask = 4
+slide_on_ceiling = false
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Portal" parent="Node2D" instance=ExtResource("12_dinhu")]
+position = Vector2(-24, -21)
+
+[node name="Portal2" parent="Node2D" instance=ExtResource("12_dinhu")]
+position = Vector2(131, -24)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 18.0
+offset_top = -80.0
+offset_right = 58.0
+offset_bottom = -40.0
+
+[node name="Wall" parent="." instance=ExtResource("13_trtic")]
+position = Vector2(0, 30)
+
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
+[connection signal="world_flip" from="." to="Drip" method="_on_world_world_flip"]
 [connection signal="body_entered" from="Ground" to="Prism" method="_on_ground_body_entered"]
 [connection signal="body_exited" from="Ground" to="Prism" method="_on_ground_body_exited"]
