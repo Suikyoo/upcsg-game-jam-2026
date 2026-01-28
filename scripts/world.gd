@@ -21,7 +21,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	const rot_scalar: float = PI/2
 	
-	if Input.is_action_just_pressed("change_perspective"):
+	if Input.is_action_just_pressed("anti-rotate"):
+		target_angle -= rot_scalar
+		world_gravity = Vector2.from_angle(target_angle - PI/2) * Vector2(1, -1) * gravity_value
+		world_flip.emit(target_angle, world_gravity)		
+	
+	if Input.is_action_just_pressed("pro-rotate"):
 		target_angle += rot_scalar
 		world_gravity = Vector2.from_angle(target_angle - PI/2) * Vector2(1, -1) * gravity_value
 		world_flip.emit(target_angle, world_gravity)
