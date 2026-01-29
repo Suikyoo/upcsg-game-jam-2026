@@ -1,30 +1,29 @@
 shader_type canvas_item;
 
-uniform vec2 player_pos;
-uniform vec2 pos;
-uniform float angle;
-
-void vertex() {
-	vec2 diff = pos - player_pos;
-
-	float cos_angle = cos(angle);
-	float sin_angle = sin(angle);
-	mat2 rot_matrix = mat2(vec2(cos_angle, -sin_angle), vec2(sin_angle, cos_angle));
-	diff *= rot_matrix;
-	//diff += player_pos;
-	//diff -= pos;
-
-	VERTEX += diff;
-
-	// Called for every vertex the material is visible on.
-}
+uniform vec4 outline_color : source_color; // Color of the outline
+uniform float outline_thickness : hint_range(1.0, 10.0); // Thickness of the outline
+uniform vec2 SCREEN_SIZE;
 
 void fragment() {
-	COLOR = vec4(0.1, 0.8, 0.5, 1.);
-	// Called for every pixel the material is visible on.
+    vec4 original_color = texture(TEXTURE, UV);
+    
+    // If the current pixel is transparent, check surrounding pixels for color
+    if (original_color.a == 0.0) {
+        vec4 color = vec4(0.0); // Default to transparent
+            
+        // Check surrounding pixels
+        for (float x = -outline_thickness; x <= outline_thickness; x += 1.0) {
+            for (float y = -outline_thickness; y <= outline_thickness; y += 1.0) {
+                vec2 offset = vec2(x, y) / SCREEN_SIZE.xy;
+                vec4 check_color = texture(TEXTURE, UV + offset);
+                if (check_color.a > 0.0) {
+                    color = outline_color; // Set to outline color if any surrounding pixel is non-transparent
+                    break;
+                }
+            }
+        }
+        COLOR = color; // Assign outline color if a neighboring color is found
+    } else {
+        COLOR = original_color; // Retain the original color otherwise
+    }
 }
-
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}

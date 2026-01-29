@@ -4,14 +4,19 @@ const zoom_factor: float = 0.5
 const zoom_min: float = 0.35
 const zoom_max: float = 2.25
 
+var chase_position: Vector2;
+var quake: float;
+
 func _process(delta: float) -> void:
 	
 	var player: Player = get_node("../Player")
 	if !player:
 		push_error("Player not detected as parent.")
-	
-	global_position = global_position.lerp(player.get_draw_pos(), 0.2)
-	
+		
+	chase_position = chase_position.lerp(player.get_draw_pos(), 0.2)
+	quake = lerp(quake, 0., 0.2)
+	var offset = Vector2((randf() * 2 - 1) * quake, (randf() * 2 - 1) * quake)
+	global_position = chase_position + offset
 	rotation = -get_parent().world_angle
 	
 

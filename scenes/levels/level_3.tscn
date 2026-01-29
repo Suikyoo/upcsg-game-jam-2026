@@ -134,6 +134,7 @@ render_target_clear_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=922356809]
 texture_filter = 1
+position = Vector2(-200, -200)
 texture = ExtResource("7_f6egh")
 
 [node name="Canvas" type="TextureRect" parent="." unique_id=94715909]

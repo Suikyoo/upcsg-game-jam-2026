@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4drujkyqu5e5"]
+[gd_scene format=3 uid="uid://c4drujkyqu5e5"]
 
 [ext_resource type="Shader" uid="uid://clnrt0pq7h8pv" path="res://shaders/stack.gdshader" id="1_bauxg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4gf8v"]
 shader = ExtResource("1_bauxg")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 0.0
+shader_parameter/SCREEN_SIZE = Vector2(0, 0)
 
-[node name="Splatter" type="Node2D"]
+[node name="Splatter" type="Node2D" unique_id=1086605278]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=811489138]
 material = SubResource("ShaderMaterial_4gf8v")
 emitting = false
 one_shot = true

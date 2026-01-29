@@ -3,7 +3,6 @@ extends Entity
 # drip is an invisible object that moves during the game. 
 # Wherever it moves, it sets the TileMapLayer's cell to a certain tile
 # Specifically, it sets the current tile as a "dripping tile" and its previous paths as "filled tile"
-var prev_cell: Vector2i
 signal new_tile_entered
 
 func fall(delta: float) -> void:
@@ -31,10 +30,9 @@ func _process(delta: float) -> void:
 		#we add it's preconfigured collision to the Ground (Area2D) object
 		#ground.add_collision(prev_cell)
 		#prev_cell = cell
-	map.set_cell(cell, 3, Vector2(3, 0))
-	if cell != prev_cell:
+	if cell not in map.get_used_cells():
+		map.set_cell(cell, 3, Vector2(3, 0))
 		ground.add_collision(cell)
-		prev_cell = cell
 		new_tile_entered.emit()
 	
 	
@@ -71,7 +69,7 @@ func _process(delta: float) -> void:
 	sprite.position = global_position - canvas.global_position
 	sprite.rotation += 0.1
 	sprite.scale = Vector2(sin(sprite.rotation * PI/2) * 2, cos(sprite.rotation) * 2)
-	sprite.queue_redraw()
+	
 
 func _on_world_world_flip(angle: float, gravity: Vector2) -> void:
 	super._on_world_world_flip(angle, gravity)

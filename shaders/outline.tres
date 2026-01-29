@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://clplymjchxp5l"]
+
+[ext_resource type="Shader" uid="uid://clnrt0pq7h8pv" path="res://shaders/stack.gdshader" id="1_a2dft"]
+
+[resource]
+shader = ExtResource("1_a2dft")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 0.0
+shader_parameter/SCREEN_SIZE = Vector2(640, 480)
