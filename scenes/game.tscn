@@ -1,17 +1,12 @@
-[gd_scene load_steps=16 format=4 uid="uid://5oxtlf4po6kq"]
+[gd_scene format=3 uid="uid://5oxtlf4po6kq"]
 
 [ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dvme3l5h34ek8" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://d35yc0g2qmcqp" path="res://assets/tileset.png" id="3_dinhu"]
 [ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/ground.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://cp4he6iltnikf" path="res://scripts/camera_2d.gd" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="8_gee14"]
-[ext_resource type="PackedScene" uid="uid://clll8x3u5566o" path="res://scenes/spike.tscn" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dcuwdh4sjhmrg" path="res://scenes/boundary.tscn" id="10_vtaks"]
-[ext_resource type="PackedScene" uid="uid://ce20buacdi0b2" path="res://scenes/bomb.tscn" id="11_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://bjfvp2c4p6lqs" path="res://scenes/portal.tscn" id="12_dinhu"]
 [ext_resource type="Texture2D" uid="uid://btfq1vy5r6277" path="res://assets/shard.png" id="12_kvuet"]
-[ext_resource type="PackedScene" uid="uid://7ao67lu2c3mg" path="res://scenes/wall.tscn" id="13_trtic"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvuet"]
 texture = ExtResource("3_dinhu")
@@ -106,21 +101,20 @@ sources/3 = SubResource("TileSetAtlasSource_kvuet")
 [sub_resource type="ViewportTexture" id="ViewportTexture_ir15t"]
 viewport_path = NodePath("SubViewport")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" unique_id=1883484281]
 script = ExtResource("1_lnu2h")
 
-[node name="Ground" parent="." instance=ExtResource("3_lnu2h")]
+[node name="Ground" parent="." unique_id=1816450000 instance=ExtResource("3_lnu2h")]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Ground"]
-tile_map_data = PackedByteArray("AAD/////AwABAAEAAAAAAAAAAwABAAEAAAAAAAEAAwABAAEAAAD//wEAAwABAAEAAAD//wAAAwABAAEAAAAAAP//AwABAAEAAAAAAAIAAwACAAIAAAD//wIAAwAAAAIAAAABAP//AwACAAEAAAABAAAAAwACAAEAAAABAAEAAwACAAEAAAD+////AwABAAEAAAD+/wAAAwABAAEAAAD9/wEAAwABAAIAAAD+/wEAAwABAAIAAAD8/wEAAwABAAIAAAD8/wAAAwAAAAEAAAD9/wAAAwABAAEAAAD9////AwABAAEAAAD8////AwAAAAAAAAD9//7/AwAAAAEAAAD+//7/AwABAAEAAAD///7/AwABAAEAAAD+//3/AwABAAAAAAD///3/AwABAAAAAAAAAP7/AwABAAEAAAD9//3/AwAAAAAAAAABAP7/AwACAAAAAAAAAP3/AwACAAAAAAAHAP7/AwABAAEAAAAIAP7/AwABAAEAAAAJAP7/AwACAAEAAAAIAP//AwABAAEAAAAHAP//AwABAAEAAAAGAP//AwABAAEAAAAFAP//AwABAAEAAAAEAP//AwAAAAEAAAAFAP7/AwAAAAAAAAAGAP7/AwABAAEAAAAJAP//AwACAAIAAAAHAP3/AwABAAAAAAAGAP3/AwAAAAAAAAAIAP3/AwABAAAAAAAJAP3/AwACAAAAAAAHAAAAAwABAAEAAAAHAAEAAwABAAEAAAAIAAEAAwACAAEAAAAIAAAAAwACAAEAAAAIAAIAAwACAAEAAAAIAAMAAwACAAIAAAAHAAMAAwABAAIAAAAGAAIAAwABAAEAAAAGAAEAAwABAAEAAAAGAAAAAwABAAEAAAAHAAIAAwABAAEAAAAGAAMAAwAAAAIAAAAFAAIAAwABAAIAAAAEAAIAAwABAAIAAAAEAAEAAwABAAAAAAAEAAAAAwAAAAIAAAAFAAAAAwABAAEAAAAFAAEAAwABAAEAAAD+/wcAAwABAAEAAAD//wcAAwABAAEAAAAAAAcAAwABAAEAAAABAAcAAwABAAEAAAACAAcAAwABAAEAAAADAAcAAwABAAEAAAAEAAcAAwACAAIAAAD9/wcAAwAAAAEAAAD+/wYAAwAAAAAAAAD//wYAAwABAAAAAAAAAAYAAwABAAAAAAABAAYAAwABAAAAAAACAAYAAwABAAAAAAACAAgAAwABAAIAAAABAAgAAwABAAEAAAABAAkAAwACAAIAAAAAAAkAAwABAAIAAAD//wkAAwABAAIAAAD//wgAAwABAAEAAAD+/wgAAwABAAEAAAAAAAgAAwABAAEAAAD+/wkAAwAAAAIAAAD9/wgAAwAAAAIAAAADAAgAAwACAAEAAAADAAkAAwACAAIAAAA=")
+[node name="TileMapLayer" type="TileMapLayer" parent="Ground" unique_id=84494712]
 tile_set = SubResource("TileSet_u5sy4")
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Player" parent="." unique_id=114820393 instance=ExtResource("1_uwrxv")]
 z_index = 2
 collision_mask = 3
 motion_mode = 0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=494765302]
 ignore_rotation = false
 zoom = Vector2(2.25, 2.25)
 limit_enabled = false
@@ -128,43 +122,16 @@ position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 script = ExtResource("5_iywne")
 
-[node name="Prism" parent="." instance=ExtResource("8_gee14")]
-position = Vector2(112, 24)
-motion_mode = 0
+[node name="Boundary" parent="." unique_id=712171507 instance=ExtResource("10_vtaks")]
 
-[node name="BombBucket" parent="." instance=ExtResource("9_0tnpc")]
-position = Vector2(-9, -64)
-
-[node name="Spike" parent="." instance=ExtResource("9_0tnpc")]
-position = Vector2(-40, 24)
-
-[node name="Boundary" parent="." instance=ExtResource("10_vtaks")]
-
-[node name="Bomb" parent="." instance=ExtResource("11_kvpfn")]
-position = Vector2(-6, 77)
-collision_layer = 4
-collision_mask = 4
-slide_on_ceiling = false
-
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Portal" parent="Node2D" instance=ExtResource("12_dinhu")]
-position = Vector2(-24, -21)
-
-[node name="Portal2" parent="Node2D" instance=ExtResource("12_dinhu")]
-position = Vector2(131, -24)
-
-[node name="Wall" parent="." instance=ExtResource("13_trtic")]
-position = Vector2(0, 30)
-
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1804594014]
 render_target_clear_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=922356809]
 texture_filter = 1
 texture = ExtResource("12_kvuet")
 
-[node name="Canvas" type="TextureRect" parent="."]
+[node name="Canvas" type="TextureRect" parent="." unique_id=94715909]
 z_index = -5
 offset_left = -245.0
 offset_top = -150.0
@@ -173,5 +140,3 @@ offset_bottom = 362.0
 texture = SubResource("ViewportTexture_ir15t")
 
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
-[connection signal="body_entered" from="Ground" to="Prism" method="_on_ground_body_entered"]
-[connection signal="body_exited" from="Ground" to="Prism" method="_on_ground_body_exited"]
