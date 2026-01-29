@@ -41,7 +41,6 @@ func add_velocity(delta: float) -> void:
 	external_push(delta)
 	
 func _physics_process(delta: float) -> void:
-	#velocity = Vector2.ZERO
 	
 	add_velocity(delta)
 	move_and_slide()

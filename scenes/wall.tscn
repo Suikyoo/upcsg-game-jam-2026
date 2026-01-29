@@ -11,5 +11,6 @@ collision_mask = 0
 position = Vector2(0, 4)
 
 [node name="SpriteStack" parent="." index="1"]
+material = null
 texture = ExtResource("2_e00m8")
 hframes = 13

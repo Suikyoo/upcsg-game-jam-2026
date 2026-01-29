@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://5oxtlf4po6kq"]
+[gd_scene load_steps=18 format=4 uid="uid://5oxtlf4po6kq"]
 
 [ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dvme3l5h34ek8" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dcuwdh4sjhmrg" path="res://scenes/boundary.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://ce20buacdi0b2" path="res://scenes/bomb.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://bjfvp2c4p6lqs" path="res://scenes/portal.tscn" id="12_dinhu"]
-[ext_resource type="PackedScene" uid="uid://b3ne1nx2n1as6" path="res://scenes/drip.tscn" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://7ao67lu2c3mg" path="res://scenes/wall.tscn" id="13_trtic"]
+[ext_resource type="Texture2D" uid="uid://cnwigu6v3fpid" path="res://assets/splat.png" id="15_ca42v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trtic"]
 texture = ExtResource("3_trtic")
@@ -57,6 +57,9 @@ physics_layer_0/collision_mask = 4
 sources/2 = SubResource("TileSetAtlasSource_iywne")
 sources/1 = SubResource("TileSetAtlasSource_trtic")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ir15t"]
+viewport_path = NodePath("SubViewport")
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_lnu2h")
 
@@ -72,6 +75,7 @@ collision_mask = 3
 motion_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
 zoom = Vector2(2.25, 2.25)
 limit_enabled = false
 position_smoothing_enabled = true
@@ -90,10 +94,6 @@ position = Vector2(-40, 24)
 
 [node name="Boundary" parent="." instance=ExtResource("10_vtaks")]
 
-[node name="Drip" parent="." instance=ExtResource("13_kvuet")]
-position = Vector2(-24, 48)
-collision_mask = 0
-
 [node name="Bomb" parent="." instance=ExtResource("11_kvpfn")]
 position = Vector2(-6, 77)
 collision_layer = 4
@@ -108,16 +108,23 @@ position = Vector2(-24, -21)
 [node name="Portal2" parent="Node2D" instance=ExtResource("12_dinhu")]
 position = Vector2(131, -24)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 18.0
-offset_top = -80.0
-offset_right = 58.0
-offset_bottom = -40.0
-
 [node name="Wall" parent="." instance=ExtResource("13_trtic")]
 position = Vector2(0, 30)
 
+[node name="SubViewport" type="SubViewport" parent="."]
+render_target_clear_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+texture = ExtResource("15_ca42v")
+
+[node name="Canvas" type="TextureRect" parent="."]
+z_index = -5
+offset_left = -245.0
+offset_top = -150.0
+offset_right = 267.0
+offset_bottom = 362.0
+texture = SubResource("ViewportTexture_ir15t")
+
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
-[connection signal="world_flip" from="." to="Drip" method="_on_world_world_flip"]
 [connection signal="body_entered" from="Ground" to="Prism" method="_on_ground_body_entered"]
 [connection signal="body_exited" from="Ground" to="Prism" method="_on_ground_body_exited"]

@@ -34,6 +34,7 @@ func stack_sprites() -> void:
 		sprite.rotation = rotation_angle
 		sprite.frame = i
 		sprite.position.y = -i * vertical_gap
+		sprite.set_use_parent_material(true)
 		add_child(sprite)
 
 func _ready() -> void:
@@ -47,9 +48,11 @@ func _process(delta: float) -> void:
 		
 	var angle: float = world_node.get("world_angle")
 	
-	if angle != 0:
-		global_position = GlobalFuncts.world_transform(get_parent().global_position, angle)
+	var player: Player = get_node_or_null("/root/World/Player")
 	
+	#if angle != 0:
+		#global_position = GlobalFuncts.world_transform(get_parent().global_position, angle)
+	global_rotation = -angle
 	rotate_stack(angle + rotation_angle)
 
 func rotate_stack(angle: float):

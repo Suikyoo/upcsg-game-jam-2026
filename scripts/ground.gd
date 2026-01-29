@@ -63,8 +63,8 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	#rotates the map but not the collisions. (Visual effect only)
-	map.global_position = GlobalFuncts.world_transform(get_parent().global_position, angle)
-	map.rotation = angle
+	#map.global_position = GlobalFuncts.world_transform(get_parent().global_position, angle)
+	#map.rotation = angle
 
 #This is a configuration warning but I don't even think this works
 func _get_configuration_warnings() -> PackedStringArray:

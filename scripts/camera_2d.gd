@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	
 	global_position = global_position.lerp(player.get_draw_pos(), 0.2)
 	
-	#rotation = 0
+	rotation = -get_parent().world_angle
 	
 
 func _unhandled_input(event: InputEvent) -> void:

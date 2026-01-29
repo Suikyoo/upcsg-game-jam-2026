@@ -1,18 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3ne1nx2n1as6"]
+[gd_scene load_steps=3 format=3 uid="uid://b3ne1nx2n1as6"]
 
 [ext_resource type="Script" uid="uid://bnuu2070jxrcs" path="res://scripts/drip.gd" id="1_2hjge"]
-[ext_resource type="Script" uid="uid://jebt8et0og6a" path="res://scripts/stack.gd" id="2_1k84v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hjge"]
 
 [node name="Drip" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 0
 script = ExtResource("1_2hjge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2hjge")
-
-[node name="SpriteStack" type="Node2D" parent="."]
-script = ExtResource("2_1k84v")
-metadata/_custom_type_script = "uid://jebt8et0og6a"

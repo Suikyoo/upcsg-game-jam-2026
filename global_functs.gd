@@ -13,6 +13,6 @@ func world_transform(pos: Vector2, angle: float) -> Vector2:
 	if !sprite_stack:
 		return pos
 		
-	var player_position := player_node.global_position
+	var player_position := camera_node.global_position
 	var new_pos := Vector2(pos - player_position).rotated(angle)
-	return player_node.position + new_pos
+	return new_pos

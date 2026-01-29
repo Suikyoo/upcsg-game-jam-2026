@@ -2,11 +2,19 @@ extends Entity
 
 class_name Player
 
+var drip_scene: PackedScene = load("res://scenes/drip.tscn")
+var current_drip: Entity
+
 const SPEED = 5000.0
+
 var movement: Vector2 = Vector2.ZERO
+var hold: bool = false
+
+@export var health = 20
 
 func _ready() -> void:
-	pass
+	$Health.max_value = health
+	$Health.curr_value = health
 
 #this is mainly used by the Camera2d to get the player's coordinates and track it
 func get_draw_pos() -> Vector2:
@@ -28,7 +36,29 @@ func _physics_process(delta: float) -> void:
 		if collider is Entity:
 			collider.on_collide(self)
 	
+	$Health.rotation = rotate_toward($Health.rotation, -world_angle, 0.2)
 func _move(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		hold = true
+		current_drip = drip_scene.instantiate()
+		
+		current_drip.position = position
+		current_drip.world_gravity = world_gravity
+		
+		get_parent().connect("world_flip", Callable(current_drip, "_on_world_world_flip"))
+		current_drip.connect("new_tile_entered", Callable(self, "_drip_on_new_tile_entered"))
+		get_parent().add_child(current_drip)
+		
+	elif Input.is_action_just_released("ui_accept"):
+		hold = false
+		if current_drip:
+			current_drip.queue_free()
+		current_drip = null
+
+
+	if hold:
+		return
+		
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	movement = lerp(movement, direction.rotated(-world_angle) * SPEED * delta, 0.2)	
 	var stack: SpriteStack = get_node("SpriteStack")
@@ -36,6 +66,11 @@ func _move(delta: float) -> void:
 		stack.rotation_angle = rotate_toward(stack.rotation_angle, movement.angle() + PI, 0.4)
 	velocity += movement
 	
+func _process(delta: float) -> void:
+	super._process(delta)
+	if health <= 0:
+		on_death()
+		
 func add_velocity(delta: float) -> void:
 	_move(delta)
 	super.add_velocity(delta)
@@ -43,3 +78,8 @@ func add_velocity(delta: float) -> void:
 func on_death() -> void:
 	$"/root/World".on_lose()
 	queue_free()
+
+func _drip_on_new_tile_entered():
+	health -= 1
+	$Health.curr_value = health
+	
