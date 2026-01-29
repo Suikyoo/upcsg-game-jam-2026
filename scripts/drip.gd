@@ -31,12 +31,13 @@ func _process(delta: float) -> void:
 		#we add it's preconfigured collision to the Ground (Area2D) object
 		#ground.add_collision(prev_cell)
 		#prev_cell = cell
+	map.set_cell(cell, 3, Vector2(3, 0))
 	if cell != prev_cell:
 		ground.add_collision(cell)
 		prev_cell = cell
 		new_tile_entered.emit()
 	
-	#map.set_cell(cell, 2, Vector2(1, 1))
+	
 	
 	
 	#due to godot's fcked up way of doing rotations for tilesets, 
