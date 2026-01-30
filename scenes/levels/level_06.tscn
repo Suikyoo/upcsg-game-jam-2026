@@ -136,10 +136,11 @@ texture = ExtResource("7_4wfvb")
 
 [node name="Canvas" type="TextureRect" parent="." unique_id=94715909]
 z_index = -5
-offset_left = -245.0
-offset_top = -150.0
-offset_right = 267.0
-offset_bottom = 362.0
+offset_left = -412.0
+offset_top = -279.0
+offset_right = 100.0
+offset_bottom = 233.0
+scale = Vector2(1.9857659, 1.2601125)
 texture = SubResource("ViewportTexture_ir15t")
 
 [node name="Spike" parent="." unique_id=923379925 instance=ExtResource("8_b6i88")]
