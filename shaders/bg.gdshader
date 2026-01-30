@@ -4,7 +4,8 @@ uniform float stripes = 4.82;
 uniform float stripe_thickness = 1.33;
 uniform vec3 stripe_color : source_color = vec3(0.59, .98, .69); 
 uniform vec3 background_color : source_color = vec3(0, 0, 0); 
-
+uniform vec2 SCREEN_SIZE = vec2(640,480);
+uniform float pixel_size = 4;
 
 vec2 rot(vec2 uv, float angle) {
 	float s = sin(angle);
@@ -15,7 +16,11 @@ vec2 rot(vec2 uv, float angle) {
 
 
 void fragment() {
-	vec2 uv = SCREEN_UV - 0.5;
+	vec2 real_coord = SCREEN_UV * SCREEN_SIZE;
+	vec2 pixelized_coord = floor(real_coord / vec2(pixel_size)) * vec2(pixel_size);
+	vec2 screen_uv = pixelized_coord / SCREEN_SIZE;
+	vec2 uv = screen_uv - 0.5;
+	
 	uv = rot(uv, -0.2 + sin(TIME) * 0.5);
 	float osc = sin(uv.x * (uv.x + 0.5) * 15.0) * 0.2;
 	uv.y += osc * sin(TIME + uv.x * 2.0);
