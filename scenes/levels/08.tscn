@@ -1,11 +1,117 @@
-[gd_scene format=3 uid="uid://bskd6o0kevcog"]
+[gd_scene format=4 uid="uid://bskd6o0kevcog"]
 
 [ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_ln7o8"]
+[ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="2_0282v"]
+[ext_resource type="PackedScene" uid="uid://clll8x3u5566o" path="res://scenes/spike.tscn" id="3_gc5ah"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0282v"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_gc5ah"]
 viewport_path = NodePath("SubViewport")
 
 [node name="World" unique_id=1376563817 instance=ExtResource("1_ln7o8")]
 
-[node name="Canvas" parent="." index="5" unique_id=1467538967]
-texture = SubResource("ViewportTexture_0282v")
+[node name="Ground" parent="." index="0"]
+position = Vector2(235, 444)
+
+[node name="TileMapLayer" parent="Ground" index="0"]
+tile_map_data = PackedByteArray("AAAAAP//AwABAAEAAAD/////AwABAAEAAAD+////AwABAAEAAAD+/wAAAwABAAEAAAD//wAAAwABAAEAAAAAAAAAAwABAAEAAAABAP//AwABAAEAAAABAP7/AwABAAEAAAAAAP7/AwABAAEAAAD//wEAAwABAAEAAAAAAAEAAwABAAEAAAD///7/AwABAAEAAAABAAAAAwABAAEAAAD+/wEAAwABAAEAAAD9/wAAAwABAAEAAAD9/wEAAwAAAAIAAAD+/wIAAwAAAAIAAAD//wIAAwABAAIAAAAAAAIAAwABAAIAAAABAAIAAwACAAIAAAABAAEAAwABAAEAAAAAAP3/AwACAAAAAAD///3/AwABAAAAAAD+//7/AwABAAEAAAACAAAAAwABAAEAAAADAAAAAwACAAIAAAADAP//AwACAAAAAAACAP7/AwACAAAAAAACAP//AwABAAEAAAD9////AwABAAEAAAD8////AwAAAAAAAAD8/wAAAwAAAAIAAAD+//3/AwAAAAAAAAD9//7/AwAAAAAAAAACAAEAAwACAAIAAAD///D/AwABAAEAAAD///H/AwABAAEAAAAAAPH/AwABAAEAAAAAAPD/AwABAAEAAAAAAO//AwABAAEAAAD//+//AwABAAEAAAD///L/AwABAAIAAAAAAPL/AwABAAEAAAABAPH/AwABAAEAAAABAPD/AwABAAEAAAABAO//AwABAAEAAAD+//D/AwABAAEAAAD+//H/AwABAAEAAAABAPL/AwABAAEAAAACAPD/AwACAAEAAAACAO//AwACAAAAAAD9//H/AwABAAEAAAD9//L/AwAAAAIAAAD+//L/AwABAAIAAAABAO7/AwABAAAAAAAAAO7/AwABAAAAAAD+/+//AwABAAAAAAD9//D/AwABAAEAAAAAAPP/AwAAAAIAAAABAPP/AwACAAIAAAD8//D/AwAAAAEAAAD7//H/AwAAAAIAAAD8//H/AwABAAIAAAD8/+//AwAAAAAAAAD9/+//AwABAAEAAAD9/+7/AwAAAAAAAAD//+7/AwAAAAEAAAD//+3/AwAAAAAAAAACAPH/AwABAAEAAAACAPL/AwABAAIAAAADAPL/AwACAAIAAAADAPH/AwABAAEAAAAEAPH/AwACAAIAAADz/9r/AwABAAEAAADy/9r/AwABAAEAAADy/9v/AwABAAEAAADy/9z/AwABAAEAAADz/9z/AwABAAEAAADz/9v/AwABAAEAAAD0/9r/AwACAAEAAADx/9v/AwABAAEAAAD0/9n/AwACAAAAAADz/9n/AwABAAAAAADx/9z/AwABAAEAAADw/9z/AwABAAEAAADw/9v/AwABAAEAAADv/9v/AwABAAEAAADv/9z/AwABAAEAAADx/9r/AwABAAEAAADx/9n/AwABAAEAAADw/9n/AwABAAEAAADv/9r/AwABAAEAAADw/9r/AwABAAEAAADy/9n/AwABAAEAAADv/93/AwAAAAIAAADw/93/AwABAAEAAADx/93/AwABAAEAAADx/97/AwABAAEAAADy/97/AwABAAEAAADy/93/AwABAAEAAADz/93/AwABAAEAAAD0/9v/AwABAAEAAAD0/93/AwABAAEAAAD0/9z/AwABAAEAAAD1/93/AwACAAIAAAD1/9z/AwACAAEAAADz/97/AwABAAEAAAD0/97/AwACAAIAAAD1/9v/AwACAAAAAADw/97/AwABAAEAAADw/9//AwABAAIAAADv/9//AwAAAAIAAADx/9//AwABAAIAAADy/9//AwABAAIAAADz/9//AwACAAIAAADu/9z/AwAAAAIAAADu/9v/AwABAAEAAADt/9v/AwAAAAAAAADu/9r/AwAAAAAAAADv/9n/AwAAAAAAAADw/9j/AwAAAAAAAADx/9j/AwABAAAAAADx/9f/AwAAAAIAAADy/9f/AwABAAEAAADy/9j/AwACAAEAAADz/9f/AwACAAIAAAD0/9f/AwACAAAAAAD0/9j/AwAAAAIAAAA=")
+
+[node name="Prism" parent="Ground" index="1" unique_id=960678440 instance=ExtResource("2_0282v")]
+position = Vector2(-236, -578)
+
+[node name="Player" parent="." index="1"]
+position = Vector2(235, 444)
+health = 45
+
+[node name="Camera2D" parent="." index="2"]
+position = Vector2(235, 444)
+
+[node name="ColorRect" parent="Camera2D" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Boundary" parent="." index="3"]
+position = Vector2(8, 227)
+
+[node name="Canvas" parent="." index="5"]
+offset_right = 755.0
+offset_bottom = 850.0
+texture = SubResource("ViewportTexture_gc5ah")
+
+[node name="Spikes" type="Node2D" parent="." index="6" unique_id=227511219]
+
+[node name="Spike2" parent="Spikes" index="0" unique_id=231777997 instance=ExtResource("3_gc5ah")]
+position = Vector2(23, -75)
+
+[node name="Spike3" parent="Spikes" index="1" unique_id=692700899 instance=ExtResource("3_gc5ah")]
+position = Vector2(-34, -72)
+
+[node name="Spike4" parent="Spikes" index="2" unique_id=589131090 instance=ExtResource("3_gc5ah")]
+position = Vector2(35, -85)
+
+[node name="Spike5" parent="Spikes" index="3" unique_id=1215352466 instance=ExtResource("3_gc5ah")]
+position = Vector2(45, -94)
+
+[node name="Spike6" parent="Spikes" index="4" unique_id=2078720920 instance=ExtResource("3_gc5ah")]
+position = Vector2(55, -107)
+
+[node name="Spike7" parent="Spikes" index="5" unique_id=880573035 instance=ExtResource("3_gc5ah")]
+position = Vector2(56, -121)
+
+[node name="Spike8" parent="Spikes" index="6" unique_id=1756993772 instance=ExtResource("3_gc5ah")]
+position = Vector2(56, -137)
+
+[node name="Spike9" parent="Spikes" index="7" unique_id=138639528 instance=ExtResource("3_gc5ah")]
+position = Vector2(46, -150)
+
+[node name="Spike10" parent="Spikes" index="8" unique_id=1717978870 instance=ExtResource("3_gc5ah")]
+position = Vector2(39, -164)
+
+[node name="Spike11" parent="Spikes" index="9" unique_id=1978151960 instance=ExtResource("3_gc5ah")]
+position = Vector2(30, -172)
+
+[node name="Spike12" parent="Spikes" index="10" unique_id=1295561126 instance=ExtResource("3_gc5ah")]
+position = Vector2(16, -173)
+
+[node name="Spike13" parent="Spikes" index="11" unique_id=609150187 instance=ExtResource("3_gc5ah")]
+position = Vector2(5, -184)
+
+[node name="Spike14" parent="Spikes" index="12" unique_id=409102918 instance=ExtResource("3_gc5ah")]
+position = Vector2(-6, -188)
+
+[node name="Spike15" parent="Spikes" index="13" unique_id=1527348601 instance=ExtResource("3_gc5ah")]
+position = Vector2(-16, -184)
+
+[node name="Spike16" parent="Spikes" index="14" unique_id=1457796556 instance=ExtResource("3_gc5ah")]
+position = Vector2(-25, -181)
+
+[node name="Spike17" parent="Spikes" index="15" unique_id=2036017300 instance=ExtResource("3_gc5ah")]
+position = Vector2(-33, -174)
+
+[node name="Spike18" parent="Spikes" index="16" unique_id=820337407 instance=ExtResource("3_gc5ah")]
+position = Vector2(-41, -163)
+
+[node name="Spike19" parent="Spikes" index="17" unique_id=692219674 instance=ExtResource("3_gc5ah")]
+position = Vector2(-49, -156)
+
+[node name="Spike20" parent="Spikes" index="18" unique_id=96706128 instance=ExtResource("3_gc5ah")]
+position = Vector2(-56, -146)
+
+[node name="Spike21" parent="Spikes" index="19" unique_id=1486058064 instance=ExtResource("3_gc5ah")]
+position = Vector2(-65, -138)
+
+[node name="Spike22" parent="Spikes" index="20" unique_id=1302211465 instance=ExtResource("3_gc5ah")]
+position = Vector2(-51, -129)
+
+[node name="Spike23" parent="Spikes" index="21" unique_id=113584146 instance=ExtResource("3_gc5ah")]
+position = Vector2(-46, -119)
+
+[node name="Spike24" parent="Spikes" index="22" unique_id=1971780992 instance=ExtResource("3_gc5ah")]
+position = Vector2(-39, -112)
+
+[node name="Spike25" parent="Spikes" index="23" unique_id=2035906200 instance=ExtResource("3_gc5ah")]
+position = Vector2(-33, -105)
+
+[node name="Spike26" parent="Spikes" index="24" unique_id=688361153 instance=ExtResource("3_gc5ah")]
+position = Vector2(-29, -95)
+
+[node name="Spike27" parent="Spikes" index="25" unique_id=1429480307 instance=ExtResource("3_gc5ah")]
+position = Vector2(-30, -84)

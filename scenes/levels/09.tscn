@@ -1,0 +1,96 @@
+[gd_scene format=4 uid="uid://w0ffcc22b0yf"]
+
+[ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_ne7sk"]
+[ext_resource type="PackedScene" uid="uid://clll8x3u5566o" path="res://scenes/spike.tscn" id="2_e5ip2"]
+[ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="3_0u4l2"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_e5ip2"]
+viewport_path = NodePath("SubViewport")
+
+[node name="World" unique_id=1947857592 instance=ExtResource("1_ne7sk")]
+
+[node name="TileMapLayer" parent="Ground" index="0"]
+tile_map_data = PackedByteArray("AAD//wAAAwABAAEAAAD/////AwABAAEAAAD+/wAAAwABAAEAAAAAAAAAAwABAAEAAAAAAP//AwABAAEAAAABAAAAAwABAAEAAAABAP//AwACAAEAAAABAP7/AwACAAEAAAAAAP7/AwABAAEAAAD///7/AwABAAEAAAD+//7/AwAAAAAAAAD+////AwABAAEAAAD//wEAAwABAAEAAAAAAAEAAwABAAEAAAABAP3/AwACAAAAAAAAAP3/AwABAAAAAAD///3/AwAAAAAAAAD9////AwAAAAAAAAD9/wAAAwAAAAIAAAD+/wEAAwAAAAIAAAABAAEAAwABAAIAAAACAAEAAwACAAIAAAACAAAAAwACAAAAAAD//wIAAwAAAAIAAAAAAAIAAwACAAIAAAAMAPP/AwABAAEAAAALAPP/AwABAAEAAAALAPT/AwABAAEAAAAMAPT/AwABAAEAAAAMAPX/AwABAAEAAAANAPT/AwABAAEAAAANAPP/AwABAAEAAAALAPX/AwABAAEAAAANAPL/AwABAAAAAAAMAPL/AwABAAEAAAAKAPP/AwABAAEAAAAKAPT/AwABAAEAAAALAPL/AwABAAEAAAAKAPL/AwABAAEAAAAJAPP/AwABAAEAAAAJAPT/AwABAAEAAAAJAPL/AwAAAAAAAAAIAPP/AwAAAAAAAAAIAPT/AwAAAAEAAAAJAPX/AwABAAEAAAAKAPX/AwABAAEAAAAJAPb/AwABAAEAAAAKAPb/AwABAAEAAAALAPb/AwABAAEAAAAMAPb/AwABAAEAAAAKAPf/AwABAAIAAAALAPf/AwABAAIAAAANAPX/AwACAAEAAAAIAPX/AwABAAEAAAAIAPb/AwABAAEAAAANAPb/AwACAAIAAAAMAPf/AwACAAIAAAAJAPf/AwABAAIAAAAIAPf/AwABAAIAAAAHAPX/AwAAAAAAAAAHAPb/AwABAAEAAAAHAPf/AwAAAAIAAAAGAPb/AwAAAAIAAAAOAPT/AwACAAIAAAAOAPP/AwACAAEAAAAOAPL/AwACAAAAAAAMAPH/AwACAAAAAAALAPH/AwAAAAAAAAA=")
+
+[node name="Player" parent="." index="1"]
+health = 50
+
+[node name="Canvas" parent="." index="5"]
+texture = SubResource("ViewportTexture_e5ip2")
+
+[node name="Spikes" type="Node2D" parent="." index="6" unique_id=1522144263]
+
+[node name="Spike" parent="Spikes" index="0" unique_id=419239053 instance=ExtResource("2_e5ip2")]
+position = Vector2(128, -136)
+
+[node name="Spike2" parent="Spikes" index="1" unique_id=622809753 instance=ExtResource("2_e5ip2")]
+position = Vector2(120, -144)
+
+[node name="Spike3" parent="Spikes" index="2" unique_id=1581616723 instance=ExtResource("2_e5ip2")]
+position = Vector2(112, -152)
+
+[node name="Spike4" parent="Spikes" index="3" unique_id=1105156935 instance=ExtResource("2_e5ip2")]
+position = Vector2(120, -168)
+
+[node name="Spike5" parent="Spikes" index="4" unique_id=2129151653 instance=ExtResource("2_e5ip2")]
+position = Vector2(120, -160)
+
+[node name="Spike7" parent="Spikes" index="5" unique_id=1234025423 instance=ExtResource("2_e5ip2")]
+position = Vector2(160, -136)
+
+[node name="Spike8" parent="Spikes" index="6" unique_id=1195641736 instance=ExtResource("2_e5ip2")]
+position = Vector2(176, -136)
+
+[node name="Spike9" parent="Spikes" index="7" unique_id=1628491661 instance=ExtResource("2_e5ip2")]
+position = Vector2(192, -136)
+
+[node name="Spike10" parent="Spikes" index="8" unique_id=1852929700 instance=ExtResource("2_e5ip2")]
+position = Vector2(200, -152)
+
+[node name="Spike11" parent="Spikes" index="9" unique_id=302100139 instance=ExtResource("2_e5ip2")]
+position = Vector2(208, -160)
+
+[node name="Spike12" parent="Spikes" index="10" unique_id=1206120974 instance=ExtResource("2_e5ip2")]
+position = Vector2(216, -176)
+
+[node name="Spike13" parent="Spikes" index="11" unique_id=1663929209 instance=ExtResource("2_e5ip2")]
+position = Vector2(224, -192)
+
+[node name="Spike14" parent="Spikes" index="12" unique_id=2069389204 instance=ExtResource("2_e5ip2")]
+position = Vector2(224, -208)
+
+[node name="Spike15" parent="Spikes" index="13" unique_id=1335678571 instance=ExtResource("2_e5ip2")]
+position = Vector2(216, -224)
+
+[node name="Spike16" parent="Spikes" index="14" unique_id=1430280446 instance=ExtResource("2_e5ip2")]
+position = Vector2(200, -224)
+
+[node name="Spike17" parent="Spikes" index="15" unique_id=1046855175 instance=ExtResource("2_e5ip2")]
+position = Vector2(192, -232)
+
+[node name="Spike18" parent="Spikes" index="16" unique_id=1782790354 instance=ExtResource("2_e5ip2")]
+position = Vector2(176, -224)
+
+[node name="Spike19" parent="Spikes" index="17" unique_id=1670638070 instance=ExtResource("2_e5ip2")]
+position = Vector2(168, -224)
+
+[node name="Spike20" parent="Spikes" index="18" unique_id=1252307322 instance=ExtResource("2_e5ip2")]
+position = Vector2(160, -216)
+
+[node name="Spike21" parent="Spikes" index="19" unique_id=835491161 instance=ExtResource("2_e5ip2")]
+position = Vector2(152, -216)
+
+[node name="Spike22" parent="Spikes" index="20" unique_id=1684350805 instance=ExtResource("2_e5ip2")]
+position = Vector2(136, -208)
+
+[node name="Spike23" parent="Spikes" index="21" unique_id=975024134 instance=ExtResource("2_e5ip2")]
+position = Vector2(136, -192)
+
+[node name="Spike24" parent="Spikes" index="22" unique_id=2051104066 instance=ExtResource("2_e5ip2")]
+position = Vector2(136, -184)
+
+[node name="Spike25" parent="Spikes" index="23" unique_id=53961533 instance=ExtResource("2_e5ip2")]
+position = Vector2(136, -168)
+
+[node name="Prism" parent="." index="7" unique_id=1852553633 instance=ExtResource("3_0u4l2")]
+position = Vector2(176, -192)
