@@ -1,0 +1,90 @@
+[gd_scene format=4 uid="uid://bsp383ckxnyp0"]
+
+[ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_784h1"]
+[ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="2_ira5h"]
+[ext_resource type="PackedScene" uid="uid://clll8x3u5566o" path="res://scenes/spike.tscn" id="2_yeffc"]
+[ext_resource type="PackedScene" uid="uid://ce20buacdi0b2" path="res://scenes/health_station.tscn" id="3_23vr6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_23vr6"]
+viewport_path = NodePath("SubViewport")
+
+[node name="World" unique_id=614836057 instance=ExtResource("1_784h1")]
+
+[node name="Prism" parent="." index="0" unique_id=1587165854 instance=ExtResource("2_ira5h")]
+position = Vector2(224, 216)
+
+[node name="TileMapLayer" parent="Ground" index="0"]
+tile_map_data = PackedByteArray("AAD+//7/AwABAAEAAAD9////AwABAAEAAAD+/wAAAwABAAEAAAABAAEAAwACAAIAAAABAAAAAwABAAEAAAABAP//AwABAAEAAAAAAP//AwABAAEAAAAAAP7/AwABAAEAAAD///7/AwABAAEAAAD+////AwABAAEAAAD//wAAAwABAAEAAAAAAAAAAwABAAEAAAD/////AwABAAEAAAABAP7/AwABAAEAAAACAAAAAwACAAIAAAACAP//AwACAAEAAAACAP7/AwACAAEAAAACAP3/AwACAAAAAAABAP3/AwABAAAAAAAAAP3/AwABAAEAAAD///3/AwABAAEAAAD+//3/AwABAAEAAAD///z/AwAAAAAAAAAAAPz/AwACAAAAAAD9//3/AwABAAAAAAD8//3/AwAAAAAAAAD8//7/AwAAAAEAAAD9//7/AwABAAEAAAD8////AwAAAAIAAAD9/wAAAwAAAAIAAAD+/wEAAwAAAAIAAAD//wEAAwABAAIAAAAAAAEAAwABAAIAAAAMAAwAAwAAAAAAAAANAAwAAwABAAEAAAAMAA0AAwABAAEAAAANAA0AAwABAAEAAAAOAAwAAwABAAEAAAAOAA0AAwABAAEAAAAPAA0AAwABAAEAAAANAA4AAwABAAEAAAAOAA4AAwABAAEAAAAPAA4AAwACAAIAAAANAA8AAwABAAIAAAAOAA8AAwACAAIAAAAQAA0AAwACAAAAAAAMAA4AAwABAAEAAAAMAA8AAwAAAAIAAAALAA4AAwAAAAIAAAALAA0AAwAAAAEAAADy/wQAAwACAAAAAADx/wQAAwABAAAAAADw/wQAAwABAAEAAADw/wMAAwACAAAAAADy/wUAAwACAAEAAADx/wUAAwABAAEAAADw/wUAAwABAAEAAADv/wUAAwABAAEAAADv/wQAAwABAAEAAADx/wYAAwABAAIAAADw/wYAAwABAAIAAADy/wYAAwACAAIAAADv/wYAAwABAAIAAADu/wUAAwAAAAIAAADu/wQAAwAAAAAAAADv/wMAAwAAAAAAAAAOAAsAAwABAAAAAAAPAAsAAwACAAAAAAAPAAwAAwABAAEAAAANAAsAAwAAAAAAAAA=")
+
+[node name="Player" parent="." index="2"]
+health = 15
+
+[node name="Canvas" parent="." index="6"]
+offset_left = -216.0
+offset_top = -160.0
+offset_right = 296.0
+offset_bottom = 352.0
+texture = SubResource("ViewportTexture_23vr6")
+
+[node name="Spike12" parent="." index="7" unique_id=194735234 instance=ExtResource("2_yeffc")]
+position = Vector2(-248, 112)
+
+[node name="Spike" parent="." index="8" unique_id=697161207 instance=ExtResource("2_yeffc")]
+position = Vector2(-280, 80)
+
+[node name="Spike2" parent="." index="9" unique_id=1385323222 instance=ExtResource("2_yeffc")]
+position = Vector2(-280, 88)
+
+[node name="Spike3" parent="." index="10" unique_id=198643136 instance=ExtResource("2_yeffc")]
+position = Vector2(-280, 96)
+
+[node name="Spike4" parent="." index="11" unique_id=1609400054 instance=ExtResource("2_yeffc")]
+position = Vector2(-272, 104)
+
+[node name="Spike5" parent="." index="12" unique_id=1141714894 instance=ExtResource("2_yeffc")]
+position = Vector2(-264, 112)
+
+[node name="Spike6" parent="." index="13" unique_id=1062850684 instance=ExtResource("2_yeffc")]
+position = Vector2(-256, 112)
+
+[node name="HealthStation" parent="." index="14" unique_id=595844830 instance=ExtResource("3_23vr6")]
+position = Vector2(-248, 80)
+
+[node name="Spike7" parent="." index="15" unique_id=1864416326 instance=ExtResource("2_yeffc")]
+position = Vector2(-136, 24)
+
+[node name="Spike15" parent="." index="16" unique_id=2097546582 instance=ExtResource("2_yeffc")]
+position = Vector2(-120, 40)
+
+[node name="Spike16" parent="." index="17" unique_id=2113957 instance=ExtResource("2_yeffc")]
+position = Vector2(-152, 8)
+
+[node name="Spike17" parent="." index="18" unique_id=1311916466 instance=ExtResource("2_yeffc")]
+position = Vector2(-144, 16)
+
+[node name="Spike9" parent="." index="19" unique_id=34267900 instance=ExtResource("2_yeffc")]
+position = Vector2(-128, 32)
+
+[node name="Spike8" parent="." index="20" unique_id=532294899 instance=ExtResource("2_yeffc")]
+position = Vector2(200, 192)
+
+[node name="Spike18" parent="." index="21" unique_id=2085954565 instance=ExtResource("2_yeffc")]
+position = Vector2(192, 200)
+
+[node name="Spike19" parent="." index="22" unique_id=1835531072 instance=ExtResource("2_yeffc")]
+position = Vector2(216, 184)
+
+[node name="Spike20" parent="." index="23" unique_id=327479822 instance=ExtResource("2_yeffc")]
+position = Vector2(208, 192)
+
+[node name="Spike10" parent="." index="24" unique_id=2129206918 instance=ExtResource("2_yeffc")]
+position = Vector2(-160, 8)
+
+[node name="Spike11" parent="." index="25" unique_id=318375269 instance=ExtResource("2_yeffc")]
+position = Vector2(-216, 80)
+
+[node name="Spike13" parent="." index="26" unique_id=1131468215 instance=ExtResource("2_yeffc")]
+position = Vector2(-208, 88)
+
+[node name="Spike14" parent="." index="27" unique_id=300082508 instance=ExtResource("2_yeffc")]
+position = Vector2(-208, 104)
