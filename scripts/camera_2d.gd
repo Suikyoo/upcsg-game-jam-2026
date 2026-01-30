@@ -1,16 +1,16 @@
 extends Camera2D
 
-const zoom_factor: float = 0.5
 const zoom_min: float = 1
 const zoom_max: float = 2.75
+const zoom_stages = [1, 1.75, 2.75]
+var zoom_index: int = 1
 
 var chase_position: Vector2;
 var quake: float;
 var label: Label;
+
 func _ready() -> void:
 	label = Label.new()
-
-	label.text = "Level %d" % ($"/root/World".level_id)
 	label.add_theme_font_size_override("default_font", 200)
 	label.z_index = 999
 	label.label_settings = LabelSettings.new()
@@ -26,6 +26,8 @@ func _ready() -> void:
 	$ColorRect.material.set_shader_parameter("background_color", Color.BLACK)
 
 func _process(delta: float) -> void:
+	label.text = "Level %d" % ($"/root/World".level_id)
+
 	label.modulate.a = lerp(label.modulate.a, 0., 0.01)
 	
 	var player: Player = get_node("../Player")
@@ -41,29 +43,23 @@ func _process(delta: float) -> void:
 	rotation = -get_parent().world_angle
 	
 	if Input.is_action_just_pressed("zoom_toggle"):
-		if self.zoom.x > 2:
-			self.zoom = Vector2(zoom_min, zoom_min)
-		elif self.zoom.x > 1 and self.zoom.x < 2:
-			self.zoom = Vector2(zoom_max, zoom_max)
-		else:
-			const zoom_normal = 1.5
-			self.zoom = Vector2(zoom_normal, zoom_normal)
+		zoom_index = (zoom_index + 1) % len(zoom_stages)
 			
-
-func _unhandled_input(event: InputEvent) -> void:
-	const lerp_weight: float = 0.1
-	scale = Vector2.ONE / zoom
-
-	# Zooming is ugly but it works
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-			var prev: float = self.zoom.x
-			var next: float = lerp(prev, min(zoom_max, prev +zoom_factor), lerp_weight)
-			print(next)
-			self.zoom = Vector2(next, next)
-			
-		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			var prev: float = self.zoom.x
-			var next: float = lerp(prev, max(zoom_min, prev -zoom_factor), lerp_weight)
-			print(next)
-			self.zoom = Vector2(next, next)
+	zoom = zoom.lerp(Vector2(zoom_stages[zoom_index], zoom_stages[zoom_index]), 0.1)
+#func _unhandled_input(event: InputEvent) -> void:
+	#const lerp_weight: float = 0.1
+	#scale = Vector2.ONE / zoom
+#
+	## Zooming is ugly but it works
+	#if event is InputEventMouseButton:
+		#if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			#var prev: float = self.zoom.x
+			#var next: float = lerp(prev, min(zoom_max, prev +zoom_factor), lerp_weight)
+			#print(next)
+			#self.zoom = Vector2(next, next)
+			#
+		#if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+			#var prev: float = self.zoom.x
+			#var next: float = lerp(prev, max(zoom_min, prev -zoom_factor), lerp_weight)
+			#print(next)
+			#self.zoom = Vector2(next, next)

@@ -29,6 +29,7 @@ func _ready() -> void:
 	var path := get_tree().current_scene.scene_file_path.rsplit('/', false, 1)
 	folder_path = path[0]
 	level_id = int(path[1].split(".")[0])
+	print(level_id)
 	world_flip.emit(target_angle, world_gravity)
 	var offset := -world_gravity.normalized() * 2
 	#$Canvas.material.set_shader_parameter("outline_offset", offset)
