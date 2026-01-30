@@ -16,6 +16,12 @@ var target_angle: float = 0
 
 var folder_path: String
 var level_id: int
+
+var game_state: int = -1
+
+var darkness: float = 1
+var target_darkness: float = 0
+
 #emits after whenever the perspective is changed
 signal world_flip(angle: float, gravity: Vector2)
 
@@ -43,9 +49,29 @@ func _process(delta: float) -> void:
 		world_flip.emit(target_angle, world_gravity)
 		
 	world_angle = lerp_angle(world_angle, target_angle, 0.4)
-	var rect := Rect2(Vector2(0, 0), Vector2($SubViewport.size))
 
+	darkness = move_toward(darkness, target_darkness, 0.01)
+	
+	$"Camera2D/Filter".material.set_shader_parameter("darkness", darkness)
+	
+	if darkness >= 0.99:
+		on_end()
+		
+func on_end():
+	if game_state == 1:
+		advance()
+	elif game_state == 0:
+		restart()
+		
 func on_win():
+	game_state = 1
+	target_darkness = 1
+	
+func on_lose():
+	game_state = 0
+	target_darkness = 1
+
+func advance():
 	var next_level := folder_path + "/" + "%02d" % (level_id + 1) + ".tscn"
 	var resource := ResourceLoader.load(next_level)
 	if !resource:
@@ -53,5 +79,7 @@ func on_win():
 		
 	get_tree().change_scene_to_file(next_level)
 
-func on_lose():
+func restart():
 	get_tree().reload_current_scene()
+
+	

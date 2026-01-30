@@ -11,6 +11,7 @@ var movement: Vector2 = Vector2.ZERO
 var hold: bool = false
 
 @export var health = 20
+var max_health = health
 
 func _ready() -> void:
 	$Health.max_value = health
@@ -69,8 +70,11 @@ func _move(delta: float) -> void:
 	
 func _process(delta: float) -> void:
 	super._process(delta)
+	
 	if health <= 0:
 		on_death()
+	
+	$"../Camera2D/Filter".material.set_shader_parameter("danger", 1 - health/max_health)
 		
 func add_velocity(delta: float) -> void:
 	_move(delta)
@@ -84,5 +88,5 @@ func _drip_on_new_tile_entered():
 	update_health(-5)	
 	
 func update_health(offset_value: int) -> void:
-	health += offset_value
+	health = clamp(health + offset_value, 0, max_health)
 	$Health.curr_value = health

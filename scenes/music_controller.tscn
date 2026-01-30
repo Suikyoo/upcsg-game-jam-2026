@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bswyflpt80rbh"]
+
+[node name="MusicController" type="Node2D"]

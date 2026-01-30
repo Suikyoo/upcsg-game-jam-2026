@@ -46,7 +46,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	z_index = 999 + global_position[1]
+	pass
+	#z_index = 999 + global_position[1]
 #this function is used by inheriting objects. 
 #the body in the argument is primarily the Player object.
 #this function triggers when the player collides with the entity.

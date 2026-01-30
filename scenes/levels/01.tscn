@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://bgdcruw4cwxg"]
+[gd_scene load_steps=18 format=4 uid="uid://bgdcruw4cwxg"]
 
-[ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_s8va5"]
+[ext_resource type="Script" uid="uid://ce87uotrbfdqt" path="res://scripts/prism.gd" id="1_ph31p"]
 [ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/ground.tscn" id="2_dga24"]
 [ext_resource type="Shader" uid="uid://clnrt0pq7h8pv" path="res://shaders/stack.gdshader" id="3_dga24"]
 [ext_resource type="Texture2D" uid="uid://d35yc0g2qmcqp" path="res://assets/tileset.png" id="3_qxy0u"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cp4he6iltnikf" path="res://scripts/camera_2d.gd" id="5_iav0o"]
 [ext_resource type="PackedScene" uid="uid://dcuwdh4sjhmrg" path="res://scenes/boundary.tscn" id="6_dnkej"]
 [ext_resource type="Texture2D" uid="uid://btfq1vy5r6277" path="res://assets/shard.png" id="7_mm8aj"]
+[ext_resource type="Shader" uid="uid://76ukmvvd1w38" path="res://shaders/game.gdshader" id="8_ph31p"]
 [ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="8_wtwp4"]
 [ext_resource type="Shader" uid="uid://col0pl51j2v7n" path="res://shaders/canvas.gdshader" id="10_qxy0u"]
 
@@ -108,6 +109,12 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.73042506, 0, 0.11251018, 1)
 sources/3 = SubResource("TileSetAtlasSource_kvuet")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqiax"]
+shader = ExtResource("8_ph31p")
+shader_parameter/SCREEN_SIZE = Vector2(640, 480)
+shader_parameter/darkness = 0.0
+shader_parameter/danger = 0.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_excbq"]
 shader = ExtResource("10_qxy0u")
 shader_parameter/chroma_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
@@ -118,8 +125,7 @@ shader_parameter/SCREEN_SIZE = Vector2(0, 0)
 viewport_path = NodePath("SubViewport")
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_s8va5")
-bg_color = Color(0.15711647, 0.43804568, 0.5462329, 1)
+script = ExtResource("1_ph31p")
 
 [node name="Ground" parent="." instance=ExtResource("2_dga24")]
 
@@ -128,9 +134,6 @@ material = SubResource("ShaderMaterial_qxy0u")
 rotation = -0.010942351
 tile_map_data = PackedByteArray("AAAAAP//AwABAAEAAAD/////AwABAAEAAAD//wAAAwABAAEAAAAAAAAAAwABAAEAAAD///7/AwAAAAAAAAD+////AwABAAAAAAD+/wAAAwABAAEAAAD//wEAAwABAAIAAAAAAAEAAwABAAIAAAABAAEAAwABAAIAAAABAP7/AwABAAAAAAAAAP7/AwABAAAAAAABAAAAAwABAAEAAAABAP//AwABAAEAAAD+/wEAAwABAAIAAAACAP//AwABAAEAAAACAAAAAwABAAEAAAADAAAAAwABAAEAAAADAP//AwABAAEAAAACAP7/AwABAAAAAAADAP7/AwACAAAAAAACAAEAAwABAAIAAAADAAEAAwABAAIAAAAEAAEAAwACAAIAAAAEAAAAAwABAAEAAAAFAAAAAwACAAIAAAAFAP//AwABAAEAAAAEAP//AwABAAAAAAD9/wAAAwABAAEAAAD8/wAAAwABAAAAAAD9/wEAAwABAAIAAAD8/wEAAwABAAEAAAD7/wIAAwABAAIAAAD7/wEAAwAAAAEAAAD6/wIAAwAAAAIAAAD8/wIAAwACAAIAAAD9////AwAAAAAAAAAFAP7/AwACAAAAAAAGAP//AwACAAIAAAD7/wAAAwAAAAAAAAD//wUAAwABAAEAAAD//wYAAwABAAEAAAD+/wYAAwABAAEAAAD+/wUAAwAAAAAAAAAAAAYAAwABAAEAAAAAAAUAAwABAAEAAAABAAUAAwABAAEAAAABAAYAAwABAAEAAAAAAAcAAwABAAEAAAABAAcAAwABAAEAAAACAAYAAwACAAEAAAD//wcAAwABAAEAAAD+/wcAAwABAAIAAAD9/wYAAwABAAEAAAD8/wYAAwAAAAAAAAD8/wcAAwAAAAIAAAD9/wcAAwABAAIAAAD//wgAAwAAAAIAAAAAAAgAAwABAAIAAAABAAgAAwACAAIAAAACAAcAAwACAAIAAAACAAUAAwACAAEAAAACAAQAAwACAAAAAAD//wQAAwAAAAAAAAAAAAQAAwABAAAAAAABAAQAAwABAAAAAAA=")
 tile_set = SubResource("TileSet_u5sy4")
-
-[node name="Prism" parent="Ground" instance=ExtResource("8_wtwp4")]
-position = Vector2(4, 104)
 
 [node name="Player" parent="." instance=ExtResource("4_excbq")]
 z_index = 2
@@ -153,6 +156,11 @@ offset_bottom = -311.0
 scale = Vector2(20.949167, 21.977358)
 color = Color(0, 0, 0, 1)
 
+[node name="Filter" type="ColorRect" parent="Camera2D"]
+material = SubResource("ShaderMaterial_oqiax")
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Boundary" parent="." instance=ExtResource("6_dnkej")]
 
 [node name="SubViewport" type="SubViewport" parent="."]
@@ -172,4 +180,5 @@ offset_right = 267.0
 offset_bottom = 362.0
 texture = SubResource("ViewportTexture_ir15t")
 
-[connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
+[node name="Prism" parent="." instance=ExtResource("8_wtwp4")]
+position = Vector2(4, 104)

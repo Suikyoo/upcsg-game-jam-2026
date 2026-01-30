@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://b23dqa27g72lc"]
+[gd_scene load_steps=19 format=4 uid="uid://b23dqa27g72lc"]
 
 [ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_uacia"]
 [ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/ground.tscn" id="2_yk7ts"]
@@ -6,10 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://d35yc0g2qmcqp" path="res://assets/tileset.png" id="4_ghpyy"]
 [ext_resource type="PackedScene" uid="uid://dvme3l5h34ek8" path="res://scenes/player.tscn" id="5_44saj"]
 [ext_resource type="Script" uid="uid://cp4he6iltnikf" path="res://scripts/camera_2d.gd" id="6_7mbro"]
+[ext_resource type="Shader" uid="uid://76ukmvvd1w38" path="res://shaders/game.gdshader" id="7_ajshl"]
 [ext_resource type="PackedScene" uid="uid://dcuwdh4sjhmrg" path="res://scenes/boundary.tscn" id="7_ff6ho"]
 [ext_resource type="Texture2D" uid="uid://btfq1vy5r6277" path="res://assets/shard.png" id="8_7yos8"]
 [ext_resource type="Shader" uid="uid://c3ph35v824blm" path="res://shaders/canvas_outline.gdshader" id="9_5jxlq"]
 [ext_resource type="PackedScene" uid="uid://ce20buacdi0b2" path="res://scenes/health_station.tscn" id="10_yk7ts"]
+[ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="12_44saj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxy0u"]
 shader = ExtResource("3_ajshl")
@@ -108,6 +110,12 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.73042506, 0, 0.11251018, 1)
 sources/3 = SubResource("TileSetAtlasSource_kvuet")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ghpyy"]
+shader = ExtResource("7_ajshl")
+shader_parameter/SCREEN_SIZE = Vector2(0, 0)
+shader_parameter/darkness = 0.0
+shader_parameter/danger = 0.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_excbq"]
 shader = ExtResource("9_5jxlq")
 shader_parameter/chroma_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
@@ -131,11 +139,11 @@ tile_map_data = PackedByteArray("AAD/////AwAAAAEAAAAAAP//AwABAAEAAAABAP//AwABAAE
 tile_set = SubResource("TileSet_u5sy4")
 
 [node name="Player" parent="." instance=ExtResource("5_44saj")]
-z_index = 2
 collision_mask = 3
 motion_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 12
 ignore_rotation = false
 zoom = Vector2(1.5, 1.5)
 limit_enabled = false
@@ -143,13 +151,28 @@ position_smoothing_speed = 1.0
 script = ExtResource("6_7mbro")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D"]
-z_index = -2
+z_index = -20
 offset_left = -486.00003
 offset_top = -378.0
 offset_right = -458.45053
 offset_bottom = -351.41986
 scale = Vector2(36.261993, 30.586773)
 color = Color(0, 0, 0, 1)
+
+[node name="Filter" type="ColorRect" parent="Camera2D"]
+z_index = 999
+z_as_relative = false
+material = SubResource("ShaderMaterial_ghpyy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -650.0
+offset_top = -463.0
+offset_right = -530.0
+offset_bottom = -343.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10.650343, 7.994728)
 
 [node name="Boundary" parent="." instance=ExtResource("7_ff6ho")]
 
@@ -172,5 +195,8 @@ texture = SubResource("ViewportTexture_ir15t")
 
 [node name="Bomb" parent="." instance=ExtResource("10_yk7ts")]
 position = Vector2(23, 22)
+
+[node name="Prism" parent="." instance=ExtResource("12_44saj")]
+position = Vector2(136, 72)
 
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
