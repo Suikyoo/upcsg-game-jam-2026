@@ -51,19 +51,19 @@ position = Vector2(-256, 112)
 position = Vector2(-248, 80)
 
 [node name="Spike7" parent="." index="15" unique_id=1864416326 instance=ExtResource("2_yeffc")]
-position = Vector2(-136, 24)
+position = Vector2(-56, -8)
 
 [node name="Spike15" parent="." index="16" unique_id=2097546582 instance=ExtResource("2_yeffc")]
-position = Vector2(-120, 40)
+position = Vector2(-64, -24)
 
 [node name="Spike16" parent="." index="17" unique_id=2113957 instance=ExtResource("2_yeffc")]
-position = Vector2(-152, 8)
+position = Vector2(-40, 8)
 
 [node name="Spike17" parent="." index="18" unique_id=1311916466 instance=ExtResource("2_yeffc")]
-position = Vector2(-144, 16)
+position = Vector2(-48, 0)
 
 [node name="Spike9" parent="." index="19" unique_id=34267900 instance=ExtResource("2_yeffc")]
-position = Vector2(-128, 32)
+position = Vector2(-64, -16)
 
 [node name="Spike8" parent="." index="20" unique_id=532294899 instance=ExtResource("2_yeffc")]
 position = Vector2(200, 192)
@@ -78,7 +78,7 @@ position = Vector2(216, 184)
 position = Vector2(208, 192)
 
 [node name="Spike10" parent="." index="24" unique_id=2129206918 instance=ExtResource("2_yeffc")]
-position = Vector2(-160, 8)
+position = Vector2(-32, 16)
 
 [node name="Spike11" parent="." index="25" unique_id=318375269 instance=ExtResource("2_yeffc")]
 position = Vector2(-216, 80)
@@ -88,3 +88,57 @@ position = Vector2(-208, 88)
 
 [node name="Spike14" parent="." index="27" unique_id=300082508 instance=ExtResource("2_yeffc")]
 position = Vector2(-208, 104)
+
+[node name="Spike21" parent="." index="28" unique_id=968322316 instance=ExtResource("2_yeffc")]
+position = Vector2(248, 184)
+
+[node name="Spike22" parent="." index="29" unique_id=1971033971 instance=ExtResource("2_yeffc")]
+position = Vector2(232, 184)
+
+[node name="Spike23" parent="." index="30" unique_id=1316375820 instance=ExtResource("2_yeffc")]
+position = Vector2(224, 184)
+
+[node name="Spike24" parent="." index="31" unique_id=314298507 instance=ExtResource("2_yeffc")]
+position = Vector2(240, 184)
+
+[node name="Spike25" parent="." index="32" unique_id=417376304 instance=ExtResource("2_yeffc")]
+position = Vector2(256, 192)
+
+[node name="Spike26" parent="." index="33" unique_id=784205128 instance=ExtResource("2_yeffc")]
+position = Vector2(256, 200)
+
+[node name="Spike27" parent="." index="34" unique_id=1284917582 instance=ExtResource("2_yeffc")]
+position = Vector2(264, 208)
+
+[node name="Spike28" parent="." index="35" unique_id=185453528 instance=ExtResource("2_yeffc")]
+position = Vector2(264, 216)
+
+[node name="Spike29" parent="." index="36" unique_id=1634663333 instance=ExtResource("2_yeffc")]
+position = Vector2(256, 224)
+
+[node name="Spike30" parent="." index="37" unique_id=1499057138 instance=ExtResource("2_yeffc")]
+position = Vector2(248, 232)
+
+[node name="Spike31" parent="." index="38" unique_id=867292665 instance=ExtResource("2_yeffc")]
+position = Vector2(240, 240)
+
+[node name="Spike32" parent="." index="39" unique_id=735607777 instance=ExtResource("2_yeffc")]
+position = Vector2(232, 248)
+
+[node name="Spike33" parent="." index="40" unique_id=103954038 instance=ExtResource("2_yeffc")]
+position = Vector2(184, 208)
+
+[node name="Spike34" parent="." index="41" unique_id=1658876822 instance=ExtResource("2_yeffc")]
+position = Vector2(-56, -40)
+
+[node name="Spike35" parent="." index="42" unique_id=177021617 instance=ExtResource("2_yeffc")]
+position = Vector2(-64, -32)
+
+[node name="Spike36" parent="." index="43" unique_id=2051529570 instance=ExtResource("2_yeffc")]
+position = Vector2(-48, -48)
+
+[node name="Spike37" parent="." index="44" unique_id=1567691862 instance=ExtResource("2_yeffc")]
+position = Vector2(-40, -48)
+
+[node name="Spike38" parent="." index="45" unique_id=1534145126 instance=ExtResource("2_yeffc")]
+position = Vector2(-24, -56)
