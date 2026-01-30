@@ -19,6 +19,15 @@ func _process(delta: float) -> void:
 	
 	rotation = -get_parent().world_angle
 	
+	if Input.is_action_just_pressed("zoom_toggle"):
+		if self.zoom.x > 2:
+			self.zoom = Vector2(zoom_min, zoom_min)
+		elif self.zoom.x > 1 and self.zoom.x < 2:
+			self.zoom = Vector2(zoom_max, zoom_max)
+		else:
+			const zoom_normal = 1.35
+			self.zoom = Vector2(zoom_normal, zoom_normal)
+			
 
 func _unhandled_input(event: InputEvent) -> void:
 	const lerp_weight: float = 0.1
