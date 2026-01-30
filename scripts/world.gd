@@ -12,7 +12,7 @@ var world_gravity: Vector2 = Vector2(0, 1) * gravity_value
 #used for smooth interpolation
 var target_angle: float = 0
 
-@export var bg_color: Color
+@export var bg_color: Color = Color("#0a3045")
 
 var folder_path: String
 var level_id: int

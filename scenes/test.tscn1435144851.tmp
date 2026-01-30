@@ -116,7 +116,7 @@ sources/3 = SubResource("TileSetAtlasSource_kvuet")
 shader = ExtResource("7_7mbro")
 shader_parameter/stripes = 10.0
 shader_parameter/stripe_thickness = 1.33
-shader_parameter/stripe_color = Color(0.067499995, 0.21654165, 0.25, 1)
+shader_parameter/stripe_color = Color(0.59, 0.98, 0.69, 1)
 shader_parameter/background_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ghpyy"]
@@ -210,5 +210,9 @@ position = Vector2(23, 22)
 position = Vector2(136, 72)
 
 [node name="MusicController" parent="." unique_id=1508636125 instance=ExtResource("13_44saj")]
+
+[node name="Label" type="Label" parent="." unique_id=1694476205]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]

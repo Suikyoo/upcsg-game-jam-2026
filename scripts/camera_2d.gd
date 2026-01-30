@@ -6,13 +6,28 @@ const zoom_max: float = 2.75
 
 var chase_position: Vector2;
 var quake: float;
+var label: Label;
+func _ready() -> void:
+	label = Label.new()
+
+	label.text = "Level %d" % ($"/root/World".level_id)
+	label.add_theme_font_size_override("default_font", 200)
+	label.z_index = 999
+	label.label_settings = LabelSettings.new()
+	label.label_settings.font = load("res://assets/alagard.ttf")
+	label.label_settings.font_size = 50
+	label.position -= Vector2(80, 150)
+	add_child(label)
+	
+	$ColorRect.material = ShaderMaterial.new()
+	$ColorRect.material.shader = load("res://shaders/bg.gdshader")
+	print(get_parent().bg_color)
+	$ColorRect.material.set_shader_parameter("stripe_color", get_parent().bg_color)
+	$ColorRect.material.set_shader_parameter("background_color", Color.BLACK)
 
 func _process(delta: float) -> void:
-	var label := Label.new()
-	label.text = "Level %d" % ($"/root/World".level_id)
-	label.position -= Vector2(250, 200)
-	label.z_index = 999
-	add_child(label)
+	label.modulate.a = lerp(label.modulate.a, 0., 0.01)
+	
 	var player: Player = get_node("../Player")
 	if !player:
 		push_error("Player not detected as parent.")
