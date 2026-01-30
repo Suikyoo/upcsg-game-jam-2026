@@ -12,12 +12,17 @@ var world_gravity: Vector2 = Vector2(0, 1) * gravity_value
 #used for smooth interpolation
 var target_angle: float = 0
 
+@export var bg_color: Color
+
 #emits after whenever the perspective is changed
 signal world_flip(angle: float, gravity: Vector2)
 
 func _ready() -> void:
 	world_flip.emit(target_angle, world_gravity)
-	
+	var offset := -world_gravity.normalized() * 2
+	#$Canvas.material.set_shader_parameter("outline_offset", offset)
+	$"Camera2D/ColorRect".set_color(bg_color)
+	$SubViewport.size = $Canvas.size
 	
 func _process(delta: float) -> void:
 	const rot_scalar: float = PI/2

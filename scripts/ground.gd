@@ -54,14 +54,12 @@ func _physics_process(delta: float) -> void:
 	if !world_node:
 		return
 		
-	var angle: float = world_node.get("world_angle")
-	if !angle:
+	var gravity: Vector2 = world_node.get("world_gravity")
+	if !gravity:
 		return
 	
-	var map: TileMapLayer = get_node_or_null("TileMapLayer")
-	if !map:
-		return
-	
+	var offset := -gravity.normalized() * 20
+	$TileMapLayer.material.set_shader_parameter("outline_offset", Vector2(offset))
 	#rotates the map but not the collisions. (Visual effect only)
 	#map.global_position = GlobalFuncts.world_transform(get_parent().global_position, angle)
 	#map.rotation = angle

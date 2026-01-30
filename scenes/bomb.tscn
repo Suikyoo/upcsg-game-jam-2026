@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bve43uhvq6dxv" path="res://scripts/bomb.gd" id="1_j15uc"]
 [ext_resource type="Script" uid="uid://jebt8et0og6a" path="res://scripts/stack.gd" id="2_84slv"]
-[ext_resource type="Texture2D" uid="uid://cm8f0jodv6mfa" path="res://assets/idk.png" id="3_nxi8k"]
+[ext_resource type="Texture2D" uid="uid://ctr0urwk64k2c" path="res://assets/box_death.png" id="3_j15uc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4pmx"]
 radius = 8.0
@@ -15,6 +15,6 @@ shape = SubResource("CircleShape2D_n4pmx")
 
 [node name="SpriteStack" type="Node2D" parent="."]
 script = ExtResource("2_84slv")
-texture = ExtResource("3_nxi8k")
-hframes = 1
+texture = ExtResource("3_j15uc")
+hframes = 4
 metadata/_custom_type_script = "uid://jebt8et0og6a"

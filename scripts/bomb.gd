@@ -1,12 +1,10 @@
 extends Entity
 
+var drip_scene: PackedScene = preload("res://scenes/drip.tscn")
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+var drips_remaining: int = 5
 func _ready() -> void:
-	input_pickable = true
-
+	get_parent().connect("world_flip", Callable(self, "_on_world_world_flip"))
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	
@@ -14,19 +12,22 @@ func _physics_process(delta: float) -> void:
 	
 	#this is where the player collides with every other entity
 	var collision := move_and_collide(velocity * delta)
+
 	if collision:
 		var collider := collision.get_collider()
-		print(collider)
-
-		if collider is TileMapLayer:
+		if collider is Entity:
 			var map: TileMapLayer = get_node_or_null("/root/World/Ground/TileMapLayer")
 			if !map:
 				return
-			var cell := map.local_to_map(map.to_local($SpriteStack.global_position))
-			cell -= Vector2i(1, 1)
-			for y in range(3):
-				for x in range(3):
-					print(cell + Vector2i(x, y))
-					map.set_cell(cell + Vector2i(x, y), 2, Vector2(1, 1))
+			var drip: Entity = drip_scene.instantiate()
+			
+			drip.position = position
+			drip.world_gravity = world_gravity
+			drip.max_drip = 5
+			get_parent().connect("world_flip", Callable(drip, "_on_world_world_flip"))
+			drip.connect("new_tile_entered", Callable(self, "_drip_on_new_tile_entered"))
+			get_parent().add_child(drip)
 			queue_free()
 			
+func _drip_on_new_tile_entered():
+	pass

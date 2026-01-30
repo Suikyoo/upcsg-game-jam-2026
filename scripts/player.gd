@@ -57,7 +57,7 @@ func _move(delta: float) -> void:
 
 
 	if hold:
-		$"../Camera2D".quake = 100;
+		$"../Camera2D".quake = 3;
 		return
 		
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -81,6 +81,6 @@ func on_death() -> void:
 	queue_free()
 
 func _drip_on_new_tile_entered():
-	health -= 4
+	health -= 2
 	$Health.curr_value = health
 	
