@@ -1,3 +1,30 @@
-[gd_scene format=3 uid="uid://bswyflpt80rbh"]
+[gd_scene load_steps=8 format=3 uid="uid://bswyflpt80rbh"]
+
+[ext_resource type="Script" uid="uid://b6gfvp8rm0odv" path="res://scripts/music_controller.gd" id="1_3sy7t"]
+[ext_resource type="AudioStream" uid="uid://3x3t3cst5d5a" path="res://assets/non_sense_dialogue_1.wav" id="2_ftu3d"]
+[ext_resource type="AudioStream" uid="uid://32imu8jxbgvc" path="res://assets/landing_2.wav" id="3_nudl1"]
+[ext_resource type="AudioStream" uid="uid://b4001fravvoua" path="res://assets/falling_2.wav" id="4_hyjgr"]
+[ext_resource type="AudioStream" uid="uid://3pbr7ra1pdk7" path="res://assets/charging_2.wav" id="5_1qrr5"]
+[ext_resource type="AudioStream" uid="uid://bvg2rqongiero" path="res://assets/charging_1.wav" id="6_ftu3d"]
+[ext_resource type="AudioStream" uid="uid://bct75mlrfudpf" path="res://assets/bg_music.wav" id="6_lttr1"]
 
 [node name="MusicController" type="Node2D"]
+script = ExtResource("1_3sy7t")
+
+[node name="Dialogue" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ftu3d")
+
+[node name="Landing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nudl1")
+
+[node name="Falling" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hyjgr")
+
+[node name="Win" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_1qrr5")
+
+[node name="Charge" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ftu3d")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_lttr1")

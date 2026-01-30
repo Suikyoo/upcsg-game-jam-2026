@@ -40,6 +40,7 @@ func _physics_process(delta: float) -> void:
 	$Health.rotation = rotate_toward($Health.rotation, -world_angle, 0.2)
 func _move(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
+		
 		hold = true
 		current_drip = drip_scene.instantiate()
 		
@@ -50,11 +51,16 @@ func _move(delta: float) -> void:
 		current_drip.connect("new_tile_entered", Callable(self, "_drip_on_new_tile_entered"))
 		get_parent().add_child(current_drip)
 		
+		$"/root/World/MusicController".play("Charge")
+		
 	elif Input.is_action_just_released("ui_accept"):
 		hold = false
 		if current_drip:
 			current_drip.queue_free()
 		current_drip = null
+		
+		$"/root/World/MusicController".stop("Charge")
+
 
 
 	if hold:

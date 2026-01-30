@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b23dqa27g72lc"]
+[gd_scene load_steps=20 format=4 uid="uid://b23dqa27g72lc"]
 
 [ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_uacia"]
 [ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/ground.tscn" id="2_yk7ts"]
@@ -12,6 +12,7 @@
 [ext_resource type="Shader" uid="uid://c3ph35v824blm" path="res://shaders/canvas_outline.gdshader" id="9_5jxlq"]
 [ext_resource type="PackedScene" uid="uid://ce20buacdi0b2" path="res://scenes/health_station.tscn" id="10_yk7ts"]
 [ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="12_44saj"]
+[ext_resource type="PackedScene" uid="uid://bswyflpt80rbh" path="res://scenes/music_controller.tscn" id="13_44saj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxy0u"]
 shader = ExtResource("3_ajshl")
@@ -198,5 +199,7 @@ position = Vector2(23, 22)
 
 [node name="Prism" parent="." instance=ExtResource("12_44saj")]
 position = Vector2(136, 72)
+
+[node name="MusicController" parent="." instance=ExtResource("13_44saj")]
 
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
