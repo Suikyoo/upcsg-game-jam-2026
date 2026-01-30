@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		elif self.zoom.x > 1 and self.zoom.x < 2:
 			self.zoom = Vector2(zoom_max, zoom_max)
 		else:
-			const zoom_normal = 1.35
+			const zoom_normal = 1.5
 			self.zoom = Vector2(zoom_normal, zoom_normal)
 			
 
