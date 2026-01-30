@@ -1,17 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce20buacdi0b2"]
 
-[ext_resource type="Script" uid="uid://bve43uhvq6dxv" path="res://scripts/bomb.gd" id="1_j15uc"]
+[ext_resource type="Script" uid="uid://bve43uhvq6dxv" path="res://scripts/health_station.gd" id="1_j15uc"]
 [ext_resource type="Script" uid="uid://jebt8et0og6a" path="res://scripts/stack.gd" id="2_84slv"]
 [ext_resource type="Texture2D" uid="uid://ctr0urwk64k2c" path="res://assets/box_death.png" id="3_j15uc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n4pmx"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j15uc"]
+size = Vector2(16, 13)
 
-[node name="Bomb" type="CharacterBody2D"]
+[node name="HealthStation" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 7
 script = ExtResource("1_j15uc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_n4pmx")
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_j15uc")
 
 [node name="SpriteStack" type="Node2D" parent="."]
 script = ExtResource("2_84slv")

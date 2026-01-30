@@ -5,12 +5,14 @@ extends Entity
 # Specifically, it sets the current tile as a "dripping tile" and its previous paths as "filled tile"
 signal new_tile_entered
 var max_drip: int = -1
+var drip_speed: float = 0.1
+
 func fall(delta: float) -> void:
-	fall_velocity = world_gravity * 0.2
+	fall_velocity = world_gravity * drip_speed
 	
 func _process(delta: float) -> void:
 	#move the object
-	position += world_gravity * delta * 0.1
+	position += world_gravity * delta * drip_speed
 	
 	#fetching external objects
 	var map: TileMapLayer = get_node_or_null("/root/World/Ground/TileMapLayer")

@@ -14,10 +14,15 @@ var target_angle: float = 0
 
 @export var bg_color: Color
 
+var folder_path: String
+var level_id: int
 #emits after whenever the perspective is changed
 signal world_flip(angle: float, gravity: Vector2)
 
 func _ready() -> void:
+	var path := get_tree().current_scene.scene_file_path.rsplit('/', false, 1)
+	folder_path = path[0]
+	level_id = int(path[1].split(".")[0])
 	world_flip.emit(target_angle, world_gravity)
 	var offset := -world_gravity.normalized() * 2
 	#$Canvas.material.set_shader_parameter("outline_offset", offset)
@@ -41,7 +46,12 @@ func _process(delta: float) -> void:
 	var rect := Rect2(Vector2(0, 0), Vector2($SubViewport.size))
 
 func on_win():
-	get_tree().change_scene_to_file("res://scenes/win.tscn")
+	var next_level := folder_path + "/" + "%02d" % (level_id + 1) + ".tscn"
+	var resource := ResourceLoader.load(next_level)
+	if !resource:
+		next_level = "res://scenes/win.tscn"
+		
+	get_tree().change_scene_to_file(next_level)
 
 func on_lose():
-	get_tree().change_scene_to_file("res://scenes/lose.tscn")
+	get_tree().reload_current_scene()
