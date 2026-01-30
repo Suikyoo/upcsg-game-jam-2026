@@ -1,0 +1,14 @@
+[gd_scene format=4 uid="uid://suku4kilvel0"]
+
+[ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_xmoky"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6gpwo"]
+viewport_path = NodePath("SubViewport")
+
+[node name="World" unique_id=1062537206 instance=ExtResource("1_xmoky")]
+
+[node name="TileMapLayer" parent="Ground" index="0"]
+tile_map_data = PackedByteArray("AAAAAP//AwABAAEAAAD/////AwABAAEAAAD//wAAAwABAAEAAAD+/wAAAwAAAAEAAAAAAAAAAwABAAEAAAAAAP7/AwABAAAAAAD///7/AwABAAAAAAD//wEAAwABAAIAAAD+/wEAAwAAAAIAAAABAP//AwABAAAAAAABAAAAAwABAAEAAAABAAEAAwABAAEAAAABAAIAAwACAAEAAAACAAEAAwACAAEAAAAAAAEAAwABAAEAAAD+////AwABAAEAAAD+//7/AwABAAAAAAD9////AwAAAAEAAAD9//7/AwAAAAAAAAACAAAAAwACAAAAAAAAAAIAAwAAAAEAAAA=")
+
+[node name="Canvas" parent="." index="5"]
+texture = SubResource("ViewportTexture_6gpwo")

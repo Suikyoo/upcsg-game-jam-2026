@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5oxtlf4po6kq"]
+[gd_scene format=3 uid="uid://5oxtlf4po6kq"]
 
 [ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dvme3l5h34ek8" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -118,29 +118,29 @@ shader_parameter/SCREEN_SIZE = Vector2(640, 480)
 [sub_resource type="ViewportTexture" id="ViewportTexture_ir15t"]
 viewport_path = NodePath("SubViewport")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" unique_id=1376563817]
 script = ExtResource("1_lnu2h")
 
-[node name="Ground" parent="." instance=ExtResource("3_lnu2h")]
+[node name="Ground" parent="." unique_id=1016304721 instance=ExtResource("3_lnu2h")]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Ground"]
+[node name="TileMapLayer" type="TileMapLayer" parent="Ground" unique_id=806882060]
 material = SubResource("ShaderMaterial_qxy0u")
 rotation = -0.010942351
 tile_set = SubResource("TileSet_u5sy4")
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Player" parent="." unique_id=1084302417 instance=ExtResource("1_uwrxv")]
 z_index = 2
 collision_mask = 3
 motion_mode = 0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=185978223]
 ignore_rotation = false
 zoom = Vector2(1.5, 1.5)
 limit_enabled = false
 position_smoothing_speed = 1.0
 script = ExtResource("5_iywne")
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=507508772]
 z_index = -2
 offset_left = -486.00003
 offset_top = -378.0
@@ -149,17 +149,17 @@ offset_bottom = -351.41986
 scale = Vector2(36.261993, 30.586773)
 color = Color(0, 0, 0, 1)
 
-[node name="Boundary" parent="." instance=ExtResource("10_vtaks")]
+[node name="Boundary" parent="." unique_id=583063389 instance=ExtResource("10_vtaks")]
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1336596875]
 render_target_clear_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=1395415694]
 texture_filter = 1
 position = Vector2(-200, -200)
 texture = ExtResource("12_kvuet")
 
-[node name="Canvas" type="TextureRect" parent="."]
+[node name="Canvas" type="TextureRect" parent="." unique_id=1467538967]
 z_index = -2
 material = SubResource("ShaderMaterial_excbq")
 offset_left = -245.0
