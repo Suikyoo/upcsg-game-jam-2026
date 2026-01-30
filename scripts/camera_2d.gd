@@ -1,8 +1,8 @@
 extends Camera2D
 
 const zoom_factor: float = 0.5
-const zoom_min: float = 0.35
-const zoom_max: float = 2.25
+const zoom_min: float = 0.255
+const zoom_max: float = 2.75
 
 var chase_position: Vector2;
 var quake: float;

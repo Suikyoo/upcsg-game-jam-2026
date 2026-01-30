@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bgdcruw4cwxg"]
+[gd_scene format=4 uid="uid://bgdcruw4cwxg"]
 
 [ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_s8va5"]
 [ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/ground.tscn" id="2_dga24"]
@@ -117,35 +117,35 @@ shader_parameter/SCREEN_SIZE = Vector2(0, 0)
 [sub_resource type="ViewportTexture" id="ViewportTexture_ir15t"]
 viewport_path = NodePath("SubViewport")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" unique_id=210922163]
 script = ExtResource("1_s8va5")
 bg_color = Color(0.15711647, 0.43804568, 0.5462329, 1)
 
-[node name="Ground" parent="." instance=ExtResource("2_dga24")]
+[node name="Ground" parent="." unique_id=891877932 instance=ExtResource("2_dga24")]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Ground"]
+[node name="TileMapLayer" type="TileMapLayer" parent="Ground" unique_id=1926579503]
 material = SubResource("ShaderMaterial_qxy0u")
 rotation = -0.010942351
 tile_map_data = PackedByteArray("AAAAAP//AwABAAEAAAD/////AwABAAEAAAD//wAAAwABAAEAAAAAAAAAAwABAAEAAAD///7/AwAAAAAAAAD+////AwABAAAAAAD+/wAAAwABAAEAAAD//wEAAwABAAIAAAAAAAEAAwABAAIAAAABAAEAAwABAAIAAAABAP7/AwABAAAAAAAAAP7/AwABAAAAAAABAAAAAwABAAEAAAABAP//AwABAAEAAAD+/wEAAwABAAIAAAACAP//AwABAAEAAAACAAAAAwABAAEAAAADAAAAAwABAAEAAAADAP//AwABAAEAAAACAP7/AwABAAAAAAADAP7/AwACAAAAAAACAAEAAwABAAIAAAADAAEAAwABAAIAAAAEAAEAAwACAAIAAAAEAAAAAwABAAEAAAAFAAAAAwACAAIAAAAFAP//AwABAAEAAAAEAP//AwABAAAAAAD9/wAAAwABAAEAAAD8/wAAAwABAAAAAAD9/wEAAwABAAIAAAD8/wEAAwABAAEAAAD7/wIAAwABAAIAAAD7/wEAAwAAAAEAAAD6/wIAAwAAAAIAAAD8/wIAAwACAAIAAAD9////AwAAAAAAAAAFAP7/AwACAAAAAAAGAP//AwACAAIAAAD7/wAAAwAAAAAAAAD//wUAAwABAAEAAAD//wYAAwABAAEAAAD+/wYAAwABAAEAAAD+/wUAAwAAAAAAAAAAAAYAAwABAAEAAAAAAAUAAwABAAEAAAABAAUAAwABAAEAAAABAAYAAwABAAEAAAAAAAcAAwABAAEAAAABAAcAAwABAAEAAAACAAYAAwACAAEAAAD//wcAAwABAAEAAAD+/wcAAwABAAIAAAD9/wYAAwABAAEAAAD8/wYAAwAAAAAAAAD8/wcAAwAAAAIAAAD9/wcAAwABAAIAAAD//wgAAwAAAAIAAAAAAAgAAwABAAIAAAABAAgAAwACAAIAAAACAAcAAwACAAIAAAACAAUAAwACAAEAAAACAAQAAwACAAAAAAD//wQAAwAAAAAAAAAAAAQAAwABAAAAAAABAAQAAwABAAAAAAA=")
 tile_set = SubResource("TileSet_u5sy4")
 
-[node name="Prism" parent="Ground" instance=ExtResource("8_wtwp4")]
+[node name="Prism" parent="Ground" unique_id=2032286965 instance=ExtResource("8_wtwp4")]
 position = Vector2(4, 104)
 
-[node name="Player" parent="." instance=ExtResource("4_excbq")]
+[node name="Player" parent="." unique_id=210524781 instance=ExtResource("4_excbq")]
 z_index = 2
 collision_mask = 3
 motion_mode = 0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2061911711]
 ignore_rotation = false
-zoom = Vector2(2.25, 2.25)
+zoom = Vector2(1.5, 1.5)
 limit_enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 script = ExtResource("5_iav0o")
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1951387465]
 z_index = -2
 offset_left = -411.0
 offset_top = -351.0
@@ -154,17 +154,17 @@ offset_bottom = -311.0
 scale = Vector2(20.949167, 21.977358)
 color = Color(0, 0, 0, 1)
 
-[node name="Boundary" parent="." instance=ExtResource("6_dnkej")]
+[node name="Boundary" parent="." unique_id=1758638540 instance=ExtResource("6_dnkej")]
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=585943614]
 render_target_clear_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=1383792397]
 texture_filter = 1
 position = Vector2(-200, -200)
 texture = ExtResource("7_mm8aj")
 
-[node name="Canvas" type="TextureRect" parent="."]
+[node name="Canvas" type="TextureRect" parent="." unique_id=348017471]
 z_index = -2
 material = SubResource("ShaderMaterial_excbq")
 offset_left = -245.0
