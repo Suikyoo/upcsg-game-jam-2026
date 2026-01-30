@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bskd6o0kevcog"]
+
+[ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_ln7o8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0282v"]
+viewport_path = NodePath("SubViewport")
+
+[node name="World" unique_id=1376563817 instance=ExtResource("1_ln7o8")]
+
+[node name="Canvas" parent="." index="5" unique_id=1467538967]
+texture = SubResource("ViewportTexture_0282v")

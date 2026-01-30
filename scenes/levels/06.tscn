@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://c5ayj5o07fdhm"]
+
+[ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_w5npi"]
+[ext_resource type="PackedScene" uid="uid://clll8x3u5566o" path="res://scenes/spike.tscn" id="2_d6dkt"]
+[ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="3_cyatv"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3u0mq"]
+viewport_path = NodePath("SubViewport")
+
+[node name="World" unique_id=1376563817 instance=ExtResource("1_w5npi")]
+
+[node name="TileMapLayer" parent="Ground" parent_id_path=PackedInt32Array(1016304721) index="0" unique_id=806882060]
+tile_map_data = PackedByteArray("AAD//wAAAwABAAEAAAAAAAAAAwABAAEAAAABAAAAAwABAAEAAAABAP//AwABAAEAAAAAAP//AwABAAEAAAD+/wEAAwABAAEAAAD//wEAAwABAAEAAAD/////AwABAAEAAAD+////AwABAAEAAAD+/wAAAwABAAEAAAD//wIAAwABAAEAAAAAAAIAAwABAAEAAAAAAAEAAwABAAEAAAD+/wIAAwABAAEAAAD//wMAAwABAAEAAAAAAAMAAwABAAEAAAAAAP7/AwABAAEAAAD///7/AwABAAEAAAD+//7/AwABAAEAAAD9/wAAAwABAAEAAAD9/wEAAwABAAEAAAD9//7/AwABAAEAAAD8//7/AwABAAEAAAD8////AwABAAEAAAD8/wAAAwABAAEAAAD8/wEAAwABAAEAAAD9////AwABAAEAAAD///3/AwABAAEAAAAAAP3/AwABAAEAAAABAAEAAwABAAEAAAACAAAAAwABAAEAAAACAP//AwABAAEAAAADAP//AwABAAEAAAADAP7/AwABAAEAAAACAP7/AwABAAEAAAABAP7/AwABAAEAAAABAP3/AwABAAEAAAD+//3/AwABAAEAAAD9//3/AwABAAEAAAD///z/AwABAAEAAAD+//z/AwABAAEAAAD9//z/AwAAAAEAAAAAAPz/AwABAAEAAAD7/wAAAwABAAEAAAD7////AwABAAEAAAD7//7/AwABAAEAAAACAAEAAwABAAEAAAD8//3/AwABAAAAAAD7//3/AwAAAAAAAAACAP3/AwABAAEAAAABAAIAAwABAAEAAAACAAIAAwABAAIAAAADAAEAAwABAAEAAAADAAAAAwABAAEAAAADAP3/AwABAAEAAAAEAP//AwABAAEAAAAEAP7/AwABAAEAAAAEAP3/AwACAAAAAAADAPz/AwACAAAAAAACAPz/AwABAAAAAAABAPz/AwABAAEAAAAAAPv/AwABAAAAAAD///v/AwABAAAAAAABAPv/AwACAAAAAAD+//v/AwABAAAAAAD9//v/AwAAAAAAAAD9/wIAAwABAAEAAAD8/wIAAwABAAEAAAD8/wMAAwAAAAIAAAD9/wMAAwABAAIAAAD+/wMAAwABAAEAAAABAAMAAwACAAIAAAADAAIAAwABAAIAAAD7/wIAAwAAAAIAAAD7/wEAAwABAAEAAAD6////AwABAAEAAAD6/wAAAwABAAEAAAD6//7/AwAAAAAAAAD5////AwAAAAAAAAD5/wAAAwAAAAIAAAD6/wEAAwAAAAIAAAAEAAAAAwABAAEAAAAFAAAAAwACAAEAAAAEAAEAAwACAAEAAAAEAAIAAwACAAIAAAAFAP7/AwACAAAAAAAFAP//AwACAAEAAAD+/wQAAwAAAAIAAAD//wQAAwABAAIAAAAAAAQAAwACAAIAAAA=")
+
+[node name="Player" parent="." index="1" unique_id=1084302417]
+position = Vector2(-50, 0)
+
+[node name="Canvas" parent="." index="5" unique_id=1467538967]
+texture = SubResource("ViewportTexture_3u0mq")
+
+[node name="Spikes" type="Node2D" parent="." index="6" unique_id=124673319]
+
+[node name="Spike" parent="Spikes" index="0" unique_id=947787155 instance=ExtResource("2_d6dkt")]
+position = Vector2(0, -36)
+
+[node name="Spike2" parent="Spikes" index="1" unique_id=1513706070 instance=ExtResource("2_d6dkt")]
+position = Vector2(-1, -25)
+
+[node name="Spike3" parent="Spikes" index="2" unique_id=1408351547 instance=ExtResource("2_d6dkt")]
+position = Vector2(-1, -15)
+
+[node name="Spike4" parent="Spikes" index="3" unique_id=1793792916 instance=ExtResource("2_d6dkt")]
+position = Vector2(-1, -2)
+
+[node name="Spike5" parent="Spikes" index="4" unique_id=1064489022 instance=ExtResource("2_d6dkt")]
+position = Vector2(-2, 8)
+
+[node name="Spike6" parent="Spikes" index="5" unique_id=2090447625 instance=ExtResource("2_d6dkt")]
+position = Vector2(-1, 18)
+
+[node name="Spike7" parent="Spikes" index="6" unique_id=270884223 instance=ExtResource("2_d6dkt")]
+position = Vector2(-2, 30)
+
+[node name="Prism" parent="Spikes" index="7" unique_id=1889537108 instance=ExtResource("3_cyatv")]
+position = Vector2(46, 2)

@@ -1,0 +1,18 @@
+[gd_scene format=4 uid="uid://dwflscpjmxen0"]
+
+[ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_wtsai"]
+[ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="2_2lbtt"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2lbtt"]
+viewport_path = NodePath("SubViewport")
+
+[node name="World" unique_id=1376563817 instance=ExtResource("1_wtsai")]
+
+[node name="TileMapLayer" parent="Ground" parent_id_path=PackedInt32Array(1016304721) index="0" unique_id=806882060]
+tile_map_data = PackedByteArray("AAAAAP//AwABAAEAAAD/////AwABAAEAAAD//wAAAwABAAEAAAD//wEAAwAAAAIAAAAAAAEAAwABAAIAAAABAAEAAwABAAIAAAABAAAAAwABAAEAAAABAP//AwACAAEAAAAAAAAAAwABAAEAAAD+/wAAAwABAAIAAAD9/wAAAwABAAIAAAD+////AwABAAEAAAAAAP7/AwABAAEAAAD///7/AwABAAEAAAD+//7/AwAAAAEAAAD+//3/AwAAAAEAAAD///3/AwABAAEAAAAAAP3/AwABAAEAAAABAP7/AwABAAEAAAD9////AwABAAEAAAACAAAAAwABAAAAAAACAAEAAwACAAIAAAD//wkAAwABAAEAAAD+/wkAAwABAAEAAAD9/wkAAwAAAAAAAAD9/woAAwABAAIAAAD+/woAAwABAAIAAAD//wsAAwABAAEAAAAAAAsAAwACAAEAAAD//wwAAwACAAEAAAAAAAoAAwACAAEAAAAAAAkAAwABAAEAAAD//woAAwABAAEAAAABAAkAAwACAAEAAAABAAgAAwABAAAAAAAAAAgAAwABAAEAAAAAAAcAAwABAAEAAAD//wcAAwABAAEAAAD//wgAAwABAAEAAAD+/wcAAwABAAEAAAD+/wgAAwABAAEAAAALAAkAAwABAAEAAAALAAgAAwABAAEAAAALAAoAAwABAAIAAAAMAAkAAwABAAEAAAAMAAoAAwABAAEAAAAMAAgAAwABAAEAAAAKAAkAAwABAAEAAAAKAAgAAwABAAEAAAAKAAoAAwABAAIAAAAMAAsAAwABAAIAAAANAAsAAwACAAEAAAANAAoAAwACAAEAAAANAAkAAwACAAEAAAANAAgAAwACAAEAAAANAAcAAwABAAEAAAAMAAcAAwABAAAAAAAJAAgAAwAAAAEAAAAJAAkAAwABAAEAAAAKAAcAAwABAAEAAAALAAcAAwABAAEAAAALAAYAAwABAAEAAAA=")
+
+[node name="Prism" parent="Ground" parent_id_path=PackedInt32Array(1016304721) index="1" unique_id=801908306 instance=ExtResource("2_2lbtt")]
+position = Vector2(194, 144)
+
+[node name="Canvas" parent="." index="5" unique_id=1467538967]
+texture = SubResource("ViewportTexture_2lbtt")

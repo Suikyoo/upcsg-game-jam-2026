@@ -1,0 +1,180 @@
+[gd_scene format=4 uid="uid://cbmpcmlf64jd"]
+
+[ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_d3j31"]
+[ext_resource type="PackedScene" uid="uid://clll8x3u5566o" path="res://scenes/spike.tscn" id="2_3bunl"]
+[ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="3_bj87q"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o0a5r"]
+viewport_path = NodePath("SubViewport")
+
+[node name="World" unique_id=1376563817 instance=ExtResource("1_d3j31")]
+
+[node name="TileMapLayer" parent="Ground" parent_id_path=PackedInt32Array(1016304721) index="0" unique_id=806882060]
+tile_map_data = PackedByteArray("AAD/////AwABAAEAAAD//wAAAwABAAEAAAAAAAAAAwABAAEAAAAAAP//AwABAAEAAAD+/wAAAwAAAAIAAAD+////AwABAAEAAAAAAP7/AwABAAEAAAD//wEAAwABAAIAAAAAAAEAAwABAAEAAAD///7/AwABAAEAAAD///3/AwAAAAAAAAD+//7/AwAAAAAAAAABAAAAAwABAAEAAAABAP//AwABAAEAAAABAP7/AwACAAEAAAABAAEAAwABAAEAAAAAAP3/AwABAAAAAAD9////AwAAAAAAAAABAP3/AwACAAAAAAABAAIAAwABAAEAAAAAAAIAAwAAAAEAAAAAAAMAAwABAAIAAAABAAMAAwACAAEAAAACAAIAAwACAAEAAAACAAEAAwACAAEAAAACAAAAAwACAAEAAAACAP//AwACAAAAAAD///T/AwABAAEAAAD///X/AwABAAEAAAAAAPX/AwABAAEAAAAAAPb/AwACAAEAAAAAAPf/AwACAAIAAAD///f/AwABAAIAAAD///b/AwABAAEAAAD+//b/AwABAAEAAAD+//X/AwABAAEAAAD+//T/AwABAAEAAAAAAPP/AwABAAEAAAAAAPT/AwABAAEAAAABAPT/AwABAAEAAAABAPX/AwABAAEAAAD+//f/AwAAAAIAAAD9//T/AwABAAEAAAD9//b/AwAAAAIAAAD9//X/AwABAAEAAAD8//T/AwABAAEAAAD8//P/AwABAAEAAAD9//P/AwABAAEAAAD+//P/AwABAAEAAAD///P/AwABAAEAAAABAPP/AwABAAEAAAACAPP/AwABAAEAAAACAPT/AwABAAEAAAABAPL/AwABAAEAAAAAAPL/AwABAAEAAAD///L/AwABAAEAAAD///j/AwACAAIAAAAAAPH/AwABAAEAAAD///H/AwABAAEAAAD+//L/AwABAAEAAAD+//H/AwAAAAEAAAD9//D/AwABAAIAAAD8//H/AwAAAAEAAAD8//L/AwAAAAEAAAD9//L/AwABAAAAAAD///D/AwABAAEAAAACAPL/AwABAAEAAAABAPH/AwABAAEAAAABAPD/AwABAAAAAAAAAPD/AwABAAEAAAAAAO//AwACAAEAAAD//+//AwABAAEAAAD+//D/AwABAAEAAAD+/+//AwABAAEAAAD9/+//AwABAAEAAAD8//D/AwABAAEAAAD7//P/AwABAAAAAAD6//P/AwAAAAIAAAD7//T/AwAAAAEAAAD7//X/AwABAAIAAAD8//X/AwABAAIAAAADAPP/AwACAAEAAAACAPH/AwABAAEAAAACAPD/AwABAAEAAAD9/+7/AwABAAEAAAD8/+//AwABAAEAAAD7/+//AwAAAAEAAAD7//D/AwAAAAIAAAD+/+7/AwABAAEAAAABAO7/AwABAAIAAAAAAO7/AwABAAEAAAAAAO3/AwABAAEAAAD//+7/AwABAAEAAAD//+3/AwABAAEAAAD+/+3/AwABAAEAAAD9/+z/AwABAAEAAAD8/+3/AwABAAEAAAD7/+7/AwABAAEAAAADAPD/AwACAAEAAAADAPH/AwACAAEAAAADAPL/AwACAAEAAAADAO//AwABAAEAAAACAO//AwAAAAEAAAACAO7/AwABAAEAAAACAO3/AwABAAEAAAABAO3/AwABAAEAAAADAO7/AwABAAEAAAADAO3/AwABAAEAAAABAOz/AwABAAEAAAAAAOz/AwABAAEAAAD//+z/AwABAAAAAAD+/+z/AwABAAEAAAACAOz/AwABAAEAAAADAOv/AwABAAEAAAACAOv/AwABAAEAAAAEAO7/AwABAAEAAAAEAO3/AwABAAEAAAADAOz/AwABAAEAAAAAAOv/AwAAAAEAAAD9/+v/AwABAAEAAAD+/+v/AwACAAEAAAD8/+v/AwAAAAEAAAD8/+z/AwABAAEAAAAEAOz/AwABAAEAAAAFAO7/AwABAAIAAAAGAO7/AwABAAIAAAAGAO3/AwABAAEAAAAFAO3/AwABAAEAAAAEAO//AwACAAEAAAAFAOz/AwABAAEAAAAEAOv/AwABAAEAAAAEAOr/AwABAAEAAAADAOr/AwABAAEAAAAAAOr/AwABAAEAAAD//+r/AwABAAIAAAABAOr/AwABAAEAAAACAOr/AwABAAEAAAAEAOn/AwACAAEAAAAFAOv/AwABAAEAAAAGAOv/AwABAAEAAAAHAOz/AwABAAEAAAAHAOv/AwABAAEAAAAGAOz/AwABAAEAAAAHAO3/AwABAAEAAAAIAOz/AwABAAEAAAAIAOv/AwABAAEAAAAHAO7/AwABAAIAAAAIAO7/AwABAAIAAAAIAO3/AwABAAEAAAAJAOz/AwABAAEAAAAJAO3/AwABAAEAAAAJAO7/AwABAAIAAAAKAO7/AwACAAIAAAAKAO3/AwABAAEAAAAKAOz/AwABAAEAAAAKAOv/AwABAAEAAAAKAOr/AwABAAEAAAAJAOr/AwABAAEAAAAIAOr/AwABAAEAAAAHAOr/AwABAAEAAAAGAOr/AwABAAEAAAAGAOn/AwAAAAEAAAAFAOr/AwABAAAAAAAJAOv/AwABAAEAAAD//+n/AwABAAEAAAD+/+r/AwABAAEAAAADAOn/AwABAAEAAAACAOn/AwABAAEAAAABAOn/AwABAAEAAAAAAOn/AwABAAEAAAAEAOj/AwABAAEAAAAFAOj/AwABAAIAAAAGAOj/AwABAAEAAAAHAOj/AwABAAEAAAAIAOj/AwABAAEAAAAIAOn/AwABAAEAAAAHAOn/AwABAAEAAAAJAOn/AwABAAEAAAAKAOn/AwABAAEAAAACAOj/AwABAAEAAAADAOj/AwABAAEAAAALAO3/AwACAAIAAAALAOz/AwACAAEAAAALAOv/AwABAAEAAAAMAOv/AwACAAIAAAAMAOr/AwACAAEAAAALAOr/AwABAAEAAAAMAOn/AwACAAAAAAALAOn/AwABAAAAAAAKAOj/AwACAAAAAAAJAOj/AwABAAEAAAAJAOf/AwACAAAAAAAIAOf/AwABAAAAAAAHAOf/AwABAAAAAAAGAOf/AwABAAAAAAAFAOf/AwABAAAAAAAEAOf/AwABAAAAAAADAOf/AwABAAAAAAACAOf/AwAAAAAAAAABAOj/AwABAAAAAAAAAOj/AwABAAAAAAD//+j/AwAAAAAAAAD+/+n/AwAAAAAAAAD9/+r/AwABAAAAAAD8/+r/AwAAAAAAAAD7/+z/AwAAAAAAAAD7/+3/AwAAAAEAAAD6/+7/AwAAAAAAAAACAPX/AwABAAEAAAACAPb/AwABAAIAAAADAPb/AwACAAIAAAADAPX/AwACAAEAAAADAPT/AwACAAEAAAABAOv/AwABAAEAAAD8/+7/AwABAAEAAAD9/+3/AwABAAEAAAA2AOv/AwABAAEAAAA1AOv/AwABAAEAAAA1AOz/AwABAAEAAAA1AO3/AwABAAEAAAA2AOz/AwABAAEAAAA2AOr/AwABAAEAAAA1AOr/AwABAAEAAAA0AOr/AwAAAAAAAAA0AOv/AwAAAAEAAAA3AOr/AwABAAEAAAA2AOn/AwABAAEAAAA3AOv/AwABAAEAAAA0AOz/AwAAAAEAAAA0AO3/AwAAAAIAAAA2AO3/AwABAAEAAAA3AOz/AwABAAEAAAA4AOv/AwABAAEAAAA5AOr/AwABAAEAAAA4AOr/AwABAAEAAAA4AOz/AwABAAEAAAA1AO7/AwAAAAIAAAA2AO7/AwABAAIAAAA3AO3/AwABAAEAAAA4AO3/AwABAAEAAAA5AOz/AwABAAEAAAA5AOv/AwABAAEAAAA3AO7/AwABAAIAAAA6AOv/AwABAAEAAAA6AOr/AwABAAEAAAA4AO7/AwACAAIAAAA5AO3/AwACAAIAAAA3AOn/AwABAAEAAAA4AOj/AwACAAAAAAA3AOj/AwABAAAAAAA2AOj/AwABAAEAAAA1AOj/AwAAAAAAAAA1AOn/AwAAAAEAAAA5AOn/AwABAAAAAAA6AOz/AwACAAIAAAA7AOv/AwACAAIAAAA7AOr/AwACAAEAAAA7AOn/AwACAAAAAAA6AOn/AwABAAAAAAA4AOn/AwABAAEAAAA=")
+
+[node name="Canvas" parent="." index="5" unique_id=1467538967]
+texture = SubResource("ViewportTexture_o0a5r")
+
+[node name="Spikes" type="Node2D" parent="." index="6" unique_id=2088999857]
+
+[node name="Spike" parent="Spikes" index="0" unique_id=617161040 instance=ExtResource("2_3bunl")]
+position = Vector2(1, -182)
+
+[node name="Spike2" parent="Spikes" index="1" unique_id=631927289 instance=ExtResource("2_3bunl")]
+position = Vector2(-62, -229)
+
+[node name="Spike3" parent="Spikes" index="2" unique_id=1447390567 instance=ExtResource("2_3bunl")]
+position = Vector2(-21, -332)
+
+[node name="Spike4" parent="Spikes" index="3" unique_id=267551173 instance=ExtResource("2_3bunl")]
+position = Vector2(93, -377)
+
+[node name="Spike5" parent="Spikes" index="4" unique_id=1662598316 instance=ExtResource("2_3bunl")]
+position = Vector2(128, -347)
+
+[node name="Spike6" parent="Spikes" index="5" unique_id=1862091360 instance=ExtResource("2_3bunl")]
+position = Vector2(148, -312)
+
+[node name="Spike7" parent="Spikes" index="6" unique_id=1766016567 instance=ExtResource("2_3bunl")]
+position = Vector2(10, -226)
+
+[node name="Spike8" parent="Spikes" index="7" unique_id=1505232943 instance=ExtResource("2_3bunl")]
+position = Vector2(-59, -258)
+
+[node name="Spike9" parent="Spikes" index="8" unique_id=1723638983 instance=ExtResource("2_3bunl")]
+position = Vector2(25, -297)
+
+[node name="Spike10" parent="Spikes" index="9" unique_id=1795102765 instance=ExtResource("2_3bunl")]
+position = Vector2(-18, -216)
+
+[node name="Spike11" parent="Spikes" index="10" unique_id=243379302 instance=ExtResource("2_3bunl")]
+position = Vector2(-3, -298)
+
+[node name="Spike12" parent="Spikes" index="11" unique_id=110014291 instance=ExtResource("2_3bunl")]
+position = Vector2(-50, -200)
+
+[node name="Spike13" parent="Spikes" index="12" unique_id=887028866 instance=ExtResource("2_3bunl")]
+position = Vector2(-42, -318)
+
+[node name="Spike14" parent="Spikes" index="13" unique_id=838380799 instance=ExtResource("2_3bunl")]
+position = Vector2(-11, -263)
+
+[node name="Spike15" parent="Spikes" index="14" unique_id=1852699357 instance=ExtResource("2_3bunl")]
+position = Vector2(7, -357)
+
+[node name="Spike16" parent="Spikes" index="15" unique_id=660098483 instance=ExtResource("2_3bunl")]
+position = Vector2(-35, -181)
+
+[node name="Spike17" parent="Spikes" index="16" unique_id=340084148 instance=ExtResource("2_3bunl")]
+position = Vector2(39, -269)
+
+[node name="Spike18" parent="Spikes" index="17" unique_id=208598640 instance=ExtResource("2_3bunl")]
+position = Vector2(47, -364)
+
+[node name="Spike19" parent="Spikes" index="18" unique_id=2063603576 instance=ExtResource("2_3bunl")]
+position = Vector2(37, -333)
+
+[node name="Spike20" parent="Spikes" index="19" unique_id=1923564647 instance=ExtResource("2_3bunl")]
+position = Vector2(84, -327)
+
+[node name="Spike21" parent="Spikes" index="20" unique_id=1706431431 instance=ExtResource("2_3bunl")]
+position = Vector2(69, -273)
+
+[node name="Spike22" parent="Spikes" index="21" unique_id=1482946889 instance=ExtResource("2_3bunl")]
+position = Vector2(115, -293)
+
+[node name="Spike23" parent="Spikes" index="22" unique_id=1572347986 instance=ExtResource("2_3bunl")]
+position = Vector2(55, -235)
+
+[node name="Spike24" parent="Spikes" index="23" unique_id=1308677246 instance=ExtResource("2_3bunl")]
+position = Vector2(40, -189)
+
+[node name="Spike25" parent="Spikes" index="24" unique_id=995280491 instance=ExtResource("2_3bunl")]
+position = Vector2(17, -159)
+
+[node name="Spike26" parent="Spikes" index="25" unique_id=2132082313 instance=ExtResource("2_3bunl")]
+position = Vector2(-35, -148)
+
+[node name="Spikes2" type="Node2D" parent="." index="7" unique_id=1950871078]
+position = Vector2(1055, -103)
+
+[node name="Spike" parent="Spikes2" index="0" unique_id=1338154040 instance=ExtResource("2_3bunl")]
+position = Vector2(-194, -189)
+
+[node name="Spike2" parent="Spikes2" index="1" unique_id=1683460009 instance=ExtResource("2_3bunl")]
+position = Vector2(-179, -188)
+
+[node name="Spike3" parent="Spikes2" index="2" unique_id=1498555502 instance=ExtResource("2_3bunl")]
+position = Vector2(-514, 0)
+
+[node name="Spike4" parent="Spikes2" index="3" unique_id=834928644 instance=ExtResource("2_3bunl")]
+position = Vector2(93, -377)
+
+[node name="Spike5" parent="Spikes2" index="4" unique_id=23495925 instance=ExtResource("2_3bunl")]
+position = Vector2(128, -347)
+
+[node name="Spike6" parent="Spikes2" index="5" unique_id=1424455701 instance=ExtResource("2_3bunl")]
+position = Vector2(148, -312)
+
+[node name="Spike7" parent="Spikes2" index="6" unique_id=1577012092 instance=ExtResource("2_3bunl")]
+position = Vector2(-206, -188)
+
+[node name="Spike8" parent="Spikes2" index="7" unique_id=1896416483 instance=ExtResource("2_3bunl")]
+position = Vector2(-200, -280)
+
+[node name="Spike9" parent="Spikes2" index="8" unique_id=1997720386 instance=ExtResource("2_3bunl")]
+position = Vector2(25, -297)
+
+[node name="Spike10" parent="Spikes2" index="9" unique_id=60961533 instance=ExtResource("2_3bunl")]
+position = Vector2(-218, -195)
+
+[node name="Spike11" parent="Spikes2" index="10" unique_id=196639824 instance=ExtResource("2_3bunl")]
+position = Vector2(-202, -261)
+
+[node name="Spike12" parent="Spikes2" index="11" unique_id=1813078852 instance=ExtResource("2_3bunl")]
+position = Vector2(-129, -217)
+
+[node name="Spike13" parent="Spikes2" index="12" unique_id=621185509 instance=ExtResource("2_3bunl")]
+position = Vector2(-189, -218)
+
+[node name="Spike14" parent="Spikes2" index="13" unique_id=696828837 instance=ExtResource("2_3bunl")]
+position = Vector2(-188, -282)
+
+[node name="Spike15" parent="Spikes2" index="14" unique_id=990442494 instance=ExtResource("2_3bunl")]
+position = Vector2(7, -357)
+
+[node name="Spike16" parent="Spikes2" index="15" unique_id=1489167122 instance=ExtResource("2_3bunl")]
+position = Vector2(-140, -208)
+
+[node name="Spike17" parent="Spikes2" index="16" unique_id=1014360388 instance=ExtResource("2_3bunl")]
+position = Vector2(-139, -258)
+
+[node name="Spike18" parent="Spikes2" index="17" unique_id=501969932 instance=ExtResource("2_3bunl")]
+position = Vector2(47, -364)
+
+[node name="Spike19" parent="Spikes2" index="18" unique_id=436695936 instance=ExtResource("2_3bunl")]
+position = Vector2(37, -333)
+
+[node name="Spike20" parent="Spikes2" index="19" unique_id=234495992 instance=ExtResource("2_3bunl")]
+position = Vector2(84, -327)
+
+[node name="Spike21" parent="Spikes2" index="20" unique_id=82021492 instance=ExtResource("2_3bunl")]
+position = Vector2(69, -273)
+
+[node name="Spike22" parent="Spikes2" index="21" unique_id=957033670 instance=ExtResource("2_3bunl")]
+position = Vector2(115, -293)
+
+[node name="Spike23" parent="Spikes2" index="22" unique_id=478865154 instance=ExtResource("2_3bunl")]
+position = Vector2(-161, -232)
+
+[node name="Spike24" parent="Spikes2" index="23" unique_id=1570484451 instance=ExtResource("2_3bunl")]
+position = Vector2(-169, -266)
+
+[node name="Spike25" parent="Spikes2" index="24" unique_id=1838444593 instance=ExtResource("2_3bunl")]
+position = Vector2(-150, -200)
+
+[node name="Spike26" parent="Spikes2" index="25" unique_id=921717183 instance=ExtResource("2_3bunl")]
+position = Vector2(-164, -191)
+
+[node name="Prism" parent="Spikes2" index="26" unique_id=620324230 instance=ExtResource("3_bj87q")]
+position = Vector2(-132, -239)
