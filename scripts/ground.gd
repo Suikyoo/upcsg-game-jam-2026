@@ -78,8 +78,10 @@ func _get_configuration_warnings() -> PackedStringArray:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Entity:
 		body.falling = false
+	$"/root/World/MusicController".play("Landing")
 
 #when exiting, falling state of an entity reactivates
 func _on_body_exited(body: Node2D) -> void:
 	if body is Entity:
 		body.falling = true	
+	$"/root/World/MusicController".play("Falling")

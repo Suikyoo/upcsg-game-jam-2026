@@ -6,3 +6,4 @@ func _physics_process(delta: float) -> void:
 	
 func on_collide(body: CharacterBody2D):
 	$/root/World.on_win()
+	$"/root/World/MusicController".play("Win")
