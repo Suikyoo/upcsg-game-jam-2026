@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=4 uid="uid://bgdcruw4cwxg"]
+[gd_scene format=4 uid="uid://bgdcruw4cwxg"]
 
-[ext_resource type="Script" uid="uid://ce87uotrbfdqt" path="res://scripts/prism.gd" id="1_ph31p"]
+[ext_resource type="Script" uid="uid://cj5d2ojwf120w" path="res://scripts/world.gd" id="1_ph31p"]
 [ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/ground.tscn" id="2_dga24"]
 [ext_resource type="Shader" uid="uid://clnrt0pq7h8pv" path="res://shaders/stack.gdshader" id="3_dga24"]
 [ext_resource type="Texture2D" uid="uid://d35yc0g2qmcqp" path="res://assets/tileset.png" id="3_qxy0u"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://btfq1vy5r6277" path="res://assets/shard.png" id="7_mm8aj"]
 [ext_resource type="Shader" uid="uid://76ukmvvd1w38" path="res://shaders/game.gdshader" id="8_ph31p"]
 [ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="8_wtwp4"]
-[ext_resource type="Shader" uid="uid://col0pl51j2v7n" path="res://shaders/canvas.gdshader" id="10_qxy0u"]
+[ext_resource type="Shader" uid="uid://c3ph35v824blm" path="res://shaders/canvas_outline.gdshader" id="11_ph31p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxy0u"]
 shader = ExtResource("3_dga24")
@@ -111,74 +111,89 @@ sources/3 = SubResource("TileSetAtlasSource_kvuet")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oqiax"]
 shader = ExtResource("8_ph31p")
-shader_parameter/SCREEN_SIZE = Vector2(640, 480)
+shader_parameter/SCREEN_SIZE = Vector2(0, 0)
 shader_parameter/darkness = 0.0
 shader_parameter/danger = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_excbq"]
-shader = ExtResource("10_qxy0u")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_us0u5"]
+shader = ExtResource("11_ph31p")
 shader_parameter/chroma_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
-shader_parameter/bg_color = Color(0, 0.034999993, 0.1, 1)
-shader_parameter/SCREEN_SIZE = Vector2(0, 0)
+shader_parameter/outline_color = Color(0.8862745, 0, 0, 1)
+shader_parameter/outline_thickness = 1.0
+shader_parameter/outline_offset = Vector2(0, 0)
+shader_parameter/SCREEN_SIZE = Vector2(640, 480)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ir15t"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_sad5p"]
 viewport_path = NodePath("SubViewport")
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" unique_id=906000169]
 script = ExtResource("1_ph31p")
 
-[node name="Ground" parent="." instance=ExtResource("2_dga24")]
+[node name="Ground" parent="." unique_id=156637887 instance=ExtResource("2_dga24")]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Ground"]
+[node name="TileMapLayer" type="TileMapLayer" parent="Ground" unique_id=1039720295]
 material = SubResource("ShaderMaterial_qxy0u")
 rotation = -0.010942351
 tile_map_data = PackedByteArray("AAAAAP//AwABAAEAAAD/////AwABAAEAAAD//wAAAwABAAEAAAAAAAAAAwABAAEAAAD///7/AwAAAAAAAAD+////AwABAAAAAAD+/wAAAwABAAEAAAD//wEAAwABAAIAAAAAAAEAAwABAAIAAAABAAEAAwABAAIAAAABAP7/AwABAAAAAAAAAP7/AwABAAAAAAABAAAAAwABAAEAAAABAP//AwABAAEAAAD+/wEAAwABAAIAAAACAP//AwABAAEAAAACAAAAAwABAAEAAAADAAAAAwABAAEAAAADAP//AwABAAEAAAACAP7/AwABAAAAAAADAP7/AwACAAAAAAACAAEAAwABAAIAAAADAAEAAwABAAIAAAAEAAEAAwACAAIAAAAEAAAAAwABAAEAAAAFAAAAAwACAAIAAAAFAP//AwABAAEAAAAEAP//AwABAAAAAAD9/wAAAwABAAEAAAD8/wAAAwABAAAAAAD9/wEAAwABAAIAAAD8/wEAAwABAAEAAAD7/wIAAwABAAIAAAD7/wEAAwAAAAEAAAD6/wIAAwAAAAIAAAD8/wIAAwACAAIAAAD9////AwAAAAAAAAAFAP7/AwACAAAAAAAGAP//AwACAAIAAAD7/wAAAwAAAAAAAAD//wUAAwABAAEAAAD//wYAAwABAAEAAAD+/wYAAwABAAEAAAD+/wUAAwAAAAAAAAAAAAYAAwABAAEAAAAAAAUAAwABAAEAAAABAAUAAwABAAEAAAABAAYAAwABAAEAAAAAAAcAAwABAAEAAAABAAcAAwABAAEAAAACAAYAAwACAAEAAAD//wcAAwABAAEAAAD+/wcAAwABAAIAAAD9/wYAAwABAAEAAAD8/wYAAwAAAAAAAAD8/wcAAwAAAAIAAAD9/wcAAwABAAIAAAD//wgAAwAAAAIAAAAAAAgAAwABAAIAAAABAAgAAwACAAIAAAACAAcAAwACAAIAAAACAAUAAwACAAEAAAACAAQAAwACAAAAAAD//wQAAwAAAAAAAAAAAAQAAwABAAAAAAABAAQAAwABAAAAAAA=")
 tile_set = SubResource("TileSet_u5sy4")
 
-[node name="Player" parent="." instance=ExtResource("4_excbq")]
+[node name="Player" parent="." unique_id=1507736453 instance=ExtResource("4_excbq")]
 z_index = 2
 collision_mask = 3
 motion_mode = 0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Boundary" parent="." unique_id=68658799 instance=ExtResource("6_dnkej")]
+
+[node name="Prism" parent="." unique_id=1409791861 instance=ExtResource("8_wtwp4")]
+position = Vector2(4, 104)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1601598584]
+z_index = 12
 ignore_rotation = false
 zoom = Vector2(1.5, 1.5)
 limit_enabled = false
 position_smoothing_speed = 1.0
 script = ExtResource("5_iav0o")
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D"]
-z_index = -2
-offset_left = -411.0
-offset_top = -351.0
-offset_right = -371.0
-offset_bottom = -311.0
-scale = Vector2(20.949167, 21.977358)
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=822042169]
+z_index = -20
+offset_left = -486.00003
+offset_top = -378.0
+offset_right = -458.45053
+offset_bottom = -351.41986
+scale = Vector2(36.261993, 30.586773)
 color = Color(0, 0, 0, 1)
 
-[node name="Filter" type="ColorRect" parent="Camera2D"]
+[node name="Filter" type="ColorRect" parent="Camera2D" unique_id=978884073]
+z_index = 999
+z_as_relative = false
 material = SubResource("ShaderMaterial_oqiax")
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -650.0
+offset_top = -463.0
+offset_right = -530.0
+offset_bottom = -343.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10.650343, 7.994728)
 
-[node name="Boundary" parent="." instance=ExtResource("6_dnkej")]
-
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=2009591858]
 render_target_clear_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=1975592664]
 texture_filter = 1
 position = Vector2(-200, -200)
 texture = ExtResource("7_mm8aj")
 
-[node name="Canvas" type="TextureRect" parent="."]
+[node name="Canvas" type="TextureRect" parent="." unique_id=1595042619]
 z_index = -2
-material = SubResource("ShaderMaterial_excbq")
+material = SubResource("ShaderMaterial_us0u5")
 offset_left = -245.0
 offset_top = -150.0
 offset_right = 267.0
 offset_bottom = 362.0
-texture = SubResource("ViewportTexture_ir15t")
+texture = SubResource("ViewportTexture_sad5p")
 
-[node name="Prism" parent="." instance=ExtResource("8_wtwp4")]
-position = Vector2(4, 104)
+[connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]

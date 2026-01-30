@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d35yc0g2qmcqp" path="res://assets/tileset.png" id="3_dinhu"]
 [ext_resource type="PackedScene" uid="uid://div8vq63kmxi2" path="res://scenes/ground.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://cp4he6iltnikf" path="res://scripts/camera_2d.gd" id="5_iywne"]
+[ext_resource type="Shader" uid="uid://76ukmvvd1w38" path="res://shaders/game.gdshader" id="8_vtaks"]
 [ext_resource type="Shader" uid="uid://c3ph35v824blm" path="res://shaders/canvas_outline.gdshader" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dcuwdh4sjhmrg" path="res://scenes/boundary.tscn" id="10_vtaks"]
 [ext_resource type="Texture2D" uid="uid://btfq1vy5r6277" path="res://assets/shard.png" id="12_kvuet"]
@@ -107,7 +108,13 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.73042506, 0, 0.11251018, 1)
 sources/3 = SubResource("TileSetAtlasSource_kvuet")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_excbq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvpfn"]
+shader = ExtResource("8_vtaks")
+shader_parameter/SCREEN_SIZE = Vector2(0, 0)
+shader_parameter/darkness = 0.0
+shader_parameter/danger = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dinhu"]
 shader = ExtResource("9_0tnpc")
 shader_parameter/chroma_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
 shader_parameter/outline_color = Color(0.8862745, 0, 0, 1)
@@ -115,7 +122,7 @@ shader_parameter/outline_thickness = 1.0
 shader_parameter/outline_offset = Vector2(0, 0)
 shader_parameter/SCREEN_SIZE = Vector2(640, 480)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ir15t"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kvuet"]
 viewport_path = NodePath("SubViewport")
 
 [node name="World" type="Node2D" unique_id=1491424587]
@@ -133,15 +140,18 @@ z_index = 2
 collision_mask = 3
 motion_mode = 0
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2004997722]
+[node name="Boundary" parent="." unique_id=1740195757 instance=ExtResource("10_vtaks")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1219285425]
+z_index = 12
 ignore_rotation = false
 zoom = Vector2(1.5, 1.5)
 limit_enabled = false
 position_smoothing_speed = 1.0
 script = ExtResource("5_iywne")
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1432296202]
-z_index = -2
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1599686007]
+z_index = -20
 offset_left = -486.00003
 offset_top = -378.0
 offset_right = -458.45053
@@ -149,23 +159,36 @@ offset_bottom = -351.41986
 scale = Vector2(36.261993, 30.586773)
 color = Color(0, 0, 0, 1)
 
-[node name="Boundary" parent="." unique_id=1740195757 instance=ExtResource("10_vtaks")]
+[node name="Filter" type="ColorRect" parent="Camera2D" unique_id=1938367499]
+z_index = 999
+z_as_relative = false
+material = SubResource("ShaderMaterial_kvpfn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -650.0
+offset_top = -463.0
+offset_right = -530.0
+offset_bottom = -343.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10.650343, 7.994728)
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=805959152]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=2094289043]
 render_target_clear_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=1100769093]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=1537021120]
 texture_filter = 1
 position = Vector2(-200, -200)
 texture = ExtResource("12_kvuet")
 
-[node name="Canvas" type="TextureRect" parent="." unique_id=1380054465]
+[node name="Canvas" type="TextureRect" parent="." unique_id=1726297614]
 z_index = -2
-material = SubResource("ShaderMaterial_excbq")
+material = SubResource("ShaderMaterial_dinhu")
 offset_left = -245.0
 offset_top = -150.0
 offset_right = 267.0
 offset_bottom = 362.0
-texture = SubResource("ViewportTexture_ir15t")
+texture = SubResource("ViewportTexture_kvuet")
 
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]
