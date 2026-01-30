@@ -11,6 +11,7 @@
 [ext_resource type="Shader" uid="uid://76ukmvvd1w38" path="res://shaders/game.gdshader" id="8_ph31p"]
 [ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="8_wtwp4"]
 [ext_resource type="Shader" uid="uid://c3ph35v824blm" path="res://shaders/canvas_outline.gdshader" id="11_ph31p"]
+[ext_resource type="PackedScene" uid="uid://bswyflpt80rbh" path="res://scenes/music_controller.tscn" id="12_oqiax"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxy0u"]
 shader = ExtResource("3_dga24")
@@ -195,5 +196,7 @@ offset_top = -150.0
 offset_right = 267.0
 offset_bottom = 362.0
 texture = SubResource("ViewportTexture_sad5p")
+
+[node name="MusicController" parent="." unique_id=627335941 instance=ExtResource("12_oqiax")]
 
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]

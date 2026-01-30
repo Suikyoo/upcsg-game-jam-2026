@@ -8,6 +8,11 @@ var chase_position: Vector2;
 var quake: float;
 
 func _process(delta: float) -> void:
+	var label := Label.new()
+	label.text = "Level %d" % ($"/root/World".level_id)
+	label.position -= Vector2(250, 200)
+	label.z_index = 999
+	add_child(label)
 	var player: Player = get_node("../Player")
 	if !player:
 		push_error("Player not detected as parent.")
