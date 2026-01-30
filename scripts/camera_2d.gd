@@ -11,6 +11,7 @@ func _process(delta: float) -> void:
 	var player: Player = get_node("../Player")
 	if !player:
 		push_error("Player not detected as parent.")
+		return
 		
 	chase_position = chase_position.lerp(player.get_draw_pos(), 0.08)
 	quake = lerp(quake, 0., 0.08)
