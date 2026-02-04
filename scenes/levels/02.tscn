@@ -3,19 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_xmoky"]
 [ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="2_emsh3"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xmoky"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_emsh3"]
 viewport_path = NodePath("SubViewport")
 
 [node name="World" unique_id=1376563817 instance=ExtResource("1_xmoky")]
 
-[node name="TileMapLayer" parent="Ground" parent_id_path=PackedInt32Array(1016304721) index="0" unique_id=806882060]
-tile_map_data = PackedByteArray("AAD/////AwABAAEAAAAAAP//AwABAAEAAAAAAAAAAwABAAEAAAD//wAAAwABAAEAAAD+/wAAAwABAAIAAAD+////AwABAAEAAAD///7/AwABAAEAAAAAAP7/AwABAAEAAAABAP//AwABAAEAAAABAAAAAwABAAEAAAAAAAEAAwABAAEAAAD//wEAAwABAAIAAAD+//7/AwABAAEAAAD///3/AwABAAEAAAAAAP3/AwABAAEAAAAAAPz/AwACAAAAAAD///z/AwABAAAAAAD9//7/AwAAAAEAAAD9////AwAAAAEAAAAAAAIAAwACAAEAAAABAAEAAwABAAIAAAACAAAAAwACAAEAAAACAAEAAwACAAIAAAD9/wAAAwAAAAIAAAD+//z/AwAAAAAAAAABAP7/AwACAAEAAAABAP3/AwACAAAAAAACAP//AwACAAAAAAD+//3/AwAAAAEAAAAAAPL/AwABAAEAAAAAAPP/AwABAAEAAAABAPL/AwACAAEAAAD///P/AwABAAEAAAD///L/AwABAAEAAAD///H/AwABAAEAAAD+//L/AwABAAEAAAD+//P/AwABAAEAAAD+//T/AwABAAEAAAD///T/AwABAAEAAAAAAPT/AwACAAIAAAAAAPH/AwABAAEAAAD9//L/AwABAAEAAAD9//P/AwABAAEAAAD8//P/AwABAAIAAAD+//H/AwABAAEAAAD9//H/AwAAAAEAAAABAPP/AwACAAEAAAABAPH/AwABAAAAAAAAAPD/AwABAAEAAAD///D/AwABAAEAAAD8//L/AwAAAAEAAAD9//T/AwABAAIAAAD+//X/AwABAAIAAAD///X/AwABAAEAAAD+//D/AwABAAEAAAA=")
+[node name="TileMapLayer" parent="Ground" parent_id_path=PackedInt32Array(1963051723) index="0" unique_id=1111555952]
+tile_map_data = PackedByteArray("AAD///7/AwABAAEAAAD///3/AwAAAAEAAAAAAP3/AwACAAAAAAAAAP7/AwABAAEAAAAAAP//AwABAAEAAAD/////AwABAAEAAAAAAAAAAwABAAEAAAD//wAAAwABAAEAAAD+/wAAAwAAAAEAAAD+////AwAAAAEAAAD//wEAAwABAAIAAAD+//7/AwAAAAEAAAD+/wEAAwAAAAIAAAABAAEAAwACAAIAAAABAAAAAwACAAEAAAAAAAEAAwABAAIAAAABAP//AwACAAEAAAABAP7/AwACAAAAAAD+//H/AwAAAAAAAAD///T/AwABAAEAAAD///P/AwABAAEAAAD///L/AwABAAEAAAD///H/AwACAAAAAAD+//T/AwAAAAIAAAD+//P/AwAAAAEAAAD+//L/AwAAAAEAAAAAAPX/AwACAAIAAAAAAPT/AwACAAEAAAAAAPP/AwACAAEAAAAAAPL/AwACAAAAAAD///X/AwAAAAIAAAAAAPj/AwABAAAAAAABAPn/AwACAAIAAAABAPj/AwACAAAAAAAAAPn/AwABAAIAAAD///n/AwAAAAIAAAD///j/AwAAAAAAAAA=")
 
-[node name="Prism" parent="Ground" parent_id_path=PackedInt32Array(1016304721) index="1" unique_id=1477931971 instance=ExtResource("2_emsh3")]
+[node name="Prism" parent="Ground" parent_id_path=PackedInt32Array(1963051723) index="1" unique_id=1477931971 instance=ExtResource("2_emsh3")]
 position = Vector2(-13, -213)
 
-[node name="Player" parent="." index="1" unique_id=1084302417]
+[node name="Player" parent="." index="1" unique_id=1048948764]
 position = Vector2(-1, -22)
 
-[node name="Canvas" parent="." index="5" unique_id=1467538967]
-texture = SubResource("ViewportTexture_xmoky")
+[node name="Canvas" parent="." index="4" unique_id=1726297614]
+texture = SubResource("ViewportTexture_emsh3")

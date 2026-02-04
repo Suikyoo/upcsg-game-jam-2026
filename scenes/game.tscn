@@ -9,6 +9,7 @@
 [ext_resource type="Shader" uid="uid://76ukmvvd1w38" path="res://shaders/game.gdshader" id="8_vtaks"]
 [ext_resource type="Shader" uid="uid://c3ph35v824blm" path="res://shaders/canvas_outline.gdshader" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://dcuwdh4sjhmrg" path="res://scenes/boundary.tscn" id="10_vtaks"]
+[ext_resource type="Shader" uid="uid://d2ylumtkiha58" path="res://shaders/bg.gdshader" id="11_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bswyflpt80rbh" path="res://scenes/music_controller.tscn" id="11_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://btfq1vy5r6277" path="res://assets/shard.png" id="12_kvuet"]
 
@@ -109,12 +110,6 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.73042506, 0, 0.11251018, 1)
 sources/3 = SubResource("TileSetAtlasSource_kvuet")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvpfn"]
-shader = ExtResource("8_vtaks")
-shader_parameter/SCREEN_SIZE = Vector2(0, 0)
-shader_parameter/darkness = 0.0
-shader_parameter/danger = 0.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dinhu"]
 shader = ExtResource("9_0tnpc")
 shader_parameter/chroma_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
@@ -125,6 +120,21 @@ shader_parameter/SCREEN_SIZE = Vector2(640, 480)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kvuet"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvuet"]
+shader = ExtResource("11_dinhu")
+shader_parameter/stripes = 10.0
+shader_parameter/stripe_thickness = 1.33
+shader_parameter/stripe_color = Color(0.067499995, 0.21654165, 0.25, 1)
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/SCREEN_SIZE = Vector2(640, 480)
+shader_parameter/pixel_size = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trtic"]
+shader = ExtResource("8_vtaks")
+shader_parameter/SCREEN_SIZE = Vector2(0, 0)
+shader_parameter/darkness = 0.0
+shader_parameter/danger = 0.0
 
 [node name="World" type="Node2D" unique_id=1491424587]
 script = ExtResource("1_lnu2h")
@@ -142,38 +152,6 @@ collision_mask = 3
 motion_mode = 0
 
 [node name="Boundary" parent="." unique_id=1740195757 instance=ExtResource("10_vtaks")]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1219285425]
-z_index = 12
-ignore_rotation = false
-zoom = Vector2(1.5, 1.5)
-limit_enabled = false
-position_smoothing_speed = 1.0
-script = ExtResource("5_iywne")
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1599686007]
-z_index = -20
-offset_left = -486.00003
-offset_top = -378.0
-offset_right = -458.45053
-offset_bottom = -351.41986
-scale = Vector2(36.261993, 30.586773)
-color = Color(0, 0, 0, 1)
-
-[node name="Filter" type="ColorRect" parent="Camera2D" unique_id=1938367499]
-z_index = 999
-z_as_relative = false
-material = SubResource("ShaderMaterial_kvpfn")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -650.0
-offset_top = -463.0
-offset_right = -530.0
-offset_bottom = -343.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(10.650343, 7.994728)
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=2094289043]
 render_target_clear_mode = 2
@@ -193,5 +171,38 @@ offset_bottom = 362.0
 texture = SubResource("ViewportTexture_kvuet")
 
 [node name="MusicController" parent="." unique_id=1720485622 instance=ExtResource("11_kvpfn")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=898811174]
+z_index = 12
+ignore_rotation = false
+zoom = Vector2(1.5, 1.5)
+limit_enabled = false
+position_smoothing_speed = 1.0
+script = ExtResource("5_iywne")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1986733359]
+z_index = -20
+material = SubResource("ShaderMaterial_kvuet")
+offset_left = -1560.0001
+offset_top = -1184.0
+offset_right = -1532.4507
+offset_bottom = -1157.4199
+scale = Vector2(115.46706, 91.742065)
+color = Color(0, 0, 0, 1)
+
+[node name="Filter" type="ColorRect" parent="Camera2D" unique_id=98099754]
+z_index = 999
+z_as_relative = false
+material = SubResource("ShaderMaterial_trtic")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1560.0
+offset_top = -1192.0
+offset_right = -1440.0
+offset_bottom = -1072.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(26.560883, 20.681026)
 
 [connection signal="world_flip" from="." to="Player" method="_on_world_world_flip"]

@@ -12,7 +12,7 @@ var world_gravity: Vector2 = Vector2(0, 1) * gravity_value
 #used for smooth interpolation
 var target_angle: float = 0
 
-@export var bg_color: Color = Color("#0a3045")
+@export var bg_color: Color = Color("002e33ff")
 
 var folder_path: String
 var level_id: int
@@ -29,7 +29,6 @@ func _ready() -> void:
 	var path := get_tree().current_scene.scene_file_path.rsplit('/', false, 1)
 	folder_path = path[0]
 	level_id = int(path[1].split(".")[0])
-	print(level_id)
 	world_flip.emit(target_angle, world_gravity)
 	var offset := -world_gravity.normalized() * 2
 	#$Canvas.material.set_shader_parameter("outline_offset", offset)
@@ -38,17 +37,18 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	const rot_scalar: float = PI/2
-	
-	if Input.is_action_just_pressed("anti-rotate"):
-		target_angle -= rot_scalar
-		world_gravity = Vector2.from_angle(target_angle - PI/2) * Vector2(1, -1) * gravity_value
-		world_flip.emit(target_angle, world_gravity)		
-	
-	if Input.is_action_just_pressed("pro-rotate"):
-		target_angle += rot_scalar
-		world_gravity = Vector2.from_angle(target_angle - PI/2) * Vector2(1, -1) * gravity_value
-		world_flip.emit(target_angle, world_gravity)
+	var player = $Player
+	if player && !player.falling:
+		if Input.is_action_just_pressed("anti-rotate"):
+			target_angle -= rot_scalar
+			world_gravity = Vector2.from_angle(target_angle - PI/2) * Vector2(1, -1) * gravity_value
+			world_flip.emit(target_angle, world_gravity)		
 		
+		if Input.is_action_just_pressed("pro-rotate"):
+			target_angle += rot_scalar
+			world_gravity = Vector2.from_angle(target_angle - PI/2) * Vector2(1, -1) * gravity_value
+			world_flip.emit(target_angle, world_gravity)
+			
 	world_angle = lerp_angle(world_angle, target_angle, 0.4)
 
 	darkness = move_toward(darkness, target_darkness, 0.01)

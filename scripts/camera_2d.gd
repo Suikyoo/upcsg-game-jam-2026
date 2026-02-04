@@ -21,7 +21,6 @@ func _ready() -> void:
 	
 	$ColorRect.material = ShaderMaterial.new()
 	$ColorRect.material.shader = load("res://shaders/bg.gdshader")
-	print(get_parent().bg_color)
 	$ColorRect.material.set_shader_parameter("stripe_color", get_parent().bg_color)
 	$ColorRect.material.set_shader_parameter("background_color", Color.BLACK)
 

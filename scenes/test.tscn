@@ -164,11 +164,11 @@ script = ExtResource("6_7mbro")
 [node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1956440988]
 z_index = -20
 material = SubResource("ShaderMaterial_ff6ho")
-offset_left = -486.00003
-offset_top = -378.0
-offset_right = -458.45053
-offset_bottom = -351.41986
-scale = Vector2(36.261993, 30.586773)
+offset_left = -1560.0001
+offset_top = -1184.0
+offset_right = -1532.4507
+offset_bottom = -1157.4199
+scale = Vector2(115.46706, 91.742065)
 color = Color(0, 0, 0, 1)
 
 [node name="Filter" type="ColorRect" parent="Camera2D" unique_id=12013226]
@@ -178,13 +178,13 @@ material = SubResource("ShaderMaterial_ghpyy")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -650.0
-offset_top = -463.0
-offset_right = -530.0
-offset_bottom = -343.0
+offset_left = -1560.0
+offset_top = -1192.0
+offset_right = -1440.0
+offset_bottom = -1072.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(10.650343, 7.994728)
+scale = Vector2(26.560883, 20.681026)
 
 [node name="Boundary" parent="." unique_id=1171336177 instance=ExtResource("7_ff6ho")]
 

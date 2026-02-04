@@ -91,7 +91,7 @@ func on_death() -> void:
 	queue_free()
 
 func _drip_on_new_tile_entered():
-	update_health(-5)	
+	update_health(-2)	
 	
 func update_health(offset_value: int) -> void:
 	health = clamp(health + offset_value, 0, max_health)

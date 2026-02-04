@@ -16,7 +16,7 @@ tile_map_data = PackedByteArray("AAD+/1MCAwABAAEAAAD+/1QCAwABAAEAAAD//1MCAwABAAE
 [node name="Player" parent="." index="1" unique_id=1048948764]
 position = Vector2(88, 9536)
 
-[node name="Canvas" parent="." index="5" unique_id=1380054465]
+[node name="Canvas" parent="." index="4" unique_id=1726297614]
 offset_right = 9755.0
 offset_bottom = 9850.0
 texture = SubResource("ViewportTexture_fb5ex")
