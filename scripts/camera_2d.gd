@@ -1,7 +1,6 @@
 extends Camera2D
 
-const zoom_min: float = 1
-const zoom_max: float = 2.75
+@export var zoom_origin: float = 1.0;
 const zoom_stages = [1, 1.75, 2.75]
 var zoom_index: int = 1
 
@@ -17,6 +16,7 @@ func _ready() -> void:
 	label.label_settings.font = load("res://assets/alagard.ttf")
 	label.label_settings.font_size = 50
 	label.position -= Vector2(80, 150)
+	label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST;
 	add_child(label)
 	
 	$ColorRect.material = ShaderMaterial.new()
@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("zoom_toggle"):
 		zoom_index = (zoom_index + 1) % len(zoom_stages)
 			
-	zoom = zoom.lerp(Vector2(zoom_stages[zoom_index], zoom_stages[zoom_index]), 0.1)
+	zoom = zoom.lerp(Vector2(zoom_origin * zoom_stages[zoom_index], zoom_origin * zoom_stages[zoom_index]), 0.1)
 #func _unhandled_input(event: InputEvent) -> void:
 	#const lerp_weight: float = 0.1
 	#scale = Vector2.ONE / zoom

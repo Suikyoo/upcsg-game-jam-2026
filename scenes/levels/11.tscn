@@ -14,6 +14,7 @@ tile_map_data = PackedByteArray("AAABAAAAAwABAAEAAAABAP//AwABAAEAAAAAAP//AwABAAE
 
 [node name="Player" parent="." index="1" unique_id=1048948764]
 position = Vector2(-96, -56)
+health = 10
 
 [node name="Canvas" parent="." index="4" unique_id=1726297614]
 texture = SubResource("ViewportTexture_ty66y")

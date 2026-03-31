@@ -3,17 +3,32 @@
 [ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_mjouh"]
 [ext_resource type="PackedScene" uid="uid://clll8x3u5566o" path="res://scenes/spike.tscn" id="2_o0a5r"]
 [ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="3_ut30i"]
+[ext_resource type="Texture2D" uid="uid://dmpn5xgqfj5m0" path="res://addons/addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_space.svg" id="4_uoofu"]
+[ext_resource type="FontFile" uid="uid://burfontwu0q2u" path="res://assets/alagard.ttf" id="5_c78om"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ut30i"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_uoofu"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_gusbn"]
+font = ExtResource("5_c78om")
+font_size = 56
+
+[sub_resource type="LabelSettings" id="LabelSettings_c78om"]
+font = ExtResource("5_c78om")
+font_size = 56
+font_color = Color(0.23, 0.23, 0.23, 1)
 
 [node name="World" unique_id=1376563817 instance=ExtResource("1_mjouh")]
 
 [node name="TileMapLayer" parent="Ground" parent_id_path=PackedInt32Array(1963051723) index="0" unique_id=1111555952]
 tile_map_data = PackedByteArray("AAACAAAAAwACAAIAAAACAP//AwACAAAAAAABAAAAAwABAAIAAAABAP//AwABAAAAAAAAAAAAAwABAAIAAAAAAP//AwABAAAAAAD//wAAAwABAAEAAAD/////AwABAAAAAAD//wEAAwACAAIAAAD+/wEAAwABAAIAAAD+/wAAAwABAAEAAAD9/wEAAwAAAAIAAAD9/wAAAwAAAAEAAAD+////AwABAAAAAAARAA0AAwACAAIAAAARAAwAAwACAAEAAAARAAsAAwACAAEAAAARAAoAAwACAAEAAAARAAkAAwACAAAAAAAQAA0AAwABAAIAAAAQAAwAAwABAAEAAAAQAAsAAwABAAEAAAAQAAoAAwABAAEAAAAQAAkAAwABAAAAAAAPAA0AAwABAAEAAAAPAAwAAwABAAEAAAAPAAsAAwABAAEAAAAPAAoAAwABAAEAAAAPAAkAAwABAAAAAAAOAA0AAwABAAEAAAAOAAwAAwABAAEAAAAOAAsAAwABAAEAAAAOAAoAAwABAAEAAAAOAAkAAwAAAAAAAAAOAA4AAwABAAIAAAANAA4AAwABAAIAAAANAA0AAwABAAEAAAANAAwAAwABAAEAAAANAAsAAwABAAEAAAANAAoAAwABAAEAAAAMAA4AAwAAAAIAAAAMAA0AAwAAAAEAAAAMAAwAAwAAAAEAAAAMAAsAAwAAAAEAAAAMAAoAAwAAAAEAAAAPAA4AAwACAAIAAAAOAAAAAwACAAIAAAAOAP//AwACAAAAAAANAAAAAwABAAIAAAANAP//AwABAAAAAAAMAAAAAwABAAEAAAAMAP//AwABAAAAAAALAAAAAwABAAEAAAALAP//AwAAAAAAAAAMAAEAAwACAAIAAAALAAEAAwABAAIAAAAKAAEAAwAAAAIAAAAKAAAAAwAAAAEAAAAIAAAAAwACAAIAAAAIAP//AwACAAAAAAAHAAAAAwAAAAIAAAAHAP//AwAAAAAAAAA=")
 
+[node name="Player" parent="." index="1" unique_id=1048948764]
+health = 10
+
 [node name="Canvas" parent="." index="4" unique_id=1726297614]
-texture = SubResource("ViewportTexture_ut30i")
+offset_right = 395.0
+texture = SubResource("ViewportTexture_uoofu")
 
 [node name="Prism" parent="." index="6" unique_id=411421928 instance=ExtResource("3_ut30i")]
 position = Vector2(260, 199)
@@ -52,3 +67,29 @@ position = Vector2(212, 213)
 
 [node name="Spike11" parent="." index="18" unique_id=1900878702 instance=ExtResource("2_o0a5r")]
 position = Vector2(226, 207)
+
+[node name="Node2D" type="Node2D" parent="." index="20" unique_id=116392762]
+position = Vector2(80, -32.000008)
+scale = Vector2(0.16878179, 0.16878179)
+
+[node name="KeyboardW" type="Sprite2D" parent="Node2D" index="0" unique_id=1718576921]
+position = Vector2(-142.19543, 47.39852)
+scale = Vector2(3, 3)
+texture = ExtResource("4_uoofu")
+
+[node name="Label" type="Label" parent="Node2D" index="1" unique_id=2029429343]
+offset_left = -207.36836
+offset_top = -94.79695
+offset_right = 55.631638
+offset_bottom = -41.79695
+text = "secrete"
+label_settings = SubResource("LabelSettings_gusbn")
+
+[node name="Label" type="Label" parent="Node2D/Label" index="0" unique_id=1519827]
+layout_mode = 0
+offset_left = 254.76689
+offset_top = 6.1035156e-05
+offset_right = 517.7669
+offset_bottom = 53.00006
+text = "and die"
+label_settings = SubResource("LabelSettings_c78om")

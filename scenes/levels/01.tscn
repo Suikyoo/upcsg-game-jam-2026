@@ -1,18 +1,58 @@
 [gd_scene format=4 uid="uid://bd8qce4jfc4td"]
 
 [ext_resource type="PackedScene" uid="uid://5oxtlf4po6kq" path="res://scenes/game.tscn" id="1_llfd0"]
+[ext_resource type="Texture2D" uid="uid://d4m4ex35q1wfq" path="res://addons/addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_w.svg" id="3_x1v25"]
+[ext_resource type="Texture2D" uid="uid://ddongf5tyldmq" path="res://addons/addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_a.svg" id="4_cmkgs"]
+[ext_resource type="Texture2D" uid="uid://csywrxg6d3ntu" path="res://addons/addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_s.svg" id="5_w72ea"]
+[ext_resource type="Texture2D" uid="uid://dwdxalufcca1x" path="res://addons/addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_d.svg" id="6_t84he"]
+[ext_resource type="FontFile" uid="uid://burfontwu0q2u" path="res://assets/alagard.ttf" id="7_cmkgs"]
 [ext_resource type="PackedScene" uid="uid://rwqhbr7lvce" path="res://scenes/prism.tscn" id="8_wtwp4"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_c7grq"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cmkgs"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_w72ea"]
+font = ExtResource("7_cmkgs")
+font_size = 56
 
 [node name="World" unique_id=1491424587 instance=ExtResource("1_llfd0")]
 
 [node name="TileMapLayer" parent="Ground" parent_id_path=PackedInt32Array(1963051723) index="0" unique_id=1111555952]
 tile_map_data = PackedByteArray("AAD/////AwABAAEAAAD+/wAAAwAAAAIAAAD//wAAAwABAAEAAAAAAP//AwABAAEAAAABAP//AwACAAEAAAAAAAAAAwABAAEAAAABAAAAAwACAAEAAAABAAEAAwACAAIAAAAAAAEAAwABAAIAAAD//wEAAwAAAAIAAAD+////AwAAAAEAAAABAP7/AwACAAAAAAAAAP7/AwABAAAAAAD///7/AwABAAAAAAD+//7/AwAAAAAAAAD+/wQAAwABAAAAAAD//wQAAwABAAAAAAD+/wUAAwABAAEAAAD//wUAAwABAAEAAAD//wYAAwABAAIAAAD+/wYAAwABAAIAAAD9/wYAAwAAAAIAAAD9/wUAAwAAAAEAAAD9/wQAAwAAAAAAAAAAAAQAAwABAAAAAAAAAAYAAwACAAIAAAAAAAUAAwABAAEAAAABAAQAAwACAAAAAAABAAUAAwACAAIAAAA=")
 
+[node name="Player" parent="." index="1" unique_id=1048948764]
+health = 10
+
 [node name="Canvas" parent="." index="4" unique_id=1726297614]
-texture = SubResource("ViewportTexture_c7grq")
+texture = SubResource("ViewportTexture_cmkgs")
 
 [node name="Prism" parent="." index="7" unique_id=1161689753 instance=ExtResource("8_wtwp4")]
 position = Vector2(-8, 88)
+
+[node name="Node2D" type="Node2D" parent="." index="8" unique_id=1059193120]
+position = Vector2(-40, 2.2737368e-13)
+scale = Vector2(0.16878179, 0.16878179)
+
+[node name="KeyboardW" type="Sprite2D" parent="Node2D" index="0" unique_id=580296157]
+position = Vector2(-96, 0)
+texture = ExtResource("3_x1v25")
+
+[node name="KeyboardA" type="Sprite2D" parent="Node2D" index="1" unique_id=2008449355]
+position = Vector2(-152, 56)
+texture = ExtResource("4_cmkgs")
+
+[node name="KeyboardS" type="Sprite2D" parent="Node2D" index="2" unique_id=1495660271]
+position = Vector2(-96, 56)
+texture = ExtResource("5_w72ea")
+
+[node name="KeyboardD" type="Sprite2D" parent="Node2D" index="3" unique_id=1067688490]
+position = Vector2(-40, 56)
+texture = ExtResource("6_t84he")
+
+[node name="Label" type="Label" parent="Node2D" index="4" unique_id=447358132]
+offset_left = -236.99242
+offset_top = -142.19545
+offset_right = 26.007584
+offset_bottom = -89.19545
+text = "movement"
+label_settings = SubResource("LabelSettings_w72ea")

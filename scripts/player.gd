@@ -11,11 +11,12 @@ var movement: Vector2 = Vector2.ZERO
 var hold: bool = false
 
 @export var health = 20
-var max_health = health
+var max_health;
 
 func _ready() -> void:
 	$Health.max_value = health
 	$Health.curr_value = health
+	max_health = health
 
 #this is mainly used by the Camera2d to get the player's coordinates and track it
 func get_draw_pos() -> Vector2:
@@ -23,7 +24,7 @@ func get_draw_pos() -> Vector2:
 	if !stack:
 		push_error("no sprite stack in player scene.")
 	return stack.global_position
-	
+
 func _physics_process(delta: float) -> void:
 	#super._physics_process(delta)
 	velocity = Vector2.ZERO
@@ -76,6 +77,17 @@ func _move(delta: float) -> void:
 	
 func _process(delta: float) -> void:
 	super._process(delta)
+	
+	var stack: SpriteStack = get_node_or_null("SpriteStack")
+	var rect: CollisionShape2D = get_node_or_null("CollisionShape2D")
+	if !stack:
+		push_error("no sprite stack in player scene.")
+	if !rect:
+		push_error("no rect in player scene.")
+
+	var scale: float = 0.5 + (float($Health.curr_value) / float($Health.max_value) / 2.)
+	stack.scale = Vector2(scale, scale);
+	rect.scale = Vector2(scale, scale);
 	
 	if health <= 0:
 		on_death()

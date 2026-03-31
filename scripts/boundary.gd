@@ -1,6 +1,6 @@
 extends Area2D
 
-const offset: int = 300
+const offset: int = 800
 func _ready() -> void:
 	var tilemap: TileMapLayer = get_node_or_null("/root/World/Ground/TileMapLayer")
 	if !tilemap:

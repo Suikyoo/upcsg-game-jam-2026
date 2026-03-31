@@ -175,7 +175,6 @@ texture = SubResource("ViewportTexture_kvuet")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=898811174]
 z_index = 12
 ignore_rotation = false
-zoom = Vector2(1.5, 1.5)
 limit_enabled = false
 position_smoothing_speed = 1.0
 script = ExtResource("5_iywne")

@@ -1,20 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgr4jjasceuqx"]
+[gd_scene format=3 uid="uid://bgr4jjasceuqx"]
 
 [ext_resource type="PackedScene" uid="uid://dcyug118867xu" path="res://scenes/sprite_stack.tscn" id="1_g2els"]
 [ext_resource type="Script" uid="uid://c2ury23j8gw82" path="res://scripts/entity.gd" id="1_qhqgy"]
-[ext_resource type="Texture2D" uid="uid://rmvfg7plt0a7" path="res://assets/sprite_stacks/PurpleCar.png" id="3_m0cyi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0cyi"]
 size = Vector2(10, 7.5)
 
-[node name="Entity" type="CharacterBody2D"]
+[node name="Entity" type="CharacterBody2D" unique_id=834364745]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_qhqgy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1567511886]
 shape = SubResource("RectangleShape2D_m0cyi")
 
-[node name="SpriteStack" parent="." instance=ExtResource("1_g2els")]
-texture = ExtResource("3_m0cyi")
+[node name="SpriteStack" parent="." unique_id=946136860 instance=ExtResource("1_g2els")]
 hframes = 8

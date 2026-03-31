@@ -14,5 +14,8 @@ tile_map_data = PackedByteArray("AAABAAAAAwACAAIAAAABAP//AwACAAEAAAABAP7/AwACAAA
 [node name="Prism" parent="Ground" parent_id_path=PackedInt32Array(1963051723) index="1" unique_id=801908306 instance=ExtResource("2_2lbtt")]
 position = Vector2(194, 144)
 
+[node name="Player" parent="." index="1" unique_id=1048948764]
+health = 10
+
 [node name="Canvas" parent="." index="4" unique_id=1726297614]
 texture = SubResource("ViewportTexture_2lbtt")
